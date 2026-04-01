@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — BILD | The Pursuit of U</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ── HERO ── */
+    .contact-hero {
+      background: var(--dark);
+      min-height: 48vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 20% 80%, rgba(201,168,76,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 80% 20%, rgba(212,97,74,0.07) 0%, transparent 60%);
+    }
+    .contact-hero .hero-inner { position: relative; max-width: 760px; }
+    .contact-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 0.97;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .contact-hero h1 em { font-style: italic; color: var(--gold); }
+    .contact-hero p {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      color: rgba(245,240,232,0.58);
+      max-width: 520px;
+      line-height: 1.75;
+      border-left: 2px solid var(--coral);
+      padding-left: 1.2rem;
+    }
+
+    /* ── LAYOUT ── */
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 0;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 5rem 2rem 7rem;
+      align-items: start;
+    }
+
+    /* ── LEFT: DETAILS ── */
+    .contact-details { padding-right: 4rem; }
+    .contact-details h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
+    }
+    .contact-details p {
+      font-size: 0.97rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #666;
+      margin-bottom: 1.2rem;
+    }
+    .contact-details p strong { color: var(--charcoal); font-weight: 600; }
+
+    .detail-block {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .detail-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .detail-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: var(--coral);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 0.95rem;
+    }
+    .detail-text { padding-top: 0.1rem; }
+    .detail-text strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--charcoal); margin-bottom: 0.2rem;
+    }
+    .detail-text span { font-size: 0.88rem; font-weight: 300; color: #777; }
+
+    .pillar-callout {
+      margin-top: 2.5rem;
+      background: var(--dark);
+      padding: 1.75rem 2rem;
+      border-left: 3px solid var(--gold);
+    }
+    .pillar-callout p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(245,240,232,0.7);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .pillar-callout cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ── RIGHT: FORM ── */
+    .contact-form-wrap {
+      background: white;
+      border: 1px solid #e5dfd4;
+      padding: 2.5rem;
+      position: sticky;
+      top: 90px;
+    }
+    .form-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--dark); margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ede7dc;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
+    .form-group label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: #aaa;
+    }
+    .form-group label .req { color: var(--coral); margin-left: 0.15rem; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem; font-weight: 300;
+      color: var(--charcoal);
+      background: var(--off-white);
+      border: 1px solid #ddd;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--coral); }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    /* Checkboxes */
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.55rem; margin-top: 0.25rem; }
+    .checkbox-label {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.88rem; font-weight: 300; color: #555;
+      cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: 16px; height: 16px; flex-shrink: 0;
+      accent-color: var(--coral);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    /* Submit */
+    .form-submit {
+      width: 100%;
+      background: var(--coral);
+      color: white;
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.82rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 1rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { background: #bf5040; transform: translateY(-2px); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      font-size: 0.75rem; font-weight: 300; color: #aaa;
+      text-align: center; margin-top: 0.9rem; line-height: 1.6;
+    }
+
+    /* Success / Error states */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    .form-success .success-icon {
+      width: 52px; height: 52px;
+      background: var(--teal);
+      color: white;
+      font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .form-success h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 0.75rem;
+    }
+    .form-success p {
+      font-size: 0.9rem; font-weight: 300; color: #777;
+      line-height: 1.7; max-width: 300px; margin: 0 auto;
+    }
+
+    .field-error { font-size: 0.72rem; color: var(--coral); margin-top: 0.2rem; display: none; }
+    .form-group.has-error input,
+    .form-group.has-error textarea { border-color: var(--coral); }
+    .form-group.has-error .field-error { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .contact-body { grid-template-columns: 1fr; padding: 3rem 1.5rem 5rem; }
+      .contact-details { padding-right: 0; margin-bottom: 3rem; }
+      .contact-form-wrap { position: static; }
+    }
+    @media (max-width: 500px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-hero { padding: 7.5rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#pillars">The Pillars</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="contact.html">Work With Jeff</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="hero-inner">
+    <span class="section-label">Get Started</span>
+    <h1>I can help you<br><em>unlock yourself.</em></h1>
+    <p>You deserve to live in a place beyond fear and limitations. By tapping into your faith and exploring your purpose, you'll write your own success story.</p>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="contact-body">
+
+  <!-- LEFT -->
+  <div class="contact-details">
+    <h2>Let's have an honest conversation.</h2>
+    <p>Share a few details in the form and I'll respond within <strong>2 business days</strong> to schedule a complimentary discovery session. No obligation — just a real conversation about where you are and where you want to be.</p>
+    <p>The men I work with have already built something real. What they're looking for is alignment — between who they've become and who they were made to be. If that's you, I'd like to hear from you.</p>
+
+    <div class="detail-block">
+      <div class="detail-item">
+        <div class="detail-icon">✦</div>
+        <div class="detail-text">
+          <strong>Based in</strong>
+          <span>Temecula, CA</span>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">✦</div>
+        <div class="detail-text">
+          <strong>Retreats held in</strong>
+          <span>Los Barriles, Mexico</span>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">✦</div>
+        <div class="detail-text">
+          <strong>Response time</strong>
+          <span>Within 2 business days</span>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-icon">✦</div>
+        <div class="detail-text">
+          <strong>First step</strong>
+          <span>Complimentary discovery session</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillar-callout">
+      <p>"With purpose, there are no limits."</p>
+      <cite>Jeff Boyer</cite>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="contact-form-wrap">
+    <div class="form-title">Send a Message</div>
+
+    <!-- SUCCESS STATE (shown after submit) -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✓</div>
+      <h3>Message received.</h3>
+      <p>I'll be in touch within 2 business days to schedule your complimentary discovery session.</p>
+    </div>
+
+    <!-- THE FORM -->
+    <!-- 
+      SETUP: Replace YOUR_FORMSPREE_ID below with your actual Formspree endpoint.
+      1. Go to https://formspree.io and create a free account
+      2. Create a new form — it gives you an ID like "xpwzabcd"
+      3. Replace YOUR_FORMSPREE_ID with that ID
+      The form will then email submissions directly to jeff@bildyourlife.com
+    -->
+    <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+
+      <div class="form-row">
+        <div class="form-group" id="group-first">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" name="first_name" placeholder="First" autocomplete="given-name" />
+          <span class="field-error">Please enter your first name.</span>
+        </div>
+        <div class="form-group" id="group-last">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" name="last_name" placeholder="Last" autocomplete="family-name" />
+          <span class="field-error">Please enter your last name.</span>
+        </div>
+      </div>
+
+      <div class="form-group" id="group-email">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" />
+        <span class="field-error">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-group" id="group-email2">
+        <label>Confirm Email <span class="req">*</span></label>
+        <input type="email" name="email_confirm" placeholder="Confirm your email" autocomplete="email" />
+        <span class="field-error">Email addresses do not match.</span>
+      </div>
+
+      <div class="form-group">
+        <label>What do you need help with? <span class="req">*</span> <span style="font-weight:300; letter-spacing:0; text-transform:none; color:#bbb; font-family:'Barlow',sans-serif; font-size:0.7rem;">(Select all that apply)</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="Faith" /> Faith</label>
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="Family" /> Family</label>
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="Business" /> Business</label>
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="Community" /> Community</label>
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="One-on-one coaching" /> I'm interested in one-on-one coaching</label>
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="Events and retreats" /> I'm interested in events and retreats</label>
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="Speaking" /> I'm interested in having Jeff speak at my event</label>
+          <label class="checkbox-label"><input type="checkbox" name="topics" value="Something else" /> Something else</label>
+        </div>
+        <span class="field-error" id="topics-error" style="display:none;">Please select at least one option.</span>
+      </div>
+
+      <div class="form-group" id="group-message">
+        <label>Your Message <span class="req">*</span></label>
+        <textarea name="message" placeholder="Share a few details about where you are and what you're looking for…"></textarea>
+        <span class="field-error">Please include a short message.</span>
+      </div>
+
+      <!-- Honeypot anti-spam field — hidden from real users -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <button type="submit" class="form-submit" id="submitBtn">Send My Message</button>
+      <p class="form-note">I respond within 2 business days. Your information stays private.</p>
+
+    </form>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="index.html#pillars">The Pillars</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const form       = document.getElementById('contactForm');
+  const submitBtn  = document.getElementById('submitBtn');
+  const successDiv = document.getElementById('formSuccess');
+
+  function getVal(name) {
+    const el = form.querySelector(`[name="${name}"]`);
+    return el ? el.value.trim() : '';
+  }
+
+  function setError(groupId, show) {
+    const g = document.getElementById(groupId);
+    if (!g) return;
+    g.classList.toggle('has-error', show);
+  }
+
+  function validateEmail(val) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  }
+
+  function validate() {
+    let valid = true;
+
+    const first = getVal('first_name');
+    setError('group-first', !first);
+    if (!first) valid = false;
+
+    const last = getVal('last_name');
+    setError('group-last', !last);
+    if (!last) valid = false;
+
+    const email = getVal('email');
+    setError('group-email', !validateEmail(email));
+    if (!validateEmail(email)) valid = false;
+
+    const email2 = getVal('email_confirm');
+    const emailMismatch = !validateEmail(email2) || email !== email2;
+    setError('group-email2', emailMismatch);
+    if (emailMismatch) valid = false;
+
+    const checked = form.querySelectorAll('input[name="topics"]:checked');
+    const topicsErr = document.getElementById('topics-error');
+    if (checked.length === 0) {
+      topicsErr.style.display = 'block';
+      valid = false;
+    } else {
+      topicsErr.style.display = 'none';
+    }
+
+    const msg = getVal('message');
+    setError('group-message', !msg);
+    if (!msg) valid = false;
+
+    return valid;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        successDiv.style.display = 'block';
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send My Message';
+        alert('Something went wrong. Please try again or email jeff@bildyourlife.com directly.');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send My Message';
+      alert('Connection error. Please check your internet and try again.');
+    }
+  });
+
+  // Clear errors on input
+  form.querySelectorAll('input, textarea').forEach(el => {
+    el.addEventListener('input', () => {
+      const group = el.closest('.form-group');
+      if (group) group.classList.remove('has-error');
+    });
+  });
+</script>
+
+</body>
+</html>
