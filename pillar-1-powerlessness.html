@@ -7,625 +7,257 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --charcoal: #3a3a3a;
-      --coral: #d4614a;
-      --coral-light: rgba(212,97,74,0.12);
-      --teal: #4a8f8c;
-      --steel-blue: #5b7fa6;
-      --sage: #7a8c6e;
-      --dusty-mauve: #b08090;
-      --warm-gold: #c9a84c;
-      --cream: #f5f0e8;
-      --dark: #1e1e1e;
-      --dark2: #252525;
-      --off-white: #faf8f4;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Barlow', sans-serif; background: var(--off-white); color: var(--charcoal); overflow-x: hidden; }
+    :root { --pillar-color: var(--coral); --next-color: var(--teal); }
+    .pillar-hero { --hero-grad: radial-gradient(ellipse 70% 55% at 15% 85%, rgba(212,97,74,0.14) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 82% 20%, rgba(201,168,76,0.06) 0%, transparent 60%); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(30,30,30,0.93);
-      backdrop-filter: blur(8px);
-    }
-    .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: 0.18em; color: var(--cream); text-decoration: none; }
-    .nav-logo span { color: var(--warm-gold); }
-    .nav-back { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.55); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem; }
-    .nav-back:hover { color: var(--warm-gold); }
+    .stage-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.2rem 0.55rem; color: white; }
+    .s1 { background: var(--coral); }
+    .s2 { background: #b85040; }
+    .s3 { background: #8a3a22; }
+    .s4 { background: var(--charcoal); }
 
-    /* ── HERO ── */
-    .pillar-hero {
-      background: var(--dark); min-height: 55vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 8rem 3rem 4rem; position: relative; overflow: hidden;
-    }
-    .pillar-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 20% 80%, rgba(212,97,74,0.12) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 40% at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 60%);
-    }
-    .hero-inner { position: relative; max-width: 900px; }
-    .pillar-badge {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: var(--coral); color: white;
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
-      padding: 0.35rem 0.85rem; margin-bottom: 1.5rem;
-    }
-    .pillar-hero h1 {
-      font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 900; color: var(--cream); line-height: 0.95; letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-    }
-    .pillar-hero .tagline {
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(245,240,232,0.6);
-      max-width: 600px; line-height: 1.65; border-left: 2px solid var(--coral); padding-left: 1.25rem;
-    }
-
-    /* ── TAB NAV ── */
-    .tab-nav {
-      background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 0 3rem; display: flex; gap: 0; overflow-x: auto;
-      position: sticky; top: 62px; z-index: 50;
-    }
-    .tab-btn {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(245,240,232,0.45); background: none; border: none;
-      padding: 1.1rem 1.5rem; cursor: pointer; white-space: nowrap;
-      border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
-      margin-bottom: -1px;
-    }
-    .tab-btn:hover { color: rgba(245,240,232,0.75); }
-    .tab-btn.active { color: var(--coral); border-bottom-color: var(--coral); }
-
-    /* ── CONTENT AREA ── */
-    .content-area { display: none; max-width: 900px; margin: 0 auto; padding: 4rem 2rem 6rem; }
-    .content-area.visible { display: block; animation: fadeIn 0.35s ease; }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--coral); margin-bottom: 1rem; display: block; }
-    h2.content-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 1.5rem; }
-    .lead-text { font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: #555; margin-bottom: 2rem; }
-    .callout-box {
-      background: var(--dark); border-left: 3px solid var(--coral); padding: 1.75rem 2rem;
-      margin: 2.5rem 0;
-    }
-    .callout-box p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--cream); line-height: 1.7; }
-
-    /* ── CYCLE TABLE ── */
-    .cycle-table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; }
-    .cycle-table th {
-      background: var(--dark); color: var(--cream); font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-      padding: 0.9rem 1.25rem; text-align: left;
-    }
-    .cycle-table td { padding: 1rem 1.25rem; font-size: 0.9rem; font-weight: 300; line-height: 1.6; border-bottom: 1px solid #ede7dc; color: var(--charcoal); }
-    .cycle-table tr:last-child td { border-bottom: none; }
-    .cycle-table tr:nth-child(odd) td { background: white; }
-    .stage-badge {
-      display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.7rem; letter-spacing: 0.1em; padding: 0.2rem 0.55rem;
-      color: white; margin-bottom: 0.2rem;
-    }
-    .stage-1 { background: var(--coral); }
-    .stage-2 { background: #b05a3a; }
-    .stage-3 { background: #8a3a22; }
-    .stage-4 { background: var(--charcoal); }
-
-    /* ── SESSION TIMELINE ── */
-    .session-timeline { display: flex; flex-direction: column; gap: 0; margin: 2.5rem 0; }
-    .session-phase {
-      display: grid; grid-template-columns: 90px 1fr; gap: 0;
-      border: 1px solid #e5dfd4; border-bottom: none; background: white;
-      cursor: pointer; transition: box-shadow 0.2s;
-    }
-    .session-phase:last-child { border-bottom: 1px solid #e5dfd4; }
-    .session-phase:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); z-index: 1; position: relative; }
-    .phase-time {
-      background: var(--coral); color: white; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; padding: 1.25rem 0.75rem; text-align: center;
-    }
-    .phase-time .mins { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.4rem; line-height: 1; }
-    .phase-time .min-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.75; }
-    .phase-body { padding: 1.25rem 1.5rem; }
-    .phase-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.4rem; }
-    .phase-content { font-size: 0.88rem; font-weight: 300; line-height: 1.65; color: #666; }
-
-    /* ── COACHING QUESTIONS ── */
-    .questions-list { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
-    .question-card {
-      padding: 1.5rem 1.75rem; border: 1px solid #e5dfd4; background: white;
-      position: relative; cursor: pointer; transition: border-color 0.25s, transform 0.2s;
-    }
-    .question-card:hover { border-color: var(--coral); transform: translateX(4px); }
-    .question-card::before { content: '→'; position: absolute; left: -0.5rem; top: 50%; transform: translateY(-50%); color: var(--coral); font-size: 1rem; opacity: 0; transition: opacity 0.2s, left 0.2s; }
-    .question-card:hover::before { opacity: 1; left: -1.25rem; }
-    .question-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.02rem; color: var(--charcoal); line-height: 1.55; }
-
-    /* ── INTERACTIVE INVENTORY ── */
-    .inventory-intro { margin-bottom: 2.5rem; }
-    .inventory-form { display: flex; flex-direction: column; gap: 2rem; }
-    .inv-item { background: white; border: 1px solid #e5dfd4; padding: 1.75rem 2rem; }
-    .inv-item-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
-    .inv-item-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--coral); opacity: 0.25; line-height: 1; flex-shrink: 0; }
-    .inv-item-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); line-height: 1.3; }
-    .inv-sub { display: flex; flex-direction: column; gap: 0.75rem; }
-    .inv-sub label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; margin-bottom: 0.2rem; display: block; }
-    .inv-sub input, .inv-sub textarea {
-      width: 100%; font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 300;
-      color: var(--charcoal); background: var(--off-white); border: 1px solid #ddd;
-      padding: 0.75rem 1rem; outline: none; resize: vertical;
-      transition: border-color 0.2s;
-    }
-    .inv-sub input:focus, .inv-sub textarea:focus { border-color: var(--coral); }
-    .inv-sub textarea { min-height: 70px; }
-    .inv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-    @media (max-width: 500px) { .inv-grid { grid-template-columns: 1fr; } }
-
-    .commitment-section { margin-top: 2.5rem; background: var(--dark); padding: 2.5rem; }
-    .commitment-section h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 1rem; }
-    .commitment-section p { font-size: 0.9rem; font-weight: 300; color: rgba(245,240,232,0.6); margin-bottom: 1.25rem; line-height: 1.7; }
-    .commitment-input {
-      width: 100%; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem;
-      color: var(--cream); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
-      padding: 1rem 1.25rem; outline: none; margin-bottom: 1.25rem;
-      transition: border-color 0.2s;
-    }
-    .commitment-input:focus { border-color: var(--warm-gold); }
-    .commit-btn {
-      background: var(--coral); color: white; border: none;
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
-      padding: 0.9rem 2rem; cursor: pointer; transition: background 0.2s, transform 0.2s;
-    }
-    .commit-btn:hover { background: #bf5040; transform: translateY(-2px); }
-    .commit-confirm { display: none; margin-top: 1.25rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--warm-gold); font-size: 1rem; }
-
-    /* ── RETREAT ── */
-    .retreat-block { background: var(--dark); padding: 2.5rem; margin-bottom: 2rem; }
-    .retreat-block h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gold); margin-bottom: 1.25rem; }
-    .retreat-block p { font-size: 0.95rem; font-weight: 300; color: rgba(245,240,232,0.65); line-height: 1.85; margin-bottom: 0.75rem; }
-    .retreat-block p:last-child { margin-bottom: 0; }
-    .retreat-block strong { color: var(--cream); font-weight: 600; }
-
-    .content-angles { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-    .angle-card { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem 1.5rem; background: white; border: 1px solid #e5dfd4; }
-    .angle-bullet { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); flex-shrink: 0; margin-top: 0.4rem; }
-    .angle-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em; color: var(--dark); margin-bottom: 0.3rem; }
-    .angle-desc { font-size: 0.85rem; font-weight: 300; color: #888; line-height: 1.6; }
-
-    /* ── PREV / NEXT ── */
-    .pillar-nav { background: var(--dark); padding: 3rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
-    .pnav-back { text-decoration: none; color: rgba(245,240,232,0.5); font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; }
-    .pnav-back:hover { color: var(--cream); }
-    .pnav-next {
-      text-decoration: none; background: var(--dark2); border: 1px solid rgba(255,255,255,0.1);
-      padding: 1rem 1.75rem; display: flex; flex-direction: column; align-items: flex-end;
-      transition: border-color 0.2s;
-    }
-    .pnav-next:hover { border-color: var(--teal); }
-    .pnav-next .next-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.3rem; }
-    .pnav-next .next-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); }
-
-    footer { background: var(--dark); padding: 2rem 3rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
-    .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.18em; color: var(--cream); text-decoration: none; }
-    .footer-logo span { color: var(--warm-gold); }
-    .footer-copy { font-size: 0.68rem; color: rgba(245,240,232,0.22); }
-
-    @media (max-width: 620px) { nav { padding: 1rem 1.5rem; } .pillar-hero { padding: 8rem 1.5rem 3rem; } .tab-nav { padding: 0 1rem; } .content-area { padding: 3rem 1.25rem 5rem; } .cycle-table { font-size: 0.8rem; } }
+    .reflection-prompt { background: white; border: 1px solid #e5dfd4; padding: 2rem; margin: 2.5rem 0; }
+    .reflection-prompt h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--coral); margin-bottom: 1rem; }
+    .reflection-prompt textarea { width: 100%; font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--charcoal); background: var(--off-white); border: 1px solid #ddd; padding: 0.8rem 1rem; outline: none; resize: vertical; min-height: 90px; transition: border-color 0.2s; }
+    .reflection-prompt textarea:focus { border-color: var(--coral); }
+    .reflection-prompt p.prompt-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.98rem; color: #777; margin-bottom: 0.75rem; line-height: 1.6; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
-  <a class="nav-back" href="index.html">← All Pillars</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#pillars">All Pillars</a></li>
+    </ul>
+    <a class="nav-cta" href="https://jeff-boyer.com/contact" target="_blank">Work With Jeff</a>
+  </div>
 </nav>
 
-<!-- HERO -->
 <section class="pillar-hero">
   <div class="hero-inner">
     <div class="pillar-badge">Pillar 01 of 05</div>
     <h1>Powerlessness</h1>
-    <p class="tagline">"The man who names his powerlessness is not weak. He is finally honest. And honesty is the only foundation anything real can be built on."</p>
+    <p class="pillar-tagline">"The man who names his powerlessness is not weak. He is finally honest. And honesty is the only foundation anything real can be built on."</p>
   </div>
 </section>
 
-<!-- TAB NAV -->
 <div class="tab-nav" role="tablist">
-  <button class="tab-btn active" data-tab="overview" role="tab">Overview</button>
-  <button class="tab-btn" data-tab="cycle" role="tab">The Cycle</button>
-  <button class="tab-btn" data-tab="session" role="tab">Session</button>
-  <button class="tab-btn" data-tab="questions" role="tab">Questions</button>
-  <button class="tab-btn" data-tab="inventory" role="tab">Inventory</button>
-  <button class="tab-btn" data-tab="retreat" role="tab">Retreat</button>
-  <button class="tab-btn" data-tab="content" role="tab">Content Angles</button>
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="cycle">The Cycle</button>
+  <button class="tab-btn" data-tab="questions">Reflection Questions</button>
+  <button class="tab-btn" data-tab="inventory">My Inventory</button>
 </div>
 
-<!-- ── TAB: OVERVIEW ── -->
+<!-- OVERVIEW -->
 <div class="content-area visible" id="tab-overview">
-  <span class="section-label">Why This Pillar Comes First</span>
-  <h2 class="content-title">The crack in the armor.</h2>
-  <p class="lead-text">Every other pillar requires a man to be honest about where he actually is. Most men in their 40s who have built outward success have developed an almost airtight defense system against that honesty.</p>
-  <p class="lead-text">Powerlessness is the crack in that armor — the thing he feels at 2am when the house is quiet and his success feels hollow. He has named it stress. He has named it burnout. He has never named it as powerlessness.</p>
-  <div class="callout-box">
+  <span class="section-label">Pillar One</span>
+  <h2 class="content-title">The honest foundation.</h2>
+  <p class="lead">You've built something real. The business works. The family looks right from the outside. By most measures, you are successful. And yet something is fundamentally off — a persistent gap between what you've built and who you actually are.</p>
+  <p class="lead">That feeling at 2am when the house is quiet and your success feels hollow — that is the beginning of this work. Not the problem. The beginning.</p>
+
+  <div class="callout">
     <p>Powerlessness is not weakness. It is the human condition. The ones who stay stuck are the ones who never name it. The ones who break through are the ones who get honest, find one small act of true accountability, and start there.</p>
   </div>
-  <p class="lead-text">This is the gateway pillar. Without it, everything else is technique. With it, everything else becomes possible. The man who names this is not failing — he is finally beginning.</p>
+
+  <p class="lead">Most men in their 40s who have built outward success have developed an almost airtight defense system against honesty. They've named the feeling stress. They've named it burnout. They've never named it as powerlessness. That naming is what this pillar is about — and it is the gateway to everything that follows.</p>
+  <p class="lead"><strong>This pillar comes first because every other pillar requires a man to be honest about where he actually is.</strong> You cannot build a real foundation on a false story. Naming your powerlessness is not giving up — it's the first true act of leadership you can offer your family, your faith, and yourself.</p>
 </div>
 
-<!-- ── TAB: CYCLE ── -->
+<!-- THE CYCLE -->
 <div class="content-area" id="tab-cycle">
   <span class="section-label">The Framework</span>
   <h2 class="content-title">The False Power Move Cycle</h2>
-  <p class="lead-text">When a man feels out of control, his brain searches for anything it can influence — fast. It does not distinguish between healthy control and false control. False power moves give temporary relief and compound the real cost over years.</p>
+  <p class="lead">When a man feels out of control, his brain searches for anything it can influence — fast. It doesn't distinguish between healthy control and false control. False power moves give temporary relief and compound the real cost over years.</p>
 
-  <table class="cycle-table">
+  <table class="bild-table">
     <thead>
       <tr>
         <th>Stage</th>
-        <th>What Happens</th>
-        <th>How It Shows Up</th>
-        <th>The Cost</th>
+        <th>What's happening</th>
+        <th>How it shows up</th>
+        <th>The real cost</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="stage-badge stage-1">1</span><br><strong>Powerlessness</strong></td>
-        <td>Restlessness, irritability he calls stress or burnout</td>
-        <td>Unnamed and growing</td>
-        <td>The feeling stays below the surface, compounding quietly</td>
+        <td><span class="stage-badge s1">1</span><br><strong>Powerlessness</strong></td>
+        <td>Restlessness and irritability he calls stress or burnout</td>
+        <td>Unnamed and growing beneath the surface</td>
+        <td>The feeling compounds silently — nothing changes</td>
       </tr>
       <tr>
-        <td><span class="stage-badge stage-2">2</span><br><strong>The Reach</strong></td>
-        <td>Brain seeks any form of control — fast, below awareness</td>
-        <td>Automatic; hard to interrupt</td>
-        <td>No conscious choice available; default patterns activate</td>
+        <td><span class="stage-badge s2">2</span><br><strong>The Reach</strong></td>
+        <td>The brain seeks any form of control — fast, below conscious awareness</td>
+        <td>Automatic; almost impossible to interrupt from inside</td>
+        <td>No real choice available — default patterns take over</td>
       </tr>
       <tr>
-        <td><span class="stage-badge stage-3">3</span><br><strong>False Power Move</strong></td>
-        <td>Withdrawal, overwork, harshness, escape into screens</td>
-        <td>Temporary relief; real distance</td>
+        <td><span class="stage-badge s3">3</span><br><strong>The False Move</strong></td>
+        <td>Withdrawal, overwork, harshness, escape into screens or distraction</td>
+        <td>Temporary relief — real distance from the people who matter</td>
         <td>The gap between who he is and who he wants to be widens</td>
       </tr>
       <tr>
-        <td><span class="stage-badge stage-4">4</span><br><strong>Deeper Stuck</strong></td>
-        <td>Guilt on top of original feeling; shame compounds</td>
-        <td>The loop tightens over years</td>
-        <td>Now carrying the original feeling plus the cost of the move</td>
+        <td><span class="stage-badge s4">4</span><br><strong>Deeper Stuck</strong></td>
+        <td>Guilt layers on top of the original feeling; shame compounds</td>
+        <td>The loop tightens — harder to break each cycle</td>
+        <td>Now carrying the original pain plus the cost of the move itself</td>
       </tr>
     </tbody>
   </table>
 
-  <div class="callout-box" style="border-left-color: var(--warm-gold);">
-    <p style="color: var(--warm-gold);">The cycle is not a character flaw. It is a learned behavior — often decades old. Naming it as a cycle is the beginning of interrupting it.</p>
+  <div class="callout gold">
+    <p>This cycle is not a character flaw. It is a learned behavior — often decades old. Naming it as a cycle is the beginning of interrupting it. You are not the pattern. You are the man who can choose differently.</p>
   </div>
+
+  <p class="lead">Every man has his version of this cycle. The specific false power move varies — for some it's withdrawal, for others it's overwork, controlling behavior, or disappearing into screens. What matters is not which move you make. What matters is recognizing <em>that</em> you make it — and that it has been costing you.</p>
 </div>
 
-<!-- ── TAB: SESSION ── -->
-<div class="content-area" id="tab-session">
-  <span class="section-label">Facilitation Guide</span>
-  <h2 class="content-title">90-Minute Session Structure</h2>
-  <p class="lead-text">Each phase has a specific purpose. Don't rush the Opening — the first answer is almost always a deflection. Wait for the real one.</p>
-
-  <div class="session-timeline">
-    <div class="session-phase">
-      <div class="phase-time" style="background: var(--coral);">
-        <div class="mins">10</div>
-        <div class="min-label">min</div>
-      </div>
-      <div class="phase-body">
-        <div class="phase-name">Opening</div>
-        <p class="phase-content">"Describe the last moment you felt completely out of control. What did you do with that feeling?" Wait for the real answer — the first is almost always a deflection.</p>
-      </div>
-    </div>
-    <div class="session-phase">
-      <div class="phase-time" style="background: #b85a40;">
-        <div class="mins">20</div>
-        <div class="min-label">min</div>
-      </div>
-      <div class="phase-body">
-        <div class="phase-name">Teaching</div>
-        <p class="phase-content">Introduce the False Power Move framework. Tell your 2008 story specifically — $8,000, three kids, video games, your wife's face. The specificity is what makes it land.</p>
-      </div>
-    </div>
-    <div class="session-phase">
-      <div class="phase-time" style="background: #8a3a22;">
-        <div class="mins">30</div>
-        <div class="min-label">min</div>
-      </div>
-      <div class="phase-body">
-        <div class="phase-name">Deep Work</div>
-        <p class="phase-content">Small groups of 3–4. Each man names his pattern, traces its origin, and sees it as learned behavior rather than permanent identity.</p>
-      </div>
-    </div>
-    <div class="session-phase">
-      <div class="phase-time" style="background: var(--charcoal);">
-        <div class="mins">20</div>
-        <div class="min-label">min</div>
-      </div>
-      <div class="phase-body">
-        <div class="phase-name">Inventory</div>
-        <p class="phase-content">Individual written work. Top 3 false power moves. For each: When does it show up? Who does it affect? What am I protecting? What changes if I stop?</p>
-      </div>
-    </div>
-    <div class="session-phase">
-      <div class="phase-time" style="background: var(--teal);">
-        <div class="mins">10</div>
-        <div class="min-label">min</div>
-      </div>
-      <div class="phase-body">
-        <div class="phase-name">Accountability Pair</div>
-        <p class="phase-content">Pair up. Each man names one false power move he will interrupt in the next two weeks. His partner asks about it at the next session.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── TAB: QUESTIONS ── -->
+<!-- QUESTIONS -->
 <div class="content-area" id="tab-questions">
-  <span class="section-label">For the Coaching Room</span>
-  <h2 class="content-title">Coaching Questions</h2>
-  <p class="lead-text">These questions are not prompts — they're excavation tools. Read the room. One well-timed question is worth more than all four delivered in sequence.</p>
+  <span class="section-label">Go Deeper</span>
+  <h2 class="content-title">Reflection Questions</h2>
+  <p class="lead">These questions are not meant to be answered quickly. Read each one. Sit with the first honest answer that comes — not the polished one, not the safe one. The real one.</p>
 
-  <div class="questions-list">
-    <div class="question-card">
-      <p class="question-text">"What is the story I keep telling myself that is no longer serving who I want to become?"</p>
-    </div>
-    <div class="question-card">
-      <p class="question-text">"What does your wife see in you when you're running on this pattern that you wish she didn't?"</p>
-    </div>
-    <div class="question-card">
-      <p class="question-text">"If God sat across the table and asked 'What's really going on?' — what would you say?"</p>
-    </div>
-    <div class="question-card">
-      <p class="question-text">"If you stopped lying to yourself for 10 seconds — what is the truth you would have to face?"</p>
-    </div>
+  <div class="q-list">
+    <div class="q-card"><p>"What is the story I keep telling myself that is no longer serving who I want to become?"</p></div>
+    <div class="q-card"><p>"What does my wife see in me when I'm running on this pattern — that I wish she didn't?"</p></div>
+    <div class="q-card"><p>"If God sat across the table and asked, 'What's really going on?' — what would I actually say?"</p></div>
+    <div class="q-card"><p>"If I stopped lying to myself for 10 seconds — what is the truth I would have to face?"</p></div>
   </div>
 
-  <div class="callout-box" style="margin-top: 2.5rem;">
-    <p>The question about the wife lands hardest when delivered quietly and without follow-up. Let it sit. Men need silence to tell the truth.</p>
+  <div class="callout">
+    <p>The first answer that comes to mind is usually the defended one. The second one — the one that comes after a moment of silence — is almost always the true one.</p>
   </div>
 </div>
 
-<!-- ── TAB: INVENTORY ── -->
+<!-- INVENTORY -->
 <div class="content-area" id="tab-inventory">
-  <span class="section-label">Interactive Tool</span>
-  <h2 class="content-title">False Power Move Inventory</h2>
-  <div class="inventory-intro">
-    <p class="lead-text">Identify your top three false power moves. For each, work through the four questions honestly. This work stays private — write like no one will read it, because that's the only way it works.</p>
-  </div>
+  <span class="section-label">Personal Work</span>
+  <h2 class="content-title">My False Power Move Inventory</h2>
+  <p class="lead">Identify your top false power moves. For each one, work through the four questions honestly. This is private work — write it like no one will read it, because that's the only way it's useful.</p>
 
-  <div class="inventory-form" id="inventoryForm">
-    <!-- Move 1 -->
-    <div class="inv-item">
-      <div class="inv-item-header">
-        <div class="inv-item-num">01</div>
-        <div class="inv-item-title">False Power Move #1</div>
-      </div>
-      <div class="inv-sub">
-        <div>
-          <label>Name the move</label>
-          <input type="text" placeholder="e.g. Withdrawal, overwork, harshness, screens…" id="move1-name" />
-        </div>
-        <div class="inv-grid">
-          <div>
-            <label>When does it show up?</label>
-            <textarea placeholder="What triggers it?" id="move1-when"></textarea>
-          </div>
-          <div>
-            <label>Who does it affect?</label>
-            <textarea placeholder="Wife, kids, team…" id="move1-who"></textarea>
-          </div>
-          <div>
-            <label>What am I protecting?</label>
-            <textarea placeholder="What are you guarding against feeling?" id="move1-protecting"></textarea>
-          </div>
-          <div>
-            <label>What changes if I stop?</label>
-            <textarea placeholder="What becomes possible?" id="move1-changes"></textarea>
-          </div>
-        </div>
-      </div>
+  <!-- Move 1 -->
+  <div class="inv-item">
+    <div class="inv-header">
+      <div class="inv-num">01</div>
+      <div class="inv-title">False Power Move #1</div>
     </div>
-
-    <!-- Move 2 -->
-    <div class="inv-item">
-      <div class="inv-item-header">
-        <div class="inv-item-num">02</div>
-        <div class="inv-item-title">False Power Move #2</div>
+    <div class="inv-grid">
+      <div class="inv-field inv-full">
+        <label>Name the move</label>
+        <input type="text" placeholder="e.g. Withdrawal, overwork, harshness, screens, control…" />
       </div>
-      <div class="inv-sub">
-        <div>
-          <label>Name the move</label>
-          <input type="text" placeholder="e.g. Withdrawal, overwork, harshness, screens…" id="move2-name" />
-        </div>
-        <div class="inv-grid">
-          <div>
-            <label>When does it show up?</label>
-            <textarea placeholder="What triggers it?" id="move2-when"></textarea>
-          </div>
-          <div>
-            <label>Who does it affect?</label>
-            <textarea placeholder="Wife, kids, team…" id="move2-who"></textarea>
-          </div>
-          <div>
-            <label>What am I protecting?</label>
-            <textarea placeholder="What are you guarding against feeling?" id="move2-protecting"></textarea>
-          </div>
-          <div>
-            <label>What changes if I stop?</label>
-            <textarea placeholder="What becomes possible?" id="move2-changes"></textarea>
-          </div>
-        </div>
+      <div class="inv-field">
+        <label>When does it show up?</label>
+        <textarea placeholder="What triggers it?"></textarea>
       </div>
-    </div>
-
-    <!-- Move 3 -->
-    <div class="inv-item">
-      <div class="inv-item-header">
-        <div class="inv-item-num">03</div>
-        <div class="inv-item-title">False Power Move #3</div>
+      <div class="inv-field">
+        <label>Who does it affect?</label>
+        <textarea placeholder="Wife, kids, team, yourself…"></textarea>
       </div>
-      <div class="inv-sub">
-        <div>
-          <label>Name the move</label>
-          <input type="text" placeholder="e.g. Withdrawal, overwork, harshness, screens…" id="move3-name" />
-        </div>
-        <div class="inv-grid">
-          <div>
-            <label>When does it show up?</label>
-            <textarea placeholder="What triggers it?" id="move3-when"></textarea>
-          </div>
-          <div>
-            <label>Who does it affect?</label>
-            <textarea placeholder="Wife, kids, team…" id="move3-who"></textarea>
-          </div>
-          <div>
-            <label>What am I protecting?</label>
-            <textarea placeholder="What are you guarding against feeling?" id="move3-protecting"></textarea>
-          </div>
-          <div>
-            <label>What changes if I stop?</label>
-            <textarea placeholder="What becomes possible?" id="move3-changes"></textarea>
-          </div>
-        </div>
+      <div class="inv-field">
+        <label>What am I protecting?</label>
+        <textarea placeholder="What feeling are you guarding against?"></textarea>
+      </div>
+      <div class="inv-field">
+        <label>What changes if I stop?</label>
+        <textarea placeholder="What becomes possible?"></textarea>
       </div>
     </div>
   </div>
 
-  <div class="commitment-section">
-    <h3>Two-Week Commitment</h3>
-    <p>Pair up with another man. Each of you names one false power move you will interrupt in the next two weeks. Write it here. Your partner asks about it at the next session.</p>
-    <input class="commitment-input" type="text" id="commitmentText" placeholder="The false power move I will interrupt is…" />
+  <!-- Move 2 -->
+  <div class="inv-item">
+    <div class="inv-header">
+      <div class="inv-num">02</div>
+      <div class="inv-title">False Power Move #2</div>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-field inv-full">
+        <label>Name the move</label>
+        <input type="text" placeholder="e.g. Withdrawal, overwork, harshness, screens, control…" />
+      </div>
+      <div class="inv-field">
+        <label>When does it show up?</label>
+        <textarea placeholder="What triggers it?"></textarea>
+      </div>
+      <div class="inv-field">
+        <label>Who does it affect?</label>
+        <textarea placeholder="Wife, kids, team, yourself…"></textarea>
+      </div>
+      <div class="inv-field">
+        <label>What am I protecting?</label>
+        <textarea placeholder="What feeling are you guarding against?"></textarea>
+      </div>
+      <div class="inv-field">
+        <label>What changes if I stop?</label>
+        <textarea placeholder="What becomes possible?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Move 3 -->
+  <div class="inv-item">
+    <div class="inv-header">
+      <div class="inv-num">03</div>
+      <div class="inv-title">False Power Move #3</div>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-field inv-full">
+        <label>Name the move</label>
+        <input type="text" placeholder="e.g. Withdrawal, overwork, harshness, screens, control…" />
+      </div>
+      <div class="inv-field">
+        <label>When does it show up?</label>
+        <textarea placeholder="What triggers it?"></textarea>
+      </div>
+      <div class="inv-field">
+        <label>Who does it affect?</label>
+        <textarea placeholder="Wife, kids, team, yourself…"></textarea>
+      </div>
+      <div class="inv-field">
+        <label>What am I protecting?</label>
+        <textarea placeholder="What feeling are you guarding against?"></textarea>
+      </div>
+      <div class="inv-field">
+        <label>What changes if I stop?</label>
+        <textarea placeholder="What becomes possible?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="commit-block">
+    <h3>Name Your First Move</h3>
+    <p>The work begins with one specific commitment. Name the one false power move you are ready to start interrupting. Write it plainly — no qualifications, no hedging.</p>
+    <input class="commit-input" type="text" id="p1-commit" placeholder="The false power move I am ready to interrupt is…" />
     <br>
-    <button class="commit-btn" onclick="submitCommitment()">Name It &amp; Commit</button>
-    <div class="commit-confirm" id="commitConfirm">
-      Named. The work begins now.
-    </div>
+    <button class="commit-btn" id="p1-btn" onclick="submitCommitment('p1-commit','p1-btn','p1-confirm')">Name It</button>
+    <div class="commit-confirm" id="p1-confirm"></div>
   </div>
 </div>
 
-<!-- ── TAB: RETREAT ── -->
-<div class="content-area" id="tab-retreat">
-  <span class="section-label">Los Barriles Application</span>
-  <h2 class="content-title">Retreat — Night 2</h2>
-
-  <div class="retreat-block">
-    <h3>Setting</h3>
-    <p>After dinner, outdoors around a fire. <strong>No worksheets. No phones.</strong> This is not a session — it is a moment.</p>
-  </div>
-
-  <div class="retreat-block">
-    <h3>The Opening</h3>
-    <p>You open with your full story — <strong>the $8,000, the video games, the harshness toward your wife</strong> — told specifically and without softening. Not a summary. Not a framework. The actual story.</p>
-    <p>Specificity is what breaks the armor. Abstraction lets men stay comfortable. The story doesn't.</p>
-  </div>
-
-  <div class="retreat-block">
-    <h3>The Sharing</h3>
-    <p>Each man shares: <strong>one false power move named specifically, how long he's been running it, and who has paid the cost.</strong></p>
-    <p>The group responds only: <em style="color: var(--warm-gold);">"I see you. Thank you."</em></p>
-    <p>Nothing else. No advice. No prayer — not yet. Just witness.</p>
-  </div>
-
-  <div class="retreat-block">
-    <h3>The Close</h3>
-    <p>Close with prayer. Then give each man paper and one instruction:</p>
-    <p style="color: var(--warm-gold); font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem;">"Write a letter to your wife. Tell her what you named tonight. You don't have to send it. But write it like you will."</p>
-    <p>The most important conversations will happen informally after — not inside the exercise.</p>
-  </div>
-</div>
-
-<!-- ── TAB: CONTENT ── -->
-<div class="content-area" id="tab-content">
-  <span class="section-label">Marketing &amp; Distribution</span>
-  <h2 class="content-title">Content Angles</h2>
-  <p class="lead-text">These are the three most powerful pieces of content that can come from this pillar. Each has a distinct audience entry point and a distinct hook.</p>
-
-  <div class="content-angles">
-    <div class="angle-card">
-      <div class="angle-bullet"></div>
-      <div>
-        <div class="angle-title">'The Day I Had $8,000 Left'</div>
-        <p class="angle-desc">Your personal story told fully. Your single most powerful piece of BILD content. Use it everywhere first.</p>
-      </div>
-    </div>
-    <div class="angle-card">
-      <div class="angle-bullet"></div>
-      <div>
-        <div class="angle-title">'Why Successful Men Feel the Most Stuck'</div>
-        <p class="angle-desc">Competence at work creates tolerance for incompetence at home. This one travels on social — the tension is universal.</p>
-      </div>
-    </div>
-    <div class="angle-card">
-      <div class="angle-bullet"></div>
-      <div>
-        <div class="angle-title">'What Your Wife Sees That You Don't'</div>
-        <p class="angle-desc">The cost of false power moves on marriage, honest and without shame. Strong for email and long-form.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="callout-box" style="margin-top: 2.5rem; border-left-color: var(--warm-gold);">
-    <p style="color: rgba(245,240,232,0.7);">The $8,000 story is your most powerful piece. Do not summarize it. Tell it in full. The specificity — three kids, video games, your wife's face — is what earns the right to teach everything else.</p>
-  </div>
-</div>
-
-<!-- PILLAR NAV -->
 <div class="pillar-nav">
-  <a class="pnav-back" href="index.html">← Back to All Pillars</a>
-  <a class="pnav-next" href="#">
+  <a class="pnav-back" href="index.html">← All Pillars</a>
+  <a class="pnav-next" href="pillar-2-accountability.html" style="--next-color: var(--teal);">
     <div class="next-label">Next Pillar →</div>
     <div class="next-name">Accountability</div>
   </a>
 </div>
 
-<footer>
+<footer class="site-footer">
   <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
-  <span class="footer-copy">© Jeff Boyer · bildyourlife.com · Confidential — For Coaching Use Only</span>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="https://jeff-boyer.com/contact" target="_blank">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
 </footer>
 
-<script>
-  // Tab switching
-  const tabs = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.content-area');
-
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('visible'));
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('visible');
-      // Smooth scroll to content
-      document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  });
-
-  // Commitment submit
-  function submitCommitment() {
-    const text = document.getElementById('commitmentText').value.trim();
-    if (!text) {
-      document.getElementById('commitmentText').style.borderColor = 'var(--coral)';
-      document.getElementById('commitmentText').placeholder = 'Name it first.';
-      return;
-    }
-    document.querySelector('.commit-btn').style.display = 'none';
-    const confirm = document.getElementById('commitConfirm');
-    confirm.style.display = 'block';
-    confirm.textContent = '"' + text + '" — Named. The work begins now.';
-  }
-</script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar 5 — Forgiveness | BILD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --pillar-color: var(--mauve); --next-color: var(--coral); }
+    .pillar-hero { --hero-grad: radial-gradient(ellipse 70% 55% at 15% 85%, rgba(176,128,144,0.14) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 82% 20%, rgba(201,168,76,0.06) 0%, transparent 60%); }
+
+    .dimension-cards { display: flex; flex-direction: column; gap: 1px; margin: 2.5rem 0; }
+    .dim-card { display: grid; grid-template-columns: 56px 1fr 1fr; background: white; border: 1px solid #e5dfd4; border-bottom: none; overflow: hidden; }
+    .dim-card:last-child { border-bottom: 1px solid #e5dfd4; }
+    .dim-num { background: var(--mauve); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; }
+    .dim-body { padding: 1.5rem; border-right: 1px solid #e5dfd4; }
+    .dim-truth { padding: 1.5rem; background: var(--dark2); }
+    .dim-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mauve); margin-bottom: 0.5rem; }
+    .dim-truth-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .dim-misunderstanding { font-size: 0.85rem; font-weight: 300; color: #666; line-height: 1.65; }
+    .dim-truth-text { font-size: 0.85rem; font-weight: 300; color: rgba(245,240,232,0.6); line-height: 1.65; }
+
+    .inventory-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin: 2rem 0; }
+    .inv-col-card { background: white; border: 1px solid #e5dfd4; padding: 1.5rem; }
+    .inv-col-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mauve); margin-bottom: 0.25rem; }
+    .inv-col-sub { font-size: 0.78rem; font-weight: 300; color: #aaa; margin-bottom: 1rem; line-height: 1.5; }
+    .inv-col-card textarea { width: 100%; font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--charcoal); background: var(--off-white); border: 1px solid #ddd; padding: 0.7rem 0.9rem; outline: none; resize: vertical; min-height: 120px; transition: border-color 0.2s; }
+    .inv-col-card textarea:focus { border-color: var(--mauve); }
+
+    @media (max-width: 680px) {
+      .dim-card { grid-template-columns: 1fr; }
+      .dim-num { min-height: 44px; }
+      .dim-body { border-right: none; border-bottom: 1px solid #e5dfd4; }
+      .inventory-cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#pillars">All Pillars</a></li>
+    </ul>
+    <a class="nav-cta" href="https://jeff-boyer.com/contact" target="_blank">Work With Jeff</a>
+  </div>
+</nav>
+
+<section class="pillar-hero">
+  <div class="hero-inner">
+    <div class="pillar-badge">Pillar 05 of 05</div>
+    <h1>Forgiveness</h1>
+    <p class="pillar-tagline">"Forgiveness unlocks the keys to living a life full of love and harmony. Letting go will set you free."</p>
+  </div>
+</section>
+
+<div class="tab-nav" role="tablist">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="dimensions">Three Dimensions</button>
+  <button class="tab-btn" data-tab="questions">Reflection Questions</button>
+  <button class="tab-btn" data-tab="inventory">My Inventory</button>
+</div>
+
+<!-- OVERVIEW -->
+<div class="content-area visible" id="tab-overview">
+  <span class="section-label">Pillar Five</span>
+  <h2 class="content-title">The hidden ceiling.</h2>
+  <p class="lead">By the time a man reaches this pillar, he has done real work. He has named his patterns. He has begun building his private foundation. He has shifted his posture toward God. He has started to see his purpose.</p>
+  <p class="lead">And somewhere in that work — usually quietly, usually sideways — something older surfaces. A weight he has been carrying so long he stopped noticing it was there.</p>
+
+  <div class="callout" style="border-left-color: var(--mauve);">
+    <p>Forgiveness is not a feeling. It is a decision — made sometimes once and sometimes daily — to stop letting what happened in the past continue to cost you in the present.</p>
+  </div>
+
+  <p class="lead">The high-functioning man has learned to carry weight without letting it show. He would tell you he has forgiven — and he genuinely believes it. <strong>But the evidence is in the patterns.</strong> The consistent heat when a certain name comes up. The distance he maintains with certain people. The version of shame he carries about specific chapters of his own life.</p>
+  <p class="lead">This pillar doesn't remove what happened. It removes the ongoing access those things have to your energy, your marriage, your leadership, and your closeness to God. You are not setting the other person free. You are setting yourself free.</p>
+</div>
+
+<!-- THREE DIMENSIONS -->
+<div class="content-area" id="tab-dimensions">
+  <span class="section-label">The Framework</span>
+  <h2 class="content-title">Three Dimensions of Forgiveness</h2>
+  <p class="lead">Most men think of forgiveness as one thing directed outward. The BILD framework identifies three distinct dimensions — each with its own common misunderstanding and its own liberating truth.</p>
+
+  <div class="dimension-cards">
+    <div class="dim-card">
+      <div class="dim-num">1</div>
+      <div class="dim-body">
+        <div class="dim-label">Forgiving Others</div>
+        <p class="dim-misunderstanding"><strong>The misunderstanding:</strong> Forgiveness means what happened was acceptable, or that the relationship must be restored.</p>
+      </div>
+      <div class="dim-truth">
+        <div class="dim-truth-label">The Truth</div>
+        <p class="dim-truth-text">The unforgiven person has ongoing access to your emotional energy — whether they know it or not. Forgiveness ends that lease. It is not about them. It is about stopping the rent they collect from you every single day.</p>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-num">2</div>
+      <div class="dim-body">
+        <div class="dim-label">Forgiving Yourself</div>
+        <p class="dim-misunderstanding"><strong>The misunderstanding:</strong> Guilt says "I did something wrong." Shame says "I am something wrong." Most men carry both — indefinitely.</p>
+      </div>
+      <div class="dim-truth">
+        <div class="dim-truth-label">The Truth</div>
+        <p class="dim-truth-text">Self-forgiveness separates who you were then from who you are becoming now. It removes the tax on the past that was never required of you. The man you were in that chapter is not the man you are in this one.</p>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-num">3</div>
+      <div class="dim-body">
+        <div class="dim-label">Receiving God's Forgiveness</div>
+        <p class="dim-misunderstanding"><strong>The misunderstanding:</strong> He believes it doctrinally and carries the weight anyway. He is still, somewhere, trying to earn it.</p>
+      </div>
+      <div class="dim-truth">
+        <div class="dim-truth-label">The Truth</div>
+        <p class="dim-truth-text">The grace of God is not on offer to the version of you that finally gets it together. If you are still earning it, you have not yet received it. It is available now — to the man you actually are, not the man you're trying to become first.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <p>The ceiling you don't know you have. That is what unforgiveness does — it limits intimacy, it limits leadership, and it limits closeness to God. The other pillars can only reach as high as this ceiling allows.</p>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="content-area" id="tab-questions">
+  <span class="section-label">Go Deeper</span>
+  <h2 class="content-title">Reflection Questions</h2>
+  <p class="lead">These questions are designed to surface what is actually there — not what you think should be there, and not what you've already resolved. Read each one and notice what comes up before you decide it doesn't apply.</p>
+
+  <div class="q-list">
+    <div class="q-card"><p>"Is there anyone I think of consistently with heat, distance, or a heaviness I can't fully explain?"</p></div>
+    <div class="q-card"><p>"What have I done that I've apologized for — but haven't fully forgiven myself for?"</p></div>
+    <div class="q-card"><p>"If I believed God's forgiveness of me was complete and permanent, what would I do differently tomorrow?"</p></div>
+    <div class="q-card"><p>"What part of myself am I still trying to earn back before I allow myself to receive what God is offering?"</p></div>
+  </div>
+
+  <div class="callout" style="border-left-color: var(--mauve); margin-top: 2.5rem;">
+    <p>The person you thought of when you read the first question — the one you told yourself you've already forgiven — is worth sitting with a little longer.</p>
+  </div>
+</div>
+
+<!-- INVENTORY -->
+<div class="content-area" id="tab-inventory">
+  <span class="section-label">Personal Work</span>
+  <h2 class="content-title">The Three-Column Inventory</h2>
+  <p class="lead">Work through all three columns honestly. You don't have to show this to anyone. Write it like no one will read it. The column that is hardest to fill in is usually the one that matters most.</p>
+
+  <div class="inventory-cols">
+    <div class="inv-col-card">
+      <div class="inv-col-label">People to Forgive</div>
+      <div class="inv-col-sub">Names, situations, things done to you — anything that still carries weight when you think about it.</div>
+      <textarea placeholder="Write names or situations honestly…"></textarea>
+    </div>
+    <div class="inv-col-card">
+      <div class="inv-col-label">Forgive Myself For</div>
+      <div class="inv-col-sub">Things you've apologized for but still carry. Chapters you're ashamed of. Decisions you haven't released.</div>
+      <textarea placeholder="Write what you're still holding…"></textarea>
+    </div>
+    <div class="inv-col-card">
+      <div class="inv-col-label">Receive From God</div>
+      <div class="inv-col-sub">The specific things you intellectually believe you're forgiven for — but haven't actually allowed yourself to receive.</div>
+      <textarea placeholder="Write what you're still earning back…"></textarea>
+    </div>
+  </div>
+
+  <div class="commit-block">
+    <h3>One Specific Act</h3>
+    <p>Look at what you wrote. Pick the one item — from any column — that you have been carrying the longest. Name the one specific forgiveness act you will take in the next 30 days. It doesn't have to be a conversation. It might be a letter you write but don't send. It might be a prayer you finally mean. Name what you will do.</p>
+    <input class="commit-input" type="text" id="p5-commit" placeholder="The one forgiveness act I will take in the next 30 days is…" />
+    <br>
+    <button class="commit-btn" id="p5-btn" onclick="submitCommitment('p5-commit','p5-btn','p5-confirm')">Name It</button>
+    <div class="commit-confirm" id="p5-confirm"></div>
+  </div>
+</div>
+
+<div class="pillar-nav">
+  <a class="pnav-back" href="pillar-4-purpose.html">← Pillar 4: Purpose</a>
+  <a class="pnav-next" href="index.html" style="--next-color: var(--gold);">
+    <div class="next-label">You've completed the arc →</div>
+    <div class="next-name">Back to Home</div>
+  </a>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="https://jeff-boyer.com/contact" target="_blank">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,7 +1,8 @@
 # BILD — The Pursuit of U
 ## Coaching System Website
 
-This is the static HTML website for the BILD coaching system by Jeff Boyer.
+Static HTML website for the BILD coaching system by Jeff Boyer.
+All pages are client-facing — written for prospects and coaching clients.
 
 ---
 
@@ -9,66 +10,70 @@ This is the static HTML website for the BILD coaching system by Jeff Boyer.
 
 ```
 bild-site/
-├── index.html                    ← Main landing / navigation page
-├── pillar-1-powerlessness.html   ← Interactive Pillar 1 page (complete)
-├── pillar-2-accountability.html  ← Coming soon
-├── pillar-3-create-with-him.html ← Coming soon
-├── pillar-4-purpose.html         ← Coming soon
-├── pillar-5-forgiveness.html     ← Coming soon
+├── index.html                      ← Main landing / pillar navigation
+├── pillar-1-powerlessness.html     ← Pillar 1 (complete)
+├── pillar-2-accountability.html    ← Pillar 2 (complete)
+├── pillar-3-create-with-him.html   ← Pillar 3 (complete)
+├── pillar-4-purpose.html           ← Pillar 4 (complete)
+├── pillar-5-forgiveness.html       ← Pillar 5 (complete)
+├── style.css                       ← Shared styles
+├── script.js                       ← Shared interactions
 └── README.md
 ```
 
 ---
 
-### How to Deploy to GitHub Pages
+### Deploy to GitHub Pages
 
 1. Create a new GitHub repository (e.g. `bild-site`)
-2. Upload all files in this folder to the repository root
+2. Upload all files in this folder to the **root** of the repo
 3. Go to **Settings → Pages**
-4. Under "Branch", select `main` and `/ (root)`, then click **Save**
-5. Your site will be live at `https://yourusername.github.io/bild-site/`
+4. Set Branch: `main`, Folder: `/ (root)` → Save
+5. Live at: `https://yourusername.github.io/bild-site/`
 
-To point your custom domain (`bildyourlife.com`) to GitHub Pages:
-- In GitHub Pages settings, enter your custom domain
-- In GoDaddy (or your DNS provider), add a CNAME record pointing to `yourusername.github.io`
-
----
-
-### Pages Completed
-
-| Page | Status | Notes |
-|------|--------|-------|
-| `index.html` | ✅ Complete | Full landing page, pillar grid, resources index |
-| `pillar-1-powerlessness.html` | ✅ Complete | 7-tab interactive page with inventory tool |
-| Pillars 2–5 | 🔜 Coming Soon | Shells ready to build |
+**Custom domain (bildyourlife.com):**
+- In GitHub Pages settings → enter `bildyourlife.com`
+- In your DNS provider (GoDaddy) → add a `CNAME` record pointing to `yourusername.github.io`
 
 ---
 
-### Brand Colors
+### Page Summary
 
-| Name | Hex |
-|------|-----|
-| Charcoal | `#3a3a3a` |
-| Coral | `#d4614a` |
-| Teal | `#4a8f8c` |
-| Steel Blue | `#5b7fa6` |
-| Sage | `#7a8c6e` |
-| Dusty Mauve | `#b08090` |
-| Warm Gold | `#c9a84c` |
-| Cream | `#f5f0e8` |
-| Dark | `#1e1e1e` |
+| Page | Pillar Color | Key Interactive Feature |
+|------|-------------|------------------------|
+| `index.html` | Multi | Pillar grid, CTA |
+| `pillar-1-powerlessness.html` | Coral | False Power Move Inventory |
+| `pillar-2-accountability.html` | Teal | Congruence Matrix, Private Audit |
+| `pillar-3-create-with-him.html` | Steel Blue | Controller → Co-Creator Shift tool |
+| `pillar-4-purpose.html` | Sage | Five Burial Questions + Purpose Statement Builder |
+| `pillar-5-forgiveness.html` | Dusty Mauve | Three-Column Forgiveness Inventory |
 
 ---
 
-### Fonts Used
+### Brand Colors (CSS Variables)
 
-- **Playfair Display** (headings, quotes) — Google Fonts
-- **Barlow Condensed** (labels, nav, badges) — Google Fonts
-- **Barlow** (body text) — Google Fonts
-
-All loaded via CDN — no local font files needed.
+| Name | Variable | Hex |
+|------|----------|-----|
+| Charcoal | `--charcoal` | `#3a3a3a` |
+| Coral | `--coral` | `#d4614a` |
+| Teal | `--teal` | `#4a8f8c` |
+| Steel Blue | `--steel-blue` | `#5b7fa6` |
+| Sage | `--sage` | `#7a8c6e` |
+| Dusty Mauve | `--mauve` | `#b08090` |
+| Warm Gold | `--gold` | `#c9a84c` |
+| Cream | `--cream` | `#f5f0e8` |
+| Dark | `--dark` | `#1e1e1e` |
 
 ---
 
-Jeff Boyer | jeff-boyer.com | bildyourlife.com  
-Confidential — For Coaching Use Only
+### Fonts
+
+- **Playfair Display** — headings, quotes, pillar numbers
+- **Barlow Condensed** — labels, nav, badges, buttons
+- **Barlow** — body text
+
+All loaded via Google Fonts CDN. No local files required.
+
+---
+
+Jeff Boyer | jeff-boyer.com | bildyourlife.com

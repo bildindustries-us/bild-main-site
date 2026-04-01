@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar 4 — Purpose | BILD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --pillar-color: var(--sage); --next-color: var(--mauve); }
+    .pillar-hero { --hero-grad: radial-gradient(ellipse 70% 55% at 15% 85%, rgba(122,140,110,0.14) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 82% 20%, rgba(201,168,76,0.06) 0%, transparent 60%); }
+
+    .burial-card { background: white; border: 1px solid #e5dfd4; margin-bottom: 1.25rem; overflow: hidden; }
+    .burial-card-header { padding: 1.4rem 1.75rem; display: flex; gap: 1rem; align-items: flex-start; cursor: pointer; transition: background 0.2s; }
+    .burial-card-header:hover { background: #faf6ee; }
+    .burial-q-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--sage); opacity: 0.25; line-height: 1; flex-shrink: 0; width: 40px; }
+    .burial-q-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.02rem; color: var(--charcoal); line-height: 1.55; padding-top: 0.3rem; }
+    .burial-card-body { padding: 0 1.75rem 1.5rem 4.25rem; display: none; }
+    .burial-card-body.open { display: block; animation: fadeIn 0.2s ease; }
+    .burial-insight { font-size: 0.85rem; font-weight: 300; color: #777; line-height: 1.7; margin-bottom: 0.75rem; font-style: italic; border-left: 2px solid var(--sage); padding-left: 1rem; }
+    .burial-card-body textarea { width: 100%; font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--charcoal); background: var(--off-white); border: 1px solid #ddd; padding: 0.75rem 1rem; outline: none; resize: vertical; min-height: 80px; margin-top: 0.5rem; transition: border-color 0.2s; }
+    .burial-card-body textarea:focus { border-color: var(--sage); }
+    .expand-icon { margin-left: auto; color: var(--sage); font-size: 1.1rem; flex-shrink: 0; transition: transform 0.2s; padding-top: 0.3rem; }
+    .burial-card.open .expand-icon { transform: rotate(45deg); }
+
+    .purpose-builder { background: white; border: 1px solid #e5dfd4; padding: 2rem; margin: 2.5rem 0; }
+    .purpose-builder h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 1.5rem; }
+    .pb-row { margin-bottom: 1.25rem; }
+    .pb-row label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #aaa; display: block; margin-bottom: 0.35rem; }
+    .pb-row input, .pb-row textarea { width: 100%; font-family: 'Barlow', sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--charcoal); background: var(--off-white); border: 1px solid #ddd; padding: 0.75rem 1rem; outline: none; resize: vertical; transition: border-color 0.2s; }
+    .pb-row input:focus, .pb-row textarea:focus { border-color: var(--sage); }
+    .pb-row textarea { min-height: 65px; }
+    .purpose-preview { background: var(--dark); padding: 1.5rem 2rem; margin-top: 1.5rem; min-height: 60px; }
+    .purpose-preview p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: rgba(245,240,232,0.55); line-height: 1.7; }
+    .purpose-preview p.filled { color: var(--cream); }
+    .preview-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; display: block; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#pillars">All Pillars</a></li>
+    </ul>
+    <a class="nav-cta" href="https://jeff-boyer.com/contact" target="_blank">Work With Jeff</a>
+  </div>
+</nav>
+
+<section class="pillar-hero">
+  <div class="hero-inner">
+    <div class="pillar-badge">Pillar 04 of 05</div>
+    <h1>Purpose</h1>
+    <p class="pillar-tagline">"Your life is so precious. There is nothing about you that is normal. You were given this life to use it to its maximum opportunity."</p>
+  </div>
+</section>
+
+<div class="tab-nav" role="tablist">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="distinction">Achievement vs. Purpose</button>
+  <button class="tab-btn" data-tab="burial">The Burial Questions</button>
+  <button class="tab-btn" data-tab="statement">My Purpose Statement</button>
+</div>
+
+<!-- OVERVIEW -->
+<div class="content-area visible" id="tab-overview">
+  <span class="section-label">Pillar Four</span>
+  <h2 class="content-title">What you are actually for.</h2>
+  <p class="lead">A man can accumulate decades of achievement with almost no clarity on purpose. His revenue goes up. His reputation is solid. His family is provided for. And at 3am, the question surfaces:</p>
+
+  <div class="callout" style="border-left-color: var(--sage);">
+    <p><em>Is this what I am actually for?</em></p>
+  </div>
+
+  <p class="lead">That question is not a crisis. It is a signal. And the coaching work of this pillar is not to construct an answer — it is to excavate one that is already there.</p>
+  <p class="lead">Purpose doesn't need to be invented. In almost every man, it is already present — covered by urgency, obligation, and the accumulated weight of the life he built trying to prove he was enough. The question is not "What should my purpose be?" The question is: "What was already pointing before everything else got layered on top?"</p>
+  <p class="lead"><strong>The work of this pillar is excavation, not construction.</strong></p>
+</div>
+
+<!-- ACHIEVEMENT VS PURPOSE -->
+<div class="content-area" id="tab-distinction">
+  <span class="section-label">The Core Distinction</span>
+  <h2 class="content-title">Achievement is not purpose.</h2>
+  <p class="lead">This is the distinction that changes how you read the hollow feeling. Most high-achieving men have confused these two things their entire adult lives — and the confusion is honest. Achievement feels like purpose when it's working. The problem surfaces when it stops being enough.</p>
+
+  <table class="bild-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Achievement</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>The question it answers</strong></td>
+        <td>What have I built?</td>
+        <td>Why does it matter — and to whom?</td>
+      </tr>
+      <tr>
+        <td><strong>How it feels when it's working</strong></td>
+        <td>Momentum, progress, validation</td>
+        <td>Alignment, meaning, peace</td>
+      </tr>
+      <tr>
+        <td><strong>How it feels when it's not enough</strong></td>
+        <td>The hollow feeling — success without satisfaction</td>
+        <td>The urgent question — what am I actually for?</td>
+      </tr>
+      <tr>
+        <td><strong>What drives it</strong></td>
+        <td>Competence, ambition, proving something</td>
+        <td>Calling, identity, the man you were made to be</td>
+      </tr>
+      <tr>
+        <td><strong>What it produces long-term</strong></td>
+        <td>More achievement — chasing the next goal</td>
+        <td>Legacy — impact that outlasts you</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout gold">
+    <p>Maximum opportunity is not maximum revenue. The man who gets to the end of his life having optimized for achievement and missed purpose has not won. This pillar is about making sure that doesn't happen to you.</p>
+  </div>
+</div>
+
+<!-- BURIAL QUESTIONS -->
+<div class="content-area" id="tab-burial">
+  <span class="section-label">The Framework</span>
+  <h2 class="content-title">The Five Burial Questions</h2>
+  <p class="lead">These questions are designed to bypass the defenses you've built over decades of performing competence. Click each one to expand it, read the context, and write your honest answer. The convergence in your answers across all five questions is where your purpose lives.</p>
+
+  <div id="burial-questions">
+    <div class="burial-card" data-idx="0">
+      <div class="burial-card-header" onclick="toggleBurial(0)">
+        <div class="burial-q-num">1</div>
+        <p class="burial-q-text">"What did I want before anyone told me what was practical?"</p>
+        <span class="expand-icon">+</span>
+      </div>
+      <div class="burial-card-body">
+        <p class="burial-insight">Before obligation shaped you, something was already pointing. Before someone told you what you were good at, what were you drawn to? This question bypasses the adult defenses — the answers that explain why that thing wasn't realistic.</p>
+        <textarea placeholder="Write your honest answer here…"></textarea>
+      </div>
+    </div>
+
+    <div class="burial-card" data-idx="1">
+      <div class="burial-card-header" onclick="toggleBurial(1)">
+        <div class="burial-q-num">2</div>
+        <p class="burial-q-text">"What work or moment made me completely lose track of time?"</p>
+        <span class="expand-icon">+</span>
+      </div>
+      <div class="burial-card-body">
+        <p class="burial-insight">Flow states are directional signals. The moments when you were so engaged you forgot to check your phone, forgot to eat, forgot what time it was — those are not coincidences. They reveal where your energy moves naturally. If you can't remember a moment like this, that absence is itself important data.</p>
+        <textarea placeholder="Write your honest answer here…"></textarea>
+      </div>
+    </div>
+
+    <div class="burial-card" data-idx="2">
+      <div class="burial-card-header" onclick="toggleBurial(2)">
+        <div class="burial-q-num">3</div>
+        <p class="burial-q-text">"What injustice genuinely makes me angry?"</p>
+        <span class="expand-icon">+</span>
+      </div>
+      <div class="burial-card-body">
+        <p class="burial-insight">Not the political kind. Not what you're supposed to care about. What actually makes your blood rise? The things that disturb a man are often what he was made to address. Holy anger — the kind that doesn't go away — is a purpose signal.</p>
+        <textarea placeholder="Write your honest answer here…"></textarea>
+      </div>
+    </div>
+
+    <div class="burial-card" data-idx="3">
+      <div class="burial-card-header" onclick="toggleBurial(3)">
+        <div class="burial-q-num">4</div>
+        <p class="burial-q-text">"If money were completely handled, what would I do with my days?"</p>
+        <span class="expand-icon">+</span>
+      </div>
+      <div class="burial-card-body">
+        <p class="burial-insight">Removing the financial constraint reveals what you'd choose freely — and that is far closer to your actual calling than what you're currently doing. If you genuinely don't know the answer, that's significant: you may have been on obligation so long you've lost contact with your own desire.</p>
+        <textarea placeholder="Write your honest answer here…"></textarea>
+      </div>
+    </div>
+
+    <div class="burial-card" data-idx="4">
+      <div class="burial-card-header" onclick="toggleBurial(4)">
+        <div class="burial-q-num">5</div>
+        <p class="burial-q-text">"What do I want my children to say at my funeral — not about what I built, but about who I was?"</p>
+        <span class="expand-icon">+</span>
+      </div>
+      <div class="burial-card-body">
+        <p class="burial-insight">This question strips everything peripheral away. It removes the achievements, the titles, the revenue. What remains is legacy — and legacy clarity is purpose clarity. Write the answer that makes you feel something, not the answer that sounds good.</p>
+        <textarea placeholder="Write your honest answer here…"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PURPOSE STATEMENT -->
+<div class="content-area" id="tab-statement">
+  <span class="section-label">Personal Work</span>
+  <h2 class="content-title">Build Your Purpose Statement</h2>
+  <p class="lead">A purpose statement is not a mission statement. It is not a tagline. It is a compass sentence — one that you can return to when the 3am question resurfaces and use to orient everything else.</p>
+  <p class="lead">It has three components. Fill each one in below, then watch the statement come together.</p>
+
+  <div class="purpose-builder">
+    <h3>Purpose Statement Builder</h3>
+    <div class="pb-row">
+      <label>Who I am called to serve — my specific sphere</label>
+      <input type="text" id="ps-who" placeholder="e.g. My sons, men in my community, the next generation of leaders…" oninput="updatePreview()" />
+    </div>
+    <div class="pb-row">
+      <label>What I am called to do for them — the deeper gift my presence provides</label>
+      <textarea id="ps-what" placeholder="e.g. Model what it looks like to pursue God honestly, show what a present father looks like…" oninput="updatePreview()"></textarea>
+    </div>
+    <div class="pb-row">
+      <label>Why it ultimately matters — the eternal frame</label>
+      <input type="text" id="ps-why" placeholder="e.g. So that the pattern broken in my father's generation ends with me…" oninput="updatePreview()" />
+    </div>
+
+    <div class="purpose-preview">
+      <span class="preview-label">Your Purpose Statement</span>
+      <p id="ps-preview">Fill in the three fields above to build your purpose statement.</p>
+    </div>
+  </div>
+
+  <div class="callout" style="border-left-color: var(--sage);">
+    <p>This sentence is a compass — not a contract. It will sharpen over time. Write the best version you can see right now. That is enough to start.</p>
+  </div>
+</div>
+
+<div class="pillar-nav">
+  <a class="pnav-back" href="pillar-3-create-with-him.html">← Pillar 3: Create With Him</a>
+  <a class="pnav-next" href="pillar-5-forgiveness.html" style="--next-color: var(--mauve);">
+    <div class="next-label">Next Pillar →</div>
+    <div class="next-name">Forgiveness</div>
+  </a>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="https://jeff-boyer.com/contact" target="_blank">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  function toggleBurial(idx) {
+    const card = document.querySelectorAll('.burial-card')[idx];
+    const body = card.querySelector('.burial-card-body');
+    const isOpen = card.classList.contains('open');
+    // close all
+    document.querySelectorAll('.burial-card').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.burial-card-body').classList.remove('open');
+    });
+    if (!isOpen) {
+      card.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+
+  function updatePreview() {
+    const who  = document.getElementById('ps-who').value.trim();
+    const what = document.getElementById('ps-what').value.trim();
+    const why  = document.getElementById('ps-why').value.trim();
+    const p    = document.getElementById('ps-preview');
+
+    if (!who && !what && !why) {
+      p.textContent = 'Fill in the three fields above to build your purpose statement.';
+      p.classList.remove('filled');
+      return;
+    }
+    let statement = 'I am here';
+    if (who)  statement += ' to serve ' + who;
+    if (what) statement += ' — ' + what;
+    if (why)  statement += ' — so that ' + why + '.';
+    else      statement += '.';
+    p.textContent = statement;
+    p.classList.add('filled');
+  }
+</script>
+</body>
+</html>

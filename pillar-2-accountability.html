@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar 2 — Accountability | BILD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --pillar-color: var(--teal); --next-color: var(--steel-blue); }
+    .pillar-hero { --hero-grad: radial-gradient(ellipse 70% 55% at 15% 85%, rgba(74,143,140,0.14) 0%, transparent 65%), radial-gradient(ellipse 40% 35% at 82% 20%, rgba(201,168,76,0.06) 0%, transparent 60%); }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; margin: 2.5rem 0; }
+    .two-col-card { padding: 2rem; background: white; border: 1px solid #e5dfd4; }
+    .two-col-card.dark { background: var(--dark2); border-color: transparent; }
+    .tc-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.35rem; }
+    .tc-label.teal { color: var(--teal); }
+    .tc-label.muted { color: rgba(245,240,232,0.35); }
+    .tc-sub { font-size: 0.78rem; font-weight: 300; color: #aaa; margin-bottom: 1rem; font-style: italic; }
+    .tc-sub.dark { color: rgba(245,240,232,0.3); }
+    .two-col-card p { font-size: 0.88rem; font-weight: 300; line-height: 1.72; }
+    .two-col-card.dark p { color: rgba(245,240,232,0.58); }
+    .tc-bullets { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .tc-bullets li { font-size: 0.84rem; font-weight: 300; color: rgba(245,240,232,0.55); padding-left: 1rem; position: relative; line-height: 1.55; }
+    .tc-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--teal); font-weight: 600; }
+
+    .matrix-row { display: grid; grid-template-columns: 110px 1fr 1fr 1fr; gap: 1px; }
+    .matrix-cell { padding: 1rem 1.1rem; background: white; font-size: 0.83rem; font-weight: 300; line-height: 1.6; color: var(--charcoal); border-bottom: 1px solid #ede7dc; }
+    .matrix-cell.header { background: var(--dark); color: var(--cream); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: none; }
+    .matrix-cell.area { background: var(--off-white); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); }
+    .matrix-cell em { font-style: italic; color: #999; font-size: 0.8rem; }
+
+    @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } .matrix-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#pillars">All Pillars</a></li>
+    </ul>
+    <a class="nav-cta" href="https://jeff-boyer.com/contact" target="_blank">Work With Jeff</a>
+  </div>
+</nav>
+
+<section class="pillar-hero">
+  <div class="hero-inner">
+    <div class="pillar-badge">Pillar 02 of 05</div>
+    <h1>Accountability</h1>
+    <p class="pillar-tagline">"The foundational principle of true leadership is accountability. And there are two kinds — most men only practice one."</p>
+  </div>
+</section>
+
+<div class="tab-nav" role="tablist">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="two-kinds">Two Kinds</button>
+  <button class="tab-btn" data-tab="matrix">The Congruence Matrix</button>
+  <button class="tab-btn" data-tab="audit">Private Audit</button>
+</div>
+
+<!-- OVERVIEW -->
+<div class="content-area visible" id="tab-overview">
+  <span class="section-label">Pillar Two</span>
+  <h2 class="content-title">The spine of everything else.</h2>
+  <p class="lead">Every other pillar in the BILD system requires accountability to function. Without it, the insights from Powerlessness stay abstract. The co-creation in Pillar 3 stays theoretical. Purpose becomes a nice idea. Forgiveness becomes a concept you agree with but never actually practice.</p>
+  <p class="lead">Accountability is the connective tissue that makes the entire arc real. And most men — especially high-achieving men — have a significant gap they've never examined.</p>
+
+  <div class="callout" style="border-left-color: var(--teal);">
+    <p>People will never follow a leader who tells them to do things he is not willing to do himself. The congruence between private and public is the source of the genuine authority you are hungry for.</p>
+  </div>
+
+  <p class="lead">The gap isn't between what you say and what you do in public. Your public accountability is probably strong — you show up, you deliver, you lead. The gap is between who you are in public and who you are when no one is watching. <strong>That gap is what your wife feels. What your kids sense. What you feel at 2am.</strong></p>
+  <p class="lead">This pillar is about closing that gap — not with grand gestures, but with one small private discipline practiced daily. Little by little, over 90 days, a man becomes a different person without noticing exactly when it happened.</p>
+</div>
+
+<!-- TWO KINDS -->
+<div class="content-area" id="tab-two-kinds">
+  <span class="section-label">The Framework</span>
+  <h2 class="content-title">Two Kinds of Accountability</h2>
+  <p class="lead">The BILD framework makes a critical distinction that most men have never considered. Both kinds matter. But the order matters more.</p>
+
+  <div class="two-col">
+    <div class="two-col-card dark">
+      <div class="tc-label muted">Private Accountability</div>
+      <div class="tc-sub dark">What no one sees</div>
+      <p>The daily commitment to growth before his wife wakes up. In his prayer. In the small choices when no one is watching. Not grand gestures — little by little.</p>
+      <ul class="tc-bullets">
+        <li>What he puts in his mind before the day gets loud</li>
+        <li>How he actually prays — honestly, not performatively</li>
+        <li>Whether his private beliefs match what he says publicly</li>
+      </ul>
+    </div>
+    <div class="two-col-card">
+      <div class="tc-label teal">Public Accountability</div>
+      <div class="tc-sub">What people always see</div>
+      <p>Most high-achieving men are good at this kind. But if it's not backed by private accountability, he carries a weight no one can see. He is asking his team, his kids, his wife to become things he has not yet become himself.</p>
+      <p style="margin-top:1rem; font-size:0.88rem; font-weight:400; color: var(--teal);">Public accountability is the natural overflow of private work done consistently.</p>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <p>The man who commits to one small daily discipline for 90 days becomes a different person without noticing when it happened. That is the promise of this pillar — not transformation through willpower, but through consistent private faithfulness.</p>
+  </div>
+</div>
+
+<!-- CONGRUENCE MATRIX -->
+<div class="content-area" id="tab-matrix">
+  <span class="section-label">Self-Assessment</span>
+  <h2 class="content-title">The Congruence Matrix</h2>
+  <p class="lead">Read across each row. The gap question in the right column is the one that matters. Sit with it honestly — not with the answer you'd give in public, but the answer you'd give at 2am.</p>
+
+  <div style="overflow-x:auto; margin: 2rem 0;">
+    <div style="min-width: 560px;">
+      <div class="matrix-row">
+        <div class="matrix-cell header">Area</div>
+        <div class="matrix-cell header">What people see</div>
+        <div class="matrix-cell header">What happens privately</div>
+        <div class="matrix-cell header">The honest question</div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-cell area">Faith</div>
+        <div class="matrix-cell">Attends church, serves, speaks about God</div>
+        <div class="matrix-cell">Daily prayer, honest relationship, private study</div>
+        <div class="matrix-cell"><em>What does a living private faith actually look like day-to-day — right now?</em></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-cell area">Marriage</div>
+        <div class="matrix-cell">Stays committed, provides, appears present</div>
+        <div class="matrix-cell">Emotional availability, pursuing her, honest conversations</div>
+        <div class="matrix-cell"><em>What does your wife experience privately that she'd wish were different?</em></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-cell area">Fatherhood</div>
+        <div class="matrix-cell">Attends events, provides, gives advice</div>
+        <div class="matrix-cell">Emotional presence, being truly known by his kids, modeling</div>
+        <div class="matrix-cell"><em>When your kids describe you to their children, what do you hope they say?</em></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-cell area">Business</div>
+        <div class="matrix-cell">Hits goals, leads team, builds reputation</div>
+        <div class="matrix-cell">Why he does it, how he treats people when no one watches</div>
+        <div class="matrix-cell"><em>If income were removed, what would tell you your work is aligned with purpose?</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="border-left-color: var(--teal);">
+    <p>The honest answers live in the gap column. Most men can describe the public column without hesitation. The private column is where the real work begins.</p>
+  </div>
+</div>
+
+<!-- PRIVATE AUDIT -->
+<div class="content-area" id="tab-audit">
+  <span class="section-label">Personal Work</span>
+  <h2 class="content-title">The Private Audit</h2>
+  <p class="lead">These five questions are for you alone. Your answers stay private — write them like no one will ever read them. That's the only condition under which they can be true.</p>
+
+  <div class="q-list" style="margin-bottom: 2.5rem;">
+    <div class="q-card"><p>"What does my first hour of the day actually look like — not what I wish it looked like?"</p></div>
+    <div class="q-card"><p>"What do I consistently tell others to do that I am not currently doing myself?"</p></div>
+    <div class="q-card"><p>"If my wife could see every private thought and choice I made this week, what would surprise her most?"</p></div>
+    <div class="q-card"><p>"Where am I performing accountability without actually practicing it?"</p></div>
+    <div class="q-card"><p>"What is the one private discipline that, done daily for 90 days, would change everything?"</p></div>
+  </div>
+
+  <div class="commit-block">
+    <h3>Your 90-Day Commitment</h3>
+    <p>One discipline only. Not five. The man who picks five and fails all five is worse off than the man who picks one and builds it into bedrock. What is the one private practice that would change everything if you did it daily for 90 days?</p>
+    <input class="commit-input" type="text" id="p2-commit" placeholder="For the next 90 days, I will privately practice…" />
+    <br>
+    <button class="commit-btn" id="p2-btn" onclick="submitCommitment('p2-commit','p2-btn','p2-confirm')">Commit to It</button>
+    <div class="commit-confirm" id="p2-confirm"></div>
+  </div>
+</div>
+
+<div class="pillar-nav">
+  <a class="pnav-back" href="pillar-1-powerlessness.html">← Pillar 1: Powerlessness</a>
+  <a class="pnav-next" href="pillar-3-create-with-him.html" style="--next-color: var(--steel-blue);">
+    <div class="next-label">Next Pillar →</div>
+    <div class="next-name">Create With Him</div>
+  </a>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="https://jeff-boyer.com/contact" target="_blank">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
