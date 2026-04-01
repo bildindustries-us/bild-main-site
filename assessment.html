@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Are You Ready? — Assessment | BILD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ── HERO ── */
+    .assess-hero {
+      background: var(--dark);
+      min-height: 46vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .assess-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 20% 80%, rgba(201,168,76,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 80% 20%, rgba(212,97,74,0.07) 0%, transparent 60%);
+    }
+    .assess-hero .hero-inner { position: relative; max-width: 720px; }
+    .assess-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 0.97;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .assess-hero h1 em { font-style: italic; color: var(--gold); }
+    .assess-hero p {
+      font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+      font-weight: 300;
+      color: rgba(245,240,232,0.58);
+      max-width: 520px;
+      line-height: 1.78;
+      border-left: 2px solid var(--coral);
+      padding-left: 1.2rem;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-wrap {
+      background: var(--dark2);
+      padding: 1.25rem 3rem;
+      position: sticky;
+      top: 62px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .progress-track {
+      flex: 1;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--gold);
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    .progress-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.38);
+      white-space: nowrap;
+    }
+    .progress-label span { color: var(--gold); }
+
+    /* ── ASSESSMENT BODY ── */
+    .assess-body {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 7rem;
+    }
+
+    /* ── QUESTION CARD ── */
+    .question-slide {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+    .question-slide.active { display: block; }
+
+    .q-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .q-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+    .q-subtext {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.65;
+      margin-bottom: 2.25rem;
+    }
+
+    /* ── ANSWER OPTIONS ── */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      background: white;
+      border: 1px solid #e5dfd4;
+      padding: 1.1rem 1.5rem;
+      cursor: pointer;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.5;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      position: relative;
+    }
+    .option-btn:hover {
+      border-color: var(--coral);
+      transform: translateX(4px);
+    }
+    .option-btn.selected {
+      border-color: var(--coral);
+      background: rgba(212,97,74,0.06);
+    }
+    .option-btn.selected .opt-indicator {
+      background: var(--coral);
+      border-color: var(--coral);
+      color: white;
+    }
+    .opt-indicator {
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid #ddd;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: transparent;
+      margin-top: 0.1rem;
+      transition: all 0.2s;
+    }
+    .opt-letter {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      color: #bbb;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      width: 16px;
+    }
+
+    /* ── NAV BUTTONS ── */
+    .q-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .btn-next {
+      background: var(--coral);
+      color: white;
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.25rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .btn-next.enabled {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .btn-next.enabled:hover { background: #bf5040; transform: translateY(-2px); }
+
+    .btn-back {
+      background: none;
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(58,58,58,0.35);
+      cursor: pointer;
+      padding: 0.5rem 0;
+      transition: color 0.2s;
+    }
+    .btn-back:hover { color: var(--charcoal); }
+    .btn-back.hidden { visibility: hidden; }
+
+    /* ── DIVIDER ── */
+    .q-divider {
+      height: 1px;
+      background: #ede7dc;
+      margin: 2.5rem 0;
+    }
+
+    /* ── RESULTS ── */
+    .result-screen {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .result-screen.visible { display: block; }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    .result-badge.qualify { background: var(--teal); }
+    .result-badge.nurture { background: var(--steel-blue); }
+
+    .result-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .result-title em { font-style: italic; color: var(--gold); }
+
+    .result-score-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .score-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .score-circle.qualify { background: var(--teal); }
+    .score-circle.nurture { background: var(--steel-blue); }
+    .score-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+    }
+    .score-of {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+    }
+    .result-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #666;
+    }
+
+    .result-body {
+      font-size: 0.97rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #666;
+      margin-bottom: 1.25rem;
+    }
+    .result-body strong { color: var(--charcoal); font-weight: 600; }
+
+    .result-callout {
+      background: var(--dark);
+      border-left: 3px solid var(--gold);
+      padding: 1.75rem 2rem;
+      margin: 2.5rem 0;
+    }
+    .result-callout p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(245,240,232,0.75);
+      line-height: 1.7;
+    }
+
+    .result-cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .result-btn-primary {
+      display: inline-block;
+      padding: 1rem 2.25rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      background: var(--coral);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .result-btn-primary:hover { background: #bf5040; transform: translateY(-2px); }
+
+    .result-btn-secondary {
+      display: inline-block;
+      padding: 1rem 2.25rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--charcoal);
+      background: white;
+      border: 1px solid #e5dfd4;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .result-btn-secondary:hover { border-color: var(--charcoal); transform: translateY(-2px); }
+
+    .retake-btn {
+      background: none;
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(58,58,58,0.35);
+      cursor: pointer;
+      margin-top: 1.5rem;
+      padding: 0;
+      transition: color 0.2s;
+      display: block;
+    }
+    .retake-btn:hover { color: var(--charcoal); }
+
+    /* ── SUMMARY LIST ── */
+    .summary-section { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid #ede7dc; }
+    .summary-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 1.25rem;
+    }
+    .summary-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .summary-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 0.85rem 1.1rem;
+      background: white;
+      border: 1px solid #e5dfd4;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.55;
+    }
+    .summary-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+    .summary-dot.yes { background: var(--teal); }
+    .summary-dot.no  { background: #ddd; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 600px) {
+      .assess-hero { padding: 7.5rem 1.5rem 3rem; }
+      .progress-wrap { padding: 1rem 1.5rem; }
+      .assess-body { padding: 3rem 1.25rem 5rem; }
+      .result-cta-row { flex-direction: column; }
+      .result-score-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#pillars">The Pillars</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="contact.html">Work With Jeff</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="assess-hero">
+  <div class="hero-inner">
+    <span class="section-label">Self-Assessment</span>
+    <h1>Are you <em>ready</em><br>for this work?</h1>
+    <p>Ten honest questions. No right or wrong answers — only honest ones. This assessment helps determine where you are and what your best next step looks like.</p>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-label">Question <span id="progressNum">1</span> of 10</div>
+</div>
+
+<!-- ASSESSMENT BODY -->
+<div class="assess-body">
+
+  <!-- ══ QUESTIONS ══ -->
+  <div id="questionsWrap">
+
+    <!-- Q1 -->
+    <div class="question-slide active" data-q="1">
+      <span class="q-number">Question 01 / 10</span>
+      <p class="q-text">When you're honest with yourself at the end of the day, how do you feel about the life you've built?</p>
+      <p class="q-subtext">Set aside what it looks like to everyone else. This is just between you and the page.</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          Proud and satisfied — I've built something real and it feels right.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          Successful on paper, but there's a persistent gap I can't fully explain.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="false">
+          <span class="opt-letter">C</span>
+          Still early — I haven't built much yet but I'm working on it.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          I don't spend much time thinking about this kind of thing.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back hidden">← Back</button>
+        <button class="btn-next" id="nextBtn-1">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-slide" data-q="2">
+      <span class="q-number">Question 02 / 10</span>
+      <p class="q-text">How central is your faith to how you actually make decisions — not just how you'd describe yourself to others?</p>
+      <p class="q-subtext">Think about the last major decision you made. How much did your faith actually drive it?</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          Faith isn't really a part of how I make decisions.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="false">
+          <span class="opt-letter">B</span>
+          I consider myself a person of faith but it stays mostly separate from business decisions.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          Faith matters to me deeply, but I'll be honest — I often build first and ask for blessing after.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="true">
+          <span class="opt-letter">D</span>
+          I genuinely want my faith to be the foundation, not the afterthought — I'm just not fully there yet.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-2">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-slide" data-q="3">
+      <span class="q-number">Question 03 / 10</span>
+      <p class="q-text">Your wife (or the people closest to you) — if they were being fully honest, what would they say about the gap between the man you are at work and the man you are at home?</p>
+      <p class="q-subtext">This one might sting a little. That's the point.</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          They'd say I'm the same person in both places — fully present, consistent.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          They'd say the best version of me shows up at work, and the family gets what's left.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          They'd say I'm present physically but often checked out emotionally.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          I'm not in a relationship so this doesn't apply to me right now.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-3">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-slide" data-q="4">
+      <span class="q-number">Question 04 / 10</span>
+      <p class="q-text">When you feel out of control or overwhelmed, what do you typically do with that feeling?</p>
+      <p class="q-subtext">Be specific. Think about the last time you felt it.</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          I talk about it openly with my wife or a close friend.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          I bury it in more work — staying busy keeps it manageable.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          I withdraw — I get quieter, harder to reach, and I know it costs people around me.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="true">
+          <span class="opt-letter">D</span>
+          I reach for something to distract myself — screens, food, something to take the edge off.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-4">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-slide" data-q="5">
+      <span class="q-number">Question 05 / 10</span>
+      <p class="q-text">If you remove income as a measure of success, what else tells you that this year mattered?</p>
+      <p class="q-subtext">Take 10 seconds before you answer. Don't reach for the polished version.</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          I have a clear answer — I know exactly what I'm building toward beyond the money.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          Honestly, I don't know. I've never removed income from the equation long enough to find out.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          I have an answer I give people, but I'm not sure I fully believe it myself.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          Revenue and growth are the measure — that's what I'm building for right now.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-5">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-slide" data-q="6">
+      <span class="q-number">Question 06 / 10</span>
+      <p class="q-text">Have you ever been in a room — a real room, not a podcast — with other men who were being completely honest about their struggles?</p>
+      <p class="q-subtext">Not a surface-level men's group. The kind where people say the thing they don't say anywhere else.</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          Yes — I have a few men in my life I can be completely honest with.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          No — and I've realized that's a significant gap in my life.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          I've been in groups like that but never fully opened up myself.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          I don't feel like I need that kind of community right now.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-6">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-slide" data-q="7">
+      <span class="q-number">Question 07 / 10</span>
+      <p class="q-text">When you think about the word "legacy" — what do you actually want yours to be?</p>
+      <p class="q-subtext">Not the LinkedIn version. What do you want the people who know you best to say after you're gone?</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          I have a clear picture and I feel like I'm actively building toward it.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          I know what I want it to be, but I'm not sure my daily life reflects it yet.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          I haven't thought about it seriously — and honestly, that bothers me.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          Legacy isn't something I spend a lot of energy thinking about.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-7">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question-slide" data-q="8">
+      <span class="q-number">Question 08 / 10</span>
+      <p class="q-text">How willing are you to be challenged — not coached gently, but genuinely challenged on the stories you've been telling yourself?</p>
+      <p class="q-subtext">This work requires honesty that most men avoid. Where are you with that?</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="true">
+          <span class="opt-letter">A</span>
+          Very willing — I know I have blind spots and I want someone to name them.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          Willing, but I'll be honest — it makes me uncomfortable. I'll do it anyway.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="false">
+          <span class="opt-letter">C</span>
+          I'm open to coaching as long as it's mostly affirming and supportive.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          I've already done a lot of self-work — I'm not sure I need to be challenged at this level.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-8">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-slide" data-q="9">
+      <span class="q-number">Question 09 / 10</span>
+      <p class="q-text">Is there something — a specific person, a chapter of your past, a decision you made — that you haven't fully made peace with?</p>
+      <p class="q-subtext">Something that still has weight when it comes to mind. You don't need to name it here. Just notice if it's there.</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          No — I've done the work on my past and I feel genuinely free of it.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          Yes — and I've been carrying it long enough that I barely notice the weight anymore.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          Yes — I've named it but I haven't actually done anything about it.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          I don't believe in dwelling on the past — I prefer to keep moving forward.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-9">Next →</button>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question-slide" data-q="10">
+      <span class="q-number">Question 10 / 10</span>
+      <p class="q-text">What would it actually mean to you — to your marriage, your kids, your faith — if you closed the gap between who you are and who you know you're capable of being?</p>
+      <p class="q-subtext">Don't minimize this one. Sit with it for a moment before you answer.</p>
+      <div class="options-list">
+        <button class="option-btn" data-value="A" data-qualifies="false">
+          <span class="opt-letter">A</span>
+          I'm already pretty close to that version of myself — the gap isn't that significant.
+        </button>
+        <button class="option-btn" data-value="B" data-qualifies="true">
+          <span class="opt-letter">B</span>
+          It would change everything — and I feel urgency about it, especially given where my kids are right now.
+        </button>
+        <button class="option-btn" data-value="C" data-qualifies="true">
+          <span class="opt-letter">C</span>
+          It would mean a lot, but I've told myself I'll get to it when things slow down.
+        </button>
+        <button class="option-btn" data-value="D" data-qualifies="false">
+          <span class="opt-letter">D</span>
+          I'm not sure — I've been so focused on building the business that I haven't sat with this question.
+        </button>
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" onclick="goBack()">← Back</button>
+        <button class="btn-next" id="nextBtn-10">See My Results →</button>
+      </div>
+    </div>
+
+  </div><!-- /questionsWrap -->
+
+  <!-- ══ RESULTS ══ -->
+  <div class="result-screen" id="resultScreen">
+
+    <!-- QUALIFY result -->
+    <div id="resultQualify" style="display:none;">
+      <div class="result-badge qualify">✦ &nbsp;You're Ready</div>
+      <h2 class="result-title">This work is<br>for <em>you.</em></h2>
+      <div class="result-score-row">
+        <div class="score-circle qualify">
+          <div class="score-num" id="scoreNumQ"></div>
+          <div class="score-of">of 10</div>
+        </div>
+        <p class="result-desc">Your answers reflect a man who has built real success — and who is honest enough to admit it hasn't been enough. That honesty is the only foundation anything real can be built on.</p>
+      </div>
+      <p class="result-body">You are exactly the man the BILD coaching system was designed for. You feel the gap. You're not hiding from it. And you're willing to do the real work — not the comfortable kind, but the kind that actually changes things.</p>
+      <p class="result-body"><strong>The next step is a conversation.</strong> A complimentary discovery session with Jeff — no pitch, no pressure. Just an honest conversation about where you are and whether this is the right fit.</p>
+      <div class="result-callout">
+        <p>"The ones who break through are the ones who get honest, find one small act of true accountability, and start there."</p>
+      </div>
+      <div class="result-cta-row">
+        <a href="contact.html" class="result-btn-primary">Schedule a Discovery Call</a>
+        <a href="index.html#pillars" class="result-btn-secondary">Explore the Five Pillars</a>
+      </div>
+    </div>
+
+    <!-- NURTURE result -->
+    <div id="resultNurture" style="display:none;">
+      <div class="result-badge nurture">✦ &nbsp;Start Here</div>
+      <h2 class="result-title">The foundation<br>comes <em>first.</em></h2>
+      <div class="result-score-row">
+        <div class="score-circle nurture">
+          <div class="score-num" id="scoreNumN"></div>
+          <div class="score-of">of 10</div>
+        </div>
+        <p class="result-desc">Your answers suggest you may be earlier in the journey — or that some of the questions didn't fully land yet. That's not a problem. It's useful information.</p>
+      </div>
+      <p class="result-body">The BILD Five Pillars are designed for exactly this moment. Before a man is ready for intensive coaching work, there's a foundation to understand — the patterns that keep successful men stuck, the difference between public and private accountability, and what it actually means to build with God instead of asking for blessing after the fact.</p>
+      <p class="result-body"><strong>The pillars are free, honest, and built to meet you where you are.</strong> Work through them at your own pace. Most men find that by Pillar 2 or 3, something starts to shift — and the questions from this assessment start to land differently.</p>
+      <div class="result-callout">
+        <p>"Purpose doesn't need to be created from scratch. In almost every man it is already there — covered by urgency, obligation, and the accumulated weight of the life he built trying to be enough."</p>
+      </div>
+      <div class="result-cta-row">
+        <a href="index.html#pillars" class="result-btn-primary">Explore the Five Pillars</a>
+        <a href="contact.html" class="result-btn-secondary">Contact Jeff Anyway</a>
+      </div>
+    </div>
+
+    <!-- ANSWER SUMMARY -->
+    <div class="summary-section">
+      <div class="summary-title">Your responses at a glance</div>
+      <div class="summary-list" id="summaryList"></div>
+    </div>
+
+    <button class="retake-btn" onclick="retake()">← Retake the Assessment</button>
+
+  </div><!-- /resultScreen -->
+
+</div><!-- /assess-body -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="index.html#pillars">The Pillars</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const TOTAL = 10;
+
+  // Track state
+  let current  = 1;
+  let answers  = {}; // { qNum: { value, qualifies, text } }
+
+  const slides      = document.querySelectorAll('.question-slide');
+  const progressFill = document.getElementById('progressFill');
+  const progressNum  = document.getElementById('progressNum');
+  const progressWrap = document.getElementById('progressWrap');
+  const questionsWrap = document.getElementById('questionsWrap');
+  const resultScreen  = document.getElementById('resultScreen');
+
+  // Question summary labels (short versions for the summary section)
+  const qLabels = [
+    'How you feel about the life you've built',
+    'How central faith is to your decisions',
+    'The gap between work-you and home-you',
+    'What you do with overwhelm',
+    'What matters beyond income',
+    'Experience with honest male community',
+    'Clarity on your legacy',
+    'Willingness to be genuinely challenged',
+    'Unresolved weight from your past',
+    'What closing the gap would actually mean',
+  ];
+
+  // Wire up option buttons
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const slide = btn.closest('.question-slide');
+      const qNum  = parseInt(slide.dataset.q);
+
+      // Deselect others in this slide
+      slide.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      // Store answer
+      answers[qNum] = {
+        value:     btn.dataset.value,
+        qualifies: btn.dataset.qualifies === 'true',
+        text:      btn.textContent.trim(),
+      };
+
+      // Enable next button
+      const nextBtn = document.getElementById(`nextBtn-${qNum}`);
+      if (nextBtn) nextBtn.classList.add('enabled');
+    });
+  });
+
+  // Wire up next buttons
+  for (let i = 1; i <= TOTAL; i++) {
+    const btn = document.getElementById(`nextBtn-${i}`);
+    if (!btn) continue;
+    btn.addEventListener('click', () => {
+      if (!btn.classList.contains('enabled')) return;
+      if (i === TOTAL) {
+        showResults();
+      } else {
+        goToSlide(i + 1);
+      }
+    });
+  }
+
+  function goToSlide(n) {
+    slides.forEach(s => s.classList.remove('active'));
+    document.querySelector(`.question-slide[data-q="${n}"]`).classList.add('active');
+    current = n;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goBack() {
+    if (current > 1) goToSlide(current - 1);
+  }
+
+  function updateProgress() {
+    const pct = ((current - 1) / TOTAL) * 100;
+    progressFill.style.width = pct + '%';
+    progressNum.textContent  = current;
+  }
+
+  function showResults() {
+    // Count qualifiers
+    let score = 0;
+    for (let i = 1; i <= TOTAL; i++) {
+      if (answers[i] && answers[i].qualifies) score++;
+    }
+
+    // Hide questions, show results
+    questionsWrap.style.display = 'none';
+    progressWrap.style.display  = 'none';
+    resultScreen.classList.add('visible');
+
+    if (score >= 5) {
+      document.getElementById('resultQualify').style.display = 'block';
+      document.getElementById('scoreNumQ').textContent = score;
+    } else {
+      document.getElementById('resultNurture').style.display = 'block';
+      document.getElementById('scoreNumN').textContent = score;
+    }
+
+    // Build summary
+    const list = document.getElementById('summaryList');
+    list.innerHTML = '';
+    for (let i = 1; i <= TOTAL; i++) {
+      const a = answers[i];
+      if (!a) continue;
+      const item = document.createElement('div');
+      item.className = 'summary-item';
+      item.innerHTML = `
+        <div class="summary-dot ${a.qualifies ? 'yes' : 'no'}"></div>
+        <div><strong style="font-weight:500; color: var(--charcoal);">${qLabels[i-1]}</strong><br>${a.text}</div>
+      `;
+      list.appendChild(item);
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function retake() {
+    // Reset everything
+    answers  = {};
+    current  = 1;
+
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('.btn-next').forEach(b => b.classList.remove('enabled'));
+
+    document.getElementById('resultQualify').style.display = 'none';
+    document.getElementById('resultNurture').style.display = 'none';
+    resultScreen.classList.remove('visible');
+
+    questionsWrap.style.display = 'block';
+    progressWrap.style.display  = 'flex';
+
+    goToSlide(1);
+  }
+
+  // Init
+  updateProgress();
+</script>
+
+</body>
+</html>
