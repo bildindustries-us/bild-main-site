@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why BILD — Jeff's Story | The Pursuit of U</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .story-hero {
+      background: var(--dark);
+      min-height: 65vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 9rem 3rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .story-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 10% 90%, rgba(201,168,76,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(212,97,74,0.07) 0%, transparent 60%);
+    }
+    .story-hero .hero-inner { position: relative; max-width: 820px; }
+    .story-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900; color: var(--cream);
+      line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+    .story-hero h1 em { font-style: italic; color: var(--gold); }
+    .story-hero .hero-deck {
+      font-size: clamp(1rem, 2vw, 1.18rem); font-weight: 300;
+      color: rgba(245,240,232,0.58); max-width: 560px; line-height: 1.82;
+      border-left: 2px solid var(--coral); padding-left: 1.2rem;
+    }
+
+    .story-wrap { max-width: 740px; margin: 0 auto; padding: 6rem 2rem 8rem; }
+
+    .chapter { margin-bottom: 5rem; }
+    .chapter-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--coral); display: block; margin-bottom: 1rem;
+    }
+    .chapter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700;
+      color: var(--dark); line-height: 1.2; margin-bottom: 2rem;
+    }
+    .chapter h2 em { font-style: italic; color: var(--gold); }
+
+    .story-p {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.95;
+      color: #585858; margin-bottom: 1.5rem;
+    }
+    .story-p strong { color: var(--charcoal); font-weight: 600; }
+
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 1.75rem 2rem; margin: 3rem 0; background: var(--dark);
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--cream); line-height: 1.7;
+    }
+    .pull-quote.coral { border-left-color: var(--coral); }
+    .pull-quote.teal  { border-left-color: var(--teal); }
+    .pull-quote.mauve { border-left-color: var(--mauve); }
+
+    .story-divider {
+      display: flex; align-items: center; gap: 1.5rem; margin: 4.5rem 0;
+    }
+    .story-divider::before, .story-divider::after {
+      content: ''; flex: 1; height: 1px; background: #e5dfd4;
+    }
+    .story-divider span {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #ccc; white-space: nowrap;
+    }
+
+    .milestone-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; margin: 3rem 0; background: #e5dfd4;
+    }
+    .milestone-cell { background: white; padding: 1.75rem 1.5rem; text-align: center; }
+    .milestone-num {
+      font-family: 'Playfair Display', serif; font-size: 2.2rem;
+      font-weight: 900; color: var(--coral); line-height: 1; margin-bottom: 0.4rem;
+    }
+    .milestone-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #aaa; line-height: 1.4;
+    }
+
+    .pillars-connection { background: var(--dark); padding: 3rem; margin: 3.5rem 0; }
+    .pillars-connection h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.75rem;
+    }
+    .pillar-row { display: grid; grid-template-columns: 48px 1fr; gap: 0 1.25rem; margin-bottom: 1.5rem; align-items: start; }
+    .pillar-row:last-child { margin-bottom: 0; }
+    .pr-num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.5rem; color: var(--coral); opacity: 0.3; line-height: 1; }
+    .pr-body strong { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.25rem; }
+    .pr-body p { font-size: 0.85rem; font-weight: 300; line-height: 1.65; color: rgba(245,240,232,0.5); }
+
+    .bild-man-block { background: var(--cream); border: 1px solid #e5dfd4; padding: 3rem; margin: 3.5rem 0; }
+    .bild-man-block h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 1.25rem; }
+    .bild-man-block h3 em { font-style: italic; color: var(--gold); }
+    .bild-man-block p { font-size: 0.97rem; font-weight: 300; line-height: 1.9; color: #666; margin-bottom: 1rem; }
+    .bild-man-block p:last-of-type { margin-bottom: 0; }
+    .bild-traits { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .bild-trait { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1px solid #d4c9b8; color: var(--charcoal); }
+
+    .story-cta { background: var(--dark); padding: 3.5rem 3rem; margin-top: 4rem; text-align: center; position: relative; overflow: hidden; }
+    .story-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 70%); }
+    .story-cta > * { position: relative; }
+    .story-cta h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; color: var(--cream); line-height: 1.25; margin-bottom: 1rem; }
+    .story-cta h3 em { font-style: italic; color: var(--gold); }
+    .story-cta p { font-size: 0.97rem; font-weight: 300; line-height: 1.85; color: rgba(245,240,232,0.55); max-width: 500px; margin: 0 auto 2.25rem; }
+    .cta-btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary { display: inline-block; padding: 1rem 2.25rem; background: var(--coral); color: white; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .cta-btn-primary:hover { background: #bf5040; transform: translateY(-2px); }
+    .cta-btn-secondary { display: inline-block; padding: 1rem 2.25rem; background: transparent; color: rgba(245,240,232,0.65); border: 1px solid rgba(245,240,232,0.2); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
+    .cta-btn-secondary:hover { border-color: rgba(245,240,232,0.5); color: var(--cream); transform: translateY(-2px); }
+
+    @media (max-width: 680px) {
+      .story-hero { padding: 8rem 1.5rem 4rem; }
+      .story-wrap { padding: 4rem 1.25rem 6rem; }
+      .milestone-row { grid-template-columns: 1fr; }
+      .pillars-connection { padding: 2rem 1.5rem; }
+      .bild-man-block { padding: 2rem 1.5rem; }
+      .story-cta { padding: 2.5rem 1.5rem; }
+      .cta-btn-row { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="why-bild.html">Why BILD</a></li>
+      <li><a href="index.html#pillars">The Pillars</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="contact.html">Work With Jeff</a>
+  </div>
+</nav>
+
+<section class="story-hero">
+  <div class="hero-inner">
+    <span class="section-label">Jeff Boyer — Why BILD Exists</span>
+    <h1>I lived every<br>one of these<br><em>five pillars.</em></h1>
+    <p class="hero-deck">This is not a coaching system built on theory. It was forged inside a broken marriage, a business on the edge, a hospital room at 2am — and forty years of learning the hard way what it actually means to be a man.</p>
+  </div>
+</section>
+
+<div class="story-wrap">
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter">
+    <span class="chapter-label">Las Vegas — Age 7</span>
+    <h2>There is a moment that<br>shaped everything —<br><em>long before the business.</em></h2>
+
+    <p class="story-p">I grew up in Las Vegas. When I was seven years old, my little sister Emily — not quite two — drowned in our swimming pool. I was there. I saw it all. It changed the course of my entire family.</p>
+
+    <p class="story-p">We experienced a horrible tragedy — and then we never did anything to acknowledge how hard that was. Not one of us. We carried it the way families carry things they don't know how to hold: silently, separately, and for decades.</p>
+
+    <p class="story-p">I didn't understand what that day had planted inside me until I was a grown man. But it was running everything. How I loved people. How I let people love me. How I stayed close and how I kept my distance. A seven-year-old boy by a pool in Las Vegas was quietly making decisions for a forty-year-old man — and neither of them knew it.</p>
+
+    <div class="pull-quote mauve">
+      <p>"Not until I did the deep work did I recognize how profoundly that day had shaped me. The codes it planted ran my fears, my distances, my inability to be truly present with the people I loved most."</p>
+    </div>
+  </div>
+
+  <div class="story-divider"><span>Teenage Years</span></div>
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter">
+    <span class="chapter-label">Lost — Then Found</span>
+    <h2>I was a promising baseball<br>player. Then I <em>lost my way.</em></h2>
+
+    <p class="story-p">In my teenage years I got into alcohol and drugs. I had been a promising baseball player with my future set on success after high school. I let those things blind my path. I was living a destructive life — lying to everyone I loved, hiding who I had become, watching my future disappear and not knowing how to stop it.</p>
+
+    <p class="story-p">When I was 20 my mother gave me an ultimatum: stop, or leave. I remember the pain of that moment — the realization that I had no real friends, no real future, no real idea of who I was anymore. I made a decision. I stopped everything. I came clean to every person I loved about every lie I had told. I let my past become open so I didn't have to hide anymore.</p>
+
+    <p class="story-p">I began to pray. To read scripture. To genuinely test — not perform — the idea that God was real and that Christ was who people said He was. And I found out. I had a life-changing experience with God. <strong>He was real. He was there. Something in me changed permanently that night — and I could never doubt it again.</strong></p>
+
+    <div class="pull-quote teal">
+      <p>"That foundation — the one I found at 20 — has been under everything that followed. Even the years I forgot it was there. Even the years I was too busy and too loud inside to stand on it."</p>
+    </div>
+
+    <p class="story-p">I served a two-year mission in New York City. I learned Cantonese Chinese and spent two years teaching Chinese people about Jesus Christ. I watched lives change. I came home different — still unsure of exactly who I was in the world, but certain of the most important thing.</p>
+
+    <p class="story-p">I reunited with my high school girlfriend Lisa. We fell back in love. I followed unlikely doors — including one that led me to pool construction, following a mentor's advice even when the path looked hard. In 2002 I went all in. In 2005 I started Pacific Coast Pools. I had dreams of building something great.</p>
+
+    <p class="story-p">In the beginning, it was not great. It was hard.</p>
+  </div>
+
+  <div class="story-divider"><span>2005 — 2009</span></div>
+
+  <!-- CHAPTER 3 -->
+  <div class="chapter">
+    <span class="chapter-label">The Years I Was Building and Breaking</span>
+    <h2>I never felt worthy of<br>the life I was<br><em>trying to create.</em></h2>
+
+    <p class="story-p">I didn't grow up with money. I grew up with the belief — the deep, unspoken kind — that money was for other people. People more qualified than me to have it. That belief followed me into my marriage, into fatherhood, into every business decision I made.</p>
+
+    <p class="story-p">I built pools with my own hands. I tried to market myself. I tried to sell. I tried to lead. And from 2005 to 2018, while the business was growing, anxiety was quietly destroying everything else. My relationship with Lisa was suffering. My kids knew I loved them — but I was missing their lives. I didn't know how to connect with them. I acted out of guilt instead of presence, trying to make up for not being there in ways that left both them and me feeling empty — because I wasn't building a relationship. I was managing a debt I felt I owed.</p>
+
+    <p class="story-p">When I wasn't working I was playing video games to disappear. I overate. I worried constantly about jobs and money and customers. I was physically present with my family and completely gone at the same time.</p>
+
+    <div class="pull-quote coral">
+      <p>"I felt powerless all the time. Not just financially — though that was real — but powerless in my own life. Like things were happening to me and I had no real say. So I reached for whatever I could control. And none of it was the right thing."</p>
+    </div>
+
+    <p class="story-p">In 2009 we lost our house. I drove all over Southern California doing whatever work I could find. I was scraping. I was grinding. I was begging God for help and genuinely unsure He was hearing me. I always found a way to provide — even at the lowest moments. I credit every bit of that to Him. But I couldn't feel His presence. I was too loud inside to hear anything quiet.</p>
+  </div>
+
+  <div class="story-divider"><span>2010 — 2011</span></div>
+
+  <!-- CHAPTER 4 -->
+  <div class="chapter">
+    <span class="chapter-label">The Turn</span>
+    <h2>I refused to settle<br>for <em>crumbs.</em></h2>
+
+    <p class="story-p">Coming into 2010 I made a quiet internal decision. I had been focused on finding whatever life was offering me just to survive. But I knew — somewhere underneath all the fear — that I was not the type of man who settled for crumbs. I didn't fully know what that meant. I just knew it was true.</p>
+
+    <p class="story-p">I started reading. Personal development. Mindset. How the mind works and how to change it. I cut out pictures of the future I wanted and put them on my desk. I glued my business logo to a picture of a large commercial building. <strong>I wrote a check to myself for $500,000</strong> and believed — somehow — that I would cash it.</p>
+
+    <p class="story-p">At the end of 2010, at my absolute lowest — considering leaving California and starting over in Texas — I felt a strong prompting to search for pool builder websites near me in Temecula. I found Premier Pools and Spas. I saw a link to become a licensee. I filled out the form. I had no idea what I was stepping into.</p>
+
+    <p class="story-p">I went all in in 2011. I was coachable — and I needed that. They gave me a pathway. I implemented one step at a time.</p>
+
+    <div class="milestone-row">
+      <div class="milestone-cell">
+        <div class="milestone-num">$500K</div>
+        <div class="milestone-label">Revenue<br>2010</div>
+      </div>
+      <div class="milestone-cell">
+        <div class="milestone-num">$1.5M</div>
+        <div class="milestone-label">Revenue<br>2011</div>
+      </div>
+      <div class="milestone-cell">
+        <div class="milestone-num">2×</div>
+        <div class="milestone-label">Growth<br>Year After Year</div>
+      </div>
+    </div>
+
+    <p class="story-p">We doubled year after year. Eventually we had a building with the Premier Pools and Spas logo on top of it. The check I had written to myself for $500,000 — I cashed it. What God had been building in me through those stripped-down years was paying compound interest.</p>
+
+    <p class="story-p">But the business growing did not mean I was growing. The revenue was real. The success was real. <strong>And I was still the same man inside — carrying all the same weight, just with a bigger stage to carry it on.</strong></p>
+  </div>
+
+  <div class="story-divider"><span>The coaches who changed everything</span></div>
+
+  <!-- CHAPTER 5 -->
+  <div class="chapter">
+    <span class="chapter-label">Lane. Tony. The Real Work.</span>
+    <h2>I needed coaches —<br>not for my business,<br><em>for my soul.</em></h2>
+
+    <p class="story-p">Miraculously I met a man named Lane who was a coach working in a system called Intentional Creation. For four months I was coached through it — and I began to understand, for the first time, why I was the way I was. Why my relationships suffered. Why the anxiety never left. Why success never felt like enough.</p>
+
+    <p class="story-p">I learned there was another way to live. One that made it possible to have it all — business success and a real relationship with my wife. Real presence with my kids. Gratitude where there had been worry. Joy in the journey instead of burden always present.</p>
+
+    <div class="pull-quote teal">
+      <p>"I was able to feel joy in my journey instead of the burden and the worry being always present. Gratitude filled me up more regularly and life became more full."</p>
+    </div>
+
+    <p class="story-p">But life kept growing. New success brought new challenges. The weight came back stronger. The tools I had learned felt outdated. I was stuck and lost again — but in a new way, at a new level.</p>
+
+    <p class="story-p">I was guided to another coach named Tony. With him I went deeper than I had ever gone. He helped me see the hidden, deep-inside-the-soul kind of trauma — how my life's experiences and the way I had managed through them had left a series of codes implanted in who I was. Those codes ran my entire system. When threats came, I was hijacked by old programs I didn't even know were running.</p>
+
+    <p class="story-p">Through Tony I worked with my Heavenly Father in a way I never had before. I was able to touch parts of my being that I had no idea were there.</p>
+
+    <div class="pull-quote mauve">
+      <p>"Not until I worked with Tony did I recognize how deeply that day in Las Vegas — when Emily died — had shaped me. How that experience, rooted inside a seven-year-old boy, would dictate for decades how I loved people. And how I let people love me."</p>
+    </div>
+
+    <p class="story-p"><strong>I learned to love again. To let others love me.</strong> So freeing. So new. At an age when most men think the shape of who they are is fixed, I discovered it wasn't. That healing was real. That God's love could reach into places sealed off since childhood and open them back up.</p>
+  </div>
+
+  <div class="story-divider"><span>2018</span></div>
+
+  <!-- CHAPTER 6 -->
+  <div class="chapter">
+    <span class="chapter-label">The Night That Clarified Everything</span>
+    <h2>The business was winning.<br><em>I was losing.</em></h2>
+
+    <p class="story-p">By 2018 the business had grown beyond anything I had imagined. The logo was on the building. From the outside, it was the happy ending. From the inside, I was afraid to go to work. The anxiety of what the business had become — the weight of leading it, the complexity of it — had grown heavier than I knew how to carry.</p>
+
+    <p class="story-p">I lost my brother. He became a competitor. That loss cut deeper than business. I was carrying grief and betrayal and the weight of a man who had outbuilt himself — whose life had grown bigger than his inner foundation could hold.</p>
+
+    <p class="story-p">One night I ended up in the hospital convinced I was having a heart attack. It was an anxiety attack. That was the moment I could no longer pretend I was fine. The man who had built the business, provided for the family, performed successfully on the outside — that man was running on empty. And he had been for a long time.</p>
+
+    <div class="pull-quote coral">
+      <p>"I needed to learn how to manage myself so I didn't end up divorced and on drugs. Not business coaching. Not strategy. I needed someone to help me understand why I was the way I was — and how to become the man my family was actually waiting for."</p>
+    </div>
+
+    <p class="story-p">That is when BILD came into focus. Not as a business idea. As a calling. I could see clearly for the first time that everything I had lived — the crumbs years, the hospital room, the seven-year-old boy by the pool, the mission in New York, the $500,000 check, the coaches who saved me — all of it was preparation. All of it was building something in me that was meant to be given away.</p>
+
+    <p class="story-p">Today I own two Premier Pools and Spas franchises — one in California and one in Dallas, Texas since 2022. I am more challenged than ever. I am also more grounded than I have ever been. My faith is my foundation. My relationship with God is where everything else is built from — not the afterthought I ask to bless what I have already decided.</p>
+
+    <p class="story-p">My marriage is stronger than it has ever been. My kids know who their father actually is. I go to work because I want to — not because I am running from something. <strong>I can feel God's hand in my life now in a way I never could when I was too loud inside to hear Him.</strong></p>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="pillars-connection">
+    <h3>Why These Five Pillars — I Didn't Invent Them. I Lived Them.</h3>
+    <div class="pillar-row">
+      <div class="pr-num">01</div>
+      <div class="pr-body">
+        <strong>Powerlessness</strong>
+        <p>I played video games and overate for years rather than name what I was actually feeling. The hospital room was where I finally couldn't avoid it. Naming it was the beginning of everything.</p>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <div class="pr-num">02</div>
+      <div class="pr-body">
+        <strong>Accountability</strong>
+        <p>I was publicly building a business while privately falling apart. I was asking my wife and kids to receive a man I hadn't yet become. The gap between those two men was costing my family everything.</p>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <div class="pr-num">03</div>
+      <div class="pr-body">
+        <strong>Create With Him</strong>
+        <p>The years God came through most clearly were the years I brought Him in first. The prompting to look up that website. The doors that opened quietly. The years I forced things ended in hospital rooms.</p>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <div class="pr-num">04</div>
+      <div class="pr-body">
+        <strong>Purpose</strong>
+        <p>I wrote a $500,000 check before I understood why I wanted the money. I confused achievement with meaning for most of my adult life. Purpose came later — and changed everything about how the success felt.</p>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <div class="pr-num">05</div>
+      <div class="pr-body">
+        <strong>Forgiveness</strong>
+        <p>A seven-year-old boy by a pool in Las Vegas was running my adult relationships for decades. Losing my brother. The weight I carried without knowing it. Forgiveness was the hidden ceiling on everything else.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BILD MAN -->
+  <div class="bild-man-block">
+    <h3>BILD is not for every man.<br>It is for the <em>rare ones.</em></h3>
+    <p>I don't do this for money. I don't do it to be noticed. I do it because there are too many men out there just like me — men who move through this earth in a way that could leave a true mark of beauty — who are stuck, distracted, and performing a version of themselves that is costing everyone around them.</p>
+    <p>BILD is for the man who is done performing. Who is ready to pursue something real — not a bigger empire, but a deeper life. Not more achievement, but true alignment. Not the world's definition of success, but God's.</p>
+    <p>A true BILD man pursues all of these — not one at the expense of the others.</p>
+    <div class="bild-traits">
+      <span class="bild-trait">Love</span>
+      <span class="bild-trait">Compassion</span>
+      <span class="bild-trait">Forgiveness</span>
+      <span class="bild-trait">Faith</span>
+      <span class="bild-trait">Family</span>
+      <span class="bild-trait">Fortune</span>
+    </div>
+  </div>
+
+  <!-- CLOSING CHAPTER -->
+  <div class="chapter">
+    <span class="chapter-label">Why I Do This Work</span>
+    <h2>We were not meant to build<br>empires the world admires.<br>We were meant to <em>find Him.</em></h2>
+
+    <p class="story-p">I see the spiritual side of life so deeply now. We weren't meant to just be men who go build things the world can admire. We were meant to come to Christ and find Him. And from that place — co-create a world full of love and possibilities. Not a pursuit of money or worldly things that bring temporary highs. The kind of pursuit that brings real fruits to real people. That brings people closer to God.</p>
+
+    <p class="story-p">I wasted good years. Years with my kids when they were small. Years with Lisa when we could have been closer. I don't say that with shame — I have set it down. I say it because I know there is a man reading this right now who is in the middle of those years and doesn't have to waste them the way I did.</p>
+
+    <p class="story-p">I needed guides. I needed Lane. I needed Tony. I needed coaches at every important turn of my life — men who could see past my limitations and show me a pathway forward. <strong>Doing it alone is just too hard.</strong> We were not built for it. The men who try — who white-knuckle their way through — they end up in hospital rooms at 2am wondering where everything went.</p>
+
+    <div class="pull-quote">
+      <p>"Your life is so precious. There is nothing about you that is normal. You were given this life to use it to its maximum opportunity. Don't wait for the hospital room to start believing that."</p>
+    </div>
+
+    <p class="story-p">BILD exists because I found the other side of all of it. And the other side is real. The marriage can be restored. The relationship with your kids can be rebuilt. The anxiety can lift. The gap between who you are and who you were made to be can close. I know because it closed for me.</p>
+
+    <p class="story-p">If any part of this story sounded like yours — that recognition is not an accident. That is the beginning.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="story-cta">
+    <h3>If this story<br>sounded <em>familiar —</em></h3>
+    <p>That recognition is not an accident. Take the assessment, explore the five pillars, or reach out directly. The next step is just an honest conversation.</p>
+    <div class="cta-btn-row">
+      <a href="contact.html" class="cta-btn-primary">Work With Jeff</a>
+      <a href="assessment.html" class="cta-btn-secondary">Take the Assessment</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="index.html#pillars">The Pillars</a>
+    <a href="assessment.html">Assessment</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
