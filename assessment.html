@@ -863,13 +863,16 @@
     'What closing the gap would actually mean',
   ];
 
-  // Wire up option buttons
-  document.querySelectorAll('.option-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const slide = btn.closest('.question-slide');
-      const qNum  = parseInt(slide.dataset.q);
+  // Wire up option buttons — use delegation on each slide to avoid child-element click issues
+  document.querySelectorAll('.question-slide').forEach(slide => {
+    slide.addEventListener('click', (e) => {
+      // Walk up from the clicked element to find the .option-btn
+      const btn = e.target.closest('.option-btn');
+      if (!btn) return;
 
-      // Deselect others in this slide
+      const qNum = parseInt(slide.dataset.q);
+
+      // Deselect all options in this slide
       slide.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
 
