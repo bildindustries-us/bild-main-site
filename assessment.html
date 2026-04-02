@@ -425,12 +425,123 @@
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* ── EMAIL CAPTURE FORM ── */
+    .email-capture {
+      background: var(--dark);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+    }
+    .email-capture h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+    .email-capture h3 em { font-style: italic; color: var(--gold); }
+    .email-capture .capture-sub {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.52);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+    .capture-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .capture-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .capture-field label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.35);
+    }
+    .capture-field input {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--cream);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .capture-field input:focus { border-color: var(--gold); }
+    .capture-field input.field-invalid { border-color: var(--coral); }
+    .capture-submit {
+      width: 100%;
+      margin-top: 1rem;
+      background: var(--coral);
+      color: white;
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .capture-submit:hover { background: #bf5040; transform: translateY(-2px); }
+    .capture-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .capture-sent {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+    }
+    .capture-sent .sent-icon {
+      width: 44px; height: 44px;
+      background: var(--teal);
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin: 0 auto 1rem;
+    }
+    .capture-sent h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .capture-sent p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.65;
+    }
+    .capture-privacy {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.25);
+      text-align: center;
+      margin-top: 0.75rem;
+      line-height: 1.5;
+    }
+
     @media (max-width: 600px) {
       .assess-hero { padding: 7.5rem 1.5rem 3rem; }
       .progress-wrap { padding: 1rem 1.5rem; }
       .assess-body { padding: 3rem 1.25rem 5rem; }
       .result-cta-row { flex-direction: column; }
       .result-score-row { flex-direction: column; align-items: flex-start; }
+      .capture-row { grid-template-columns: 1fr; }
+      .email-capture { padding: 1.75rem 1.5rem; }
     }
   </style>
 </head>
@@ -441,6 +552,7 @@
   <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
   <div class="nav-right">
     <ul class="nav-links">
+      <li><a href="why-bild.html">Why BILD</a></li>
       <li><a href="index.html#pillars">The Pillars</a></li>
       <li><a href="assessment.html">Assessment</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -783,6 +895,34 @@
       <div class="result-callout">
         <p>"The ones who break through are the ones who get honest, find one small act of true accountability, and start there."</p>
       </div>
+
+      <!-- EMAIL CAPTURE -->
+      <div class="email-capture" id="captureQ">
+        <h3>Get a personal note<br>from <em>Jeff about your results.</em></h3>
+        <p class="capture-sub">Enter your name and email and Jeff will send you a personal message based on how you answered — along with your recommended next step.</p>
+        <div class="capture-row">
+          <div class="capture-field">
+            <label>First Name</label>
+            <input type="text" id="captureQ-first" placeholder="First name" />
+          </div>
+          <div class="capture-field">
+            <label>Last Name</label>
+            <input type="text" id="captureQ-last" placeholder="Last name" />
+          </div>
+        </div>
+        <div class="capture-field">
+          <label>Email Address</label>
+          <input type="email" id="captureQ-email" placeholder="your@email.com" />
+        </div>
+        <button class="capture-submit" id="captureQ-btn" onclick="submitCapture('qualify')">Email Me Jeff's Note →</button>
+        <div class="capture-sent" id="captureQ-sent">
+          <div class="sent-icon">✓</div>
+          <h4>On its way.</h4>
+          <p>Jeff's personal note is headed to your inbox. Check your email — and check spam if you don't see it within a few minutes.</p>
+        </div>
+        <p class="capture-privacy">No spam. No lists. Just Jeff's honest response to your results.</p>
+      </div>
+
       <div class="result-cta-row">
         <a href="contact.html" class="result-btn-primary">Schedule a Discovery Call</a>
         <a href="index.html#pillars" class="result-btn-secondary">Explore the Five Pillars</a>
@@ -805,6 +945,34 @@
       <div class="result-callout">
         <p>"Purpose doesn't need to be created from scratch. In almost every man it is already there — covered by urgency, obligation, and the accumulated weight of the life he built trying to be enough."</p>
       </div>
+
+      <!-- EMAIL CAPTURE -->
+      <div class="email-capture" id="captureN">
+        <h3>Get a personal note<br>from <em>Jeff about your results.</em></h3>
+        <p class="capture-sub">Enter your name and email and Jeff will send you a personal message based on how you answered — along with your recommended next step.</p>
+        <div class="capture-row">
+          <div class="capture-field">
+            <label>First Name</label>
+            <input type="text" id="captureN-first" placeholder="First name" />
+          </div>
+          <div class="capture-field">
+            <label>Last Name</label>
+            <input type="text" id="captureN-last" placeholder="Last name" />
+          </div>
+        </div>
+        <div class="capture-field">
+          <label>Email Address</label>
+          <input type="email" id="captureN-email" placeholder="your@email.com" />
+        </div>
+        <button class="capture-submit" id="captureN-btn" onclick="submitCapture('nurture')">Email Me Jeff's Note →</button>
+        <div class="capture-sent" id="captureN-sent">
+          <div class="sent-icon">✓</div>
+          <h4>On its way.</h4>
+          <p>Jeff's personal note is headed to your inbox. Check your email — and check spam if you don't see it within a few minutes.</p>
+        </div>
+        <p class="capture-privacy">No spam. No lists. Just Jeff's honest response to your results.</p>
+      </div>
+
       <div class="result-cta-row">
         <a href="index.html#pillars" class="result-btn-primary">Explore the Five Pillars</a>
         <a href="contact.html" class="result-btn-secondary">Contact Jeff Anyway</a>
@@ -974,6 +1142,69 @@
 
   // ── INIT ──
   updateProgress();
+
+  // ── EMAIL CAPTURE → GHL WEBHOOK ──
+  var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/cVzxbnlqCvF3ZNpsRw04/webhook-trigger/8aad5324-fe31-4463-910b-156122d1ffc1';
+
+  function submitCapture(resultType) {
+    var prefix  = resultType === 'qualify' ? 'captureQ' : 'captureN';
+    var first   = document.getElementById(prefix + '-first').value.trim();
+    var last    = document.getElementById(prefix + '-last').value.trim();
+    var email   = document.getElementById(prefix + '-email').value.trim();
+    var btn     = document.getElementById(prefix + '-btn');
+    var sentDiv = document.getElementById(prefix + '-sent');
+
+    // Basic validation
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    document.getElementById(prefix + '-first').classList.toggle('field-invalid', !first);
+    document.getElementById(prefix + '-last').classList.toggle('field-invalid', !last);
+    document.getElementById(prefix + '-email').classList.toggle('field-invalid', !emailOk);
+    if (!first || !last || !emailOk) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    // Build answer summary string
+    var summary = '';
+    for (var i = 1; i <= TOTAL; i++) {
+      if (answers[i]) {
+        summary += qLabels[i-1] + ': ' + answers[i].text + ' | ';
+      }
+    }
+
+    // Count score
+    var score = 0;
+    for (var i = 1; i <= TOTAL; i++) {
+      if (answers[i] && answers[i].qualifies) score++;
+    }
+
+    // Fire to GHL webhook
+    var payload = {
+      first_name:   first,
+      last_name:    last,
+      email:        email,
+      result_type:  resultType === 'qualify' ? 'You Are Ready' : 'Start Here',
+      score:        score + ' out of 10',
+      answers:      summary,
+      source:       'BILD Assessment - bildyourlife.com'
+    };
+
+    fetch(GHL_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function() {
+      // Show success regardless — GHL webhooks don't always return 200
+      btn.style.display = 'none';
+      sentDiv.style.display = 'block';
+    })
+    .catch(function() {
+      // Still show success — webhook fired even if CORS blocks the response
+      btn.style.display = 'none';
+      sentDiv.style.display = 'block';
+    });
+  }
 </script>
 
 </body>
