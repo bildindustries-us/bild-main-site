@@ -478,26 +478,26 @@
       <p class="q-text">When you're honest with yourself at the end of the day, how do you feel about the life you've built?</p>
       <p class="q-subtext">Set aside what it looks like to everyone else. This is just between you and the page.</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'Proud and satisfied — I\'ve built something real and it feels right.')">
           <span class="opt-letter">A</span>
           Proud and satisfied — I've built something real and it feels right.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'Successful on paper, but there\'s a persistent gap I can\'t fully explain.')">
           <span class="opt-letter">B</span>
           Successful on paper, but there's a persistent gap I can't fully explain.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="false">
+        <button class="option-btn" data-value="C" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', false, 'Still early — I haven\'t built much yet but I\'m working on it.')">
           <span class="opt-letter">C</span>
           Still early — I haven't built much yet but I'm working on it.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'I don\'t spend much time thinking about this kind of thing.')">
           <span class="opt-letter">D</span>
           I don't spend much time thinking about this kind of thing.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back hidden">← Back</button>
-        <button class="btn-next" id="nextBtn-1">Next →</button>
+        <button class="btn-next" id="nextBtn-1" onclick="goNext(1)">Next →</button>
       </div>
     </div>
 
@@ -507,26 +507,26 @@
       <p class="q-text">How central is your faith to how you actually make decisions — not just how you'd describe yourself to others?</p>
       <p class="q-subtext">Think about the last major decision you made. How much did your faith actually drive it?</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'Faith isn\'t really a part of how I make decisions.')">
           <span class="opt-letter">A</span>
           Faith isn't really a part of how I make decisions.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="false">
+        <button class="option-btn" data-value="B" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', false, 'I consider myself a person of faith but it stays mostly separate from business decisions.')">
           <span class="opt-letter">B</span>
           I consider myself a person of faith but it stays mostly separate from business decisions.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'Faith matters to me deeply, but I\'ll be honest — I often build first and ask for blessing after.')">
           <span class="opt-letter">C</span>
           Faith matters to me deeply, but I'll be honest — I often build first and ask for blessing after.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="true">
+        <button class="option-btn" data-value="D" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', true, 'I genuinely want my faith to be the foundation, not the afterthought — I\'m just not fully there yet.')">
           <span class="opt-letter">D</span>
           I genuinely want my faith to be the foundation, not the afterthought — I'm just not fully there yet.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-2">Next →</button>
+        <button class="btn-next" id="nextBtn-2" onclick="goNext(2)">Next →</button>
       </div>
     </div>
 
@@ -536,26 +536,26 @@
       <p class="q-text">Your wife (or the people closest to you) — if they were being fully honest, what would they say about the gap between the man you are at work and the man you are at home?</p>
       <p class="q-subtext">This one might sting a little. That's the point.</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'They\'d say I\'m the same person in both places — fully present, consistent.')">
           <span class="opt-letter">A</span>
           They'd say I'm the same person in both places — fully present, consistent.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'They\'d say the best version of me shows up at work, and the family gets what\'s left.')">
           <span class="opt-letter">B</span>
           They'd say the best version of me shows up at work, and the family gets what's left.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'They\'d say I\'m present physically but often checked out emotionally.')">
           <span class="opt-letter">C</span>
           They'd say I'm present physically but often checked out emotionally.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'I\'m not in a relationship so this doesn\'t apply to me right now.')">
           <span class="opt-letter">D</span>
           I'm not in a relationship so this doesn't apply to me right now.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-3">Next →</button>
+        <button class="btn-next" id="nextBtn-3" onclick="goNext(3)">Next →</button>
       </div>
     </div>
 
@@ -565,26 +565,26 @@
       <p class="q-text">When you feel out of control or overwhelmed, what do you typically do with that feeling?</p>
       <p class="q-subtext">Be specific. Think about the last time you felt it.</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'I talk about it openly with my wife or a close friend.')">
           <span class="opt-letter">A</span>
           I talk about it openly with my wife or a close friend.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'I bury it in more work — staying busy keeps it manageable.')">
           <span class="opt-letter">B</span>
           I bury it in more work — staying busy keeps it manageable.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'I withdraw — I get quieter, harder to reach, and I know it costs people around me.')">
           <span class="opt-letter">C</span>
           I withdraw — I get quieter, harder to reach, and I know it costs people around me.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="true">
+        <button class="option-btn" data-value="D" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', true, 'I reach for something to distract myself — screens, food, something to take the edge off.')">
           <span class="opt-letter">D</span>
           I reach for something to distract myself — screens, food, something to take the edge off.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-4">Next →</button>
+        <button class="btn-next" id="nextBtn-4" onclick="goNext(4)">Next →</button>
       </div>
     </div>
 
@@ -594,26 +594,26 @@
       <p class="q-text">If you remove income as a measure of success, what else tells you that this year mattered?</p>
       <p class="q-subtext">Take 10 seconds before you answer. Don't reach for the polished version.</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'I have a clear answer — I know exactly what I\'m building toward beyond the money.')">
           <span class="opt-letter">A</span>
           I have a clear answer — I know exactly what I'm building toward beyond the money.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'Honestly, I don\'t know. I\'ve never removed income from the equation long enough to find out.')">
           <span class="opt-letter">B</span>
           Honestly, I don't know. I've never removed income from the equation long enough to find out.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'I have an answer I give people, but I\'m not sure I fully believe it myself.')">
           <span class="opt-letter">C</span>
           I have an answer I give people, but I'm not sure I fully believe it myself.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'Revenue and growth are the measure — that\'s what I\'m building for right now.')">
           <span class="opt-letter">D</span>
           Revenue and growth are the measure — that's what I'm building for right now.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-5">Next →</button>
+        <button class="btn-next" id="nextBtn-5" onclick="goNext(5)">Next →</button>
       </div>
     </div>
 
@@ -623,26 +623,26 @@
       <p class="q-text">Have you ever been in a room — a real room, not a podcast — with other men who were being completely honest about their struggles?</p>
       <p class="q-subtext">Not a surface-level men's group. The kind where people say the thing they don't say anywhere else.</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'Yes — I have a few men in my life I can be completely honest with.')">
           <span class="opt-letter">A</span>
           Yes — I have a few men in my life I can be completely honest with.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'No — and I\'ve realized that\'s a significant gap in my life.')">
           <span class="opt-letter">B</span>
           No — and I've realized that's a significant gap in my life.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'I\'ve been in groups like that but never fully opened up myself.')">
           <span class="opt-letter">C</span>
           I've been in groups like that but never fully opened up myself.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'I don\'t feel like I need that kind of community right now.')">
           <span class="opt-letter">D</span>
           I don't feel like I need that kind of community right now.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-6">Next →</button>
+        <button class="btn-next" id="nextBtn-6" onclick="goNext(6)">Next →</button>
       </div>
     </div>
 
@@ -652,26 +652,26 @@
       <p class="q-text">When you think about the word "legacy" — what do you actually want yours to be?</p>
       <p class="q-subtext">Not the LinkedIn version. What do you want the people who know you best to say after you're gone?</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'I have a clear picture and I feel like I\'m actively building toward it.')">
           <span class="opt-letter">A</span>
           I have a clear picture and I feel like I'm actively building toward it.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'I know what I want it to be, but I\'m not sure my daily life reflects it yet.')">
           <span class="opt-letter">B</span>
           I know what I want it to be, but I'm not sure my daily life reflects it yet.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'I haven\'t thought about it seriously — and honestly, that bothers me.')">
           <span class="opt-letter">C</span>
           I haven't thought about it seriously — and honestly, that bothers me.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'Legacy isn\'t something I spend a lot of energy thinking about.')">
           <span class="opt-letter">D</span>
           Legacy isn't something I spend a lot of energy thinking about.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-7">Next →</button>
+        <button class="btn-next" id="nextBtn-7" onclick="goNext(7)">Next →</button>
       </div>
     </div>
 
@@ -681,26 +681,26 @@
       <p class="q-text">How willing are you to be challenged — not coached gently, but genuinely challenged on the stories you've been telling yourself?</p>
       <p class="q-subtext">This work requires honesty that most men avoid. Where are you with that?</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="true">
+        <button class="option-btn" data-value="A" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', true, 'Very willing — I know I have blind spots and I want someone to name them.')">
           <span class="opt-letter">A</span>
           Very willing — I know I have blind spots and I want someone to name them.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'Willing, but I\'ll be honest — it makes me uncomfortable. I\'ll do it anyway.')">
           <span class="opt-letter">B</span>
           Willing, but I'll be honest — it makes me uncomfortable. I'll do it anyway.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="false">
+        <button class="option-btn" data-value="C" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', false, 'I\'m open to coaching as long as it\'s mostly affirming and supportive.')">
           <span class="opt-letter">C</span>
           I'm open to coaching as long as it's mostly affirming and supportive.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'I\'ve already done a lot of self-work — I\'m not sure I need to be challenged at this level.')">
           <span class="opt-letter">D</span>
           I've already done a lot of self-work — I'm not sure I need to be challenged at this level.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-8">Next →</button>
+        <button class="btn-next" id="nextBtn-8" onclick="goNext(8)">Next →</button>
       </div>
     </div>
 
@@ -710,26 +710,26 @@
       <p class="q-text">Is there something — a specific person, a chapter of your past, a decision you made — that you haven't fully made peace with?</p>
       <p class="q-subtext">Something that still has weight when it comes to mind. You don't need to name it here. Just notice if it's there.</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'No — I\'ve done the work on my past and I feel genuinely free of it.')">
           <span class="opt-letter">A</span>
           No — I've done the work on my past and I feel genuinely free of it.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'Yes — and I\'ve been carrying it long enough that I barely notice the weight anymore.')">
           <span class="opt-letter">B</span>
           Yes — and I've been carrying it long enough that I barely notice the weight anymore.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'Yes — I\'ve named it but I haven\'t actually done anything about it.')">
           <span class="opt-letter">C</span>
           Yes — I've named it but I haven't actually done anything about it.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'I don\'t believe in dwelling on the past — I prefer to keep moving forward.')">
           <span class="opt-letter">D</span>
           I don't believe in dwelling on the past — I prefer to keep moving forward.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-9">Next →</button>
+        <button class="btn-next" id="nextBtn-9" onclick="goNext(9)">Next →</button>
       </div>
     </div>
 
@@ -739,26 +739,26 @@
       <p class="q-text">What would it actually mean to you — to your marriage, your kids, your faith — if you closed the gap between who you are and who you know you're capable of being?</p>
       <p class="q-subtext">Don't minimize this one. Sit with it for a moment before you answer.</p>
       <div class="options-list">
-        <button class="option-btn" data-value="A" data-qualifies="false">
+        <button class="option-btn" data-value="A" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'A', false, 'I\'m already pretty close to that version of myself — the gap isn\'t that significant.')">
           <span class="opt-letter">A</span>
           I'm already pretty close to that version of myself — the gap isn't that significant.
         </button>
-        <button class="option-btn" data-value="B" data-qualifies="true">
+        <button class="option-btn" data-value="B" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'B', true, 'It would change everything — and I feel urgency about it, especially given where my kids are right now.')">
           <span class="opt-letter">B</span>
           It would change everything — and I feel urgency about it, especially given where my kids are right now.
         </button>
-        <button class="option-btn" data-value="C" data-qualifies="true">
+        <button class="option-btn" data-value="C" data-qualifies="true" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'C', true, 'It would mean a lot, but I\'ve told myself I\'ll get to it when things slow down.')">
           <span class="opt-letter">C</span>
           It would mean a lot, but I've told myself I'll get to it when things slow down.
         </button>
-        <button class="option-btn" data-value="D" data-qualifies="false">
+        <button class="option-btn" data-value="D" data-qualifies="false" onclick="pickAnswer(parseInt(this.closest('[data-q]').dataset.q), 'D', false, 'I\'m not sure — I\'ve been so focused on building the business that I haven\'t sat with this question.')">
           <span class="opt-letter">D</span>
           I'm not sure — I've been so focused on building the business that I haven't sat with this question.
         </button>
       </div>
       <div class="q-nav">
         <button class="btn-back" onclick="goBack()">← Back</button>
-        <button class="btn-next" id="nextBtn-10">See My Results →</button>
+        <button class="btn-next" id="nextBtn-10" onclick="goNext(10)">See My Results →</button>
       </div>
     </div>
 
@@ -836,22 +836,13 @@
 
 <script src="script.js"></script>
 <script>
-  const TOTAL = 10;
+  // ── STATE ──
+  var TOTAL    = 10;
+  var current  = 1;
+  var answers  = {};
 
-  // Track state
-  let current  = 1;
-  let answers  = {}; // { qNum: { value, qualifies, text } }
-
-  const slides      = document.querySelectorAll('.question-slide');
-  const progressFill = document.getElementById('progressFill');
-  const progressNum  = document.getElementById('progressNum');
-  const progressWrap = document.getElementById('progressWrap');
-  const questionsWrap = document.getElementById('questionsWrap');
-  const resultScreen  = document.getElementById('resultScreen');
-
-  // Question summary labels (short versions for the summary section)
-  const qLabels = [
-    'How you feel about the life you've built',
+  var qLabels = [
+    'How you feel about the life you\'ve built',
     'How central faith is to your decisions',
     'The gap between work-you and home-you',
     'What you do with overwhelm',
@@ -860,78 +851,80 @@
     'Clarity on your legacy',
     'Willingness to be genuinely challenged',
     'Unresolved weight from your past',
-    'What closing the gap would actually mean',
+    'What closing the gap would actually mean'
   ];
 
-  // Wire up option buttons — use delegation on each slide to avoid child-element click issues
-  document.querySelectorAll('.question-slide').forEach(slide => {
-    slide.addEventListener('click', (e) => {
-      // Walk up from the clicked element to find the .option-btn
-      const btn = e.target.closest('.option-btn');
-      if (!btn) return;
+  // ── CALLED BY EACH OPTION BUTTON VIA onclick ──
+  function pickAnswer(qNum, value, qualifies, text) {
+    // Store answer
+    answers[qNum] = { value: value, qualifies: qualifies, text: text };
 
-      const qNum = parseInt(slide.dataset.q);
+    // Clear selection on all buttons in this question
+    var slide = document.querySelector('.question-slide[data-q="' + qNum + '"]');
+    var btns  = slide.querySelectorAll('.option-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.remove('selected');
+    }
 
-      // Deselect all options in this slide
-      slide.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-
-      // Store answer
-      answers[qNum] = {
-        value:     btn.dataset.value,
-        qualifies: btn.dataset.qualifies === 'true',
-        text:      btn.textContent.trim(),
-      };
-
-      // Enable next button
-      const nextBtn = document.getElementById(`nextBtn-${qNum}`);
-      if (nextBtn) nextBtn.classList.add('enabled');
-    });
-  });
-
-  // Wire up next buttons
-  for (let i = 1; i <= TOTAL; i++) {
-    const btn = document.getElementById(`nextBtn-${i}`);
-    if (!btn) continue;
-    btn.addEventListener('click', () => {
-      if (!btn.classList.contains('enabled')) return;
-      if (i === TOTAL) {
-        showResults();
-      } else {
-        goToSlide(i + 1);
+    // Highlight the clicked button (find it by value)
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].getAttribute('data-value') === value) {
+        btns[i].classList.add('selected');
       }
-    });
+    }
+
+    // Enable the Next button for this question
+    var nextBtn = document.getElementById('nextBtn-' + qNum);
+    if (nextBtn) {
+      nextBtn.classList.add('enabled');
+      nextBtn.removeAttribute('disabled');
+    }
   }
 
-  function goToSlide(n) {
-    slides.forEach(s => s.classList.remove('active'));
-    document.querySelector(`.question-slide[data-q="${n}"]`).classList.add('active');
-    current = n;
-    updateProgress();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // ── NEXT BUTTON ──
+  function goNext(qNum) {
+    if (!answers[qNum]) return; // safety check
+    if (qNum === TOTAL) {
+      showResults();
+    } else {
+      goToSlide(qNum + 1);
+    }
   }
 
+  // ── BACK BUTTON ──
   function goBack() {
     if (current > 1) goToSlide(current - 1);
   }
 
-  function updateProgress() {
-    const pct = ((current - 1) / TOTAL) * 100;
-    progressFill.style.width = pct + '%';
-    progressNum.textContent  = current;
+  // ── NAVIGATE TO A SLIDE ──
+  function goToSlide(n) {
+    var slides = document.querySelectorAll('.question-slide');
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].classList.remove('active');
+    }
+    document.querySelector('.question-slide[data-q="' + n + '"]').classList.add('active');
+    current = n;
+    updateProgress();
+    window.scrollTo(0, 0);
   }
 
+  // ── PROGRESS BAR ──
+  function updateProgress() {
+    var pct  = ((current - 1) / TOTAL) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressNum').textContent  = current;
+  }
+
+  // ── SHOW RESULTS ──
   function showResults() {
-    // Count qualifiers
-    let score = 0;
-    for (let i = 1; i <= TOTAL; i++) {
+    var score = 0;
+    for (var i = 1; i <= TOTAL; i++) {
       if (answers[i] && answers[i].qualifies) score++;
     }
 
-    // Hide questions, show results
-    questionsWrap.style.display = 'none';
-    progressWrap.style.display  = 'none';
-    resultScreen.classList.add('visible');
+    document.getElementById('questionsWrap').style.display = 'none';
+    document.getElementById('progressWrap').style.display  = 'none';
+    document.getElementById('resultScreen').classList.add('visible');
 
     if (score >= 5) {
       document.getElementById('resultQualify').style.display = 'block';
@@ -941,43 +934,45 @@
       document.getElementById('scoreNumN').textContent = score;
     }
 
-    // Build summary
-    const list = document.getElementById('summaryList');
+    // Build summary list
+    var list = document.getElementById('summaryList');
     list.innerHTML = '';
-    for (let i = 1; i <= TOTAL; i++) {
-      const a = answers[i];
+    for (var i = 1; i <= TOTAL; i++) {
+      var a = answers[i];
       if (!a) continue;
-      const item = document.createElement('div');
+      var dot   = a.qualifies ? 'yes' : 'no';
+      var item  = document.createElement('div');
       item.className = 'summary-item';
-      item.innerHTML = `
-        <div class="summary-dot ${a.qualifies ? 'yes' : 'no'}"></div>
-        <div><strong style="font-weight:500; color: var(--charcoal);">${qLabels[i-1]}</strong><br>${a.text}</div>
-      `;
+      item.innerHTML =
+        '<div class="summary-dot ' + dot + '"></div>' +
+        '<div><strong style="font-weight:500;color:#3a3a3a;">' + qLabels[i-1] + '</strong><br>' + a.text + '</div>';
       list.appendChild(item);
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   }
 
+  // ── RETAKE ──
   function retake() {
-    // Reset everything
-    answers  = {};
-    current  = 1;
+    answers = {};
+    current = 1;
 
-    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-    document.querySelectorAll('.btn-next').forEach(b => b.classList.remove('enabled'));
+    var btns = document.querySelectorAll('.option-btn');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('selected');
+
+    var nextBtns = document.querySelectorAll('.btn-next');
+    for (var i = 0; i < nextBtns.length; i++) nextBtns[i].classList.remove('enabled');
 
     document.getElementById('resultQualify').style.display = 'none';
     document.getElementById('resultNurture').style.display = 'none';
-    resultScreen.classList.remove('visible');
-
-    questionsWrap.style.display = 'block';
-    progressWrap.style.display  = 'flex';
+    document.getElementById('resultScreen').classList.remove('visible');
+    document.getElementById('questionsWrap').style.display = 'block';
+    document.getElementById('progressWrap').style.display  = 'flex';
 
     goToSlide(1);
   }
 
-  // Init
+  // ── INIT ──
   updateProgress();
 </script>
 
