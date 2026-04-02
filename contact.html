@@ -257,6 +257,7 @@
   <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
   <div class="nav-right">
     <ul class="nav-links">
+      <li><a href="why-bild.html">Why BILD</a></li>
       <li><a href="index.html#pillars">The Pillars</a></li>
       <li><a href="assessment.html">Assessment</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -332,14 +333,10 @@
     </div>
 
     <!-- THE FORM -->
-    <!-- 
-      SETUP: Replace YOUR_FORMSPREE_ID below with your actual Formspree endpoint.
-      1. Go to https://formspree.io and create a free account
-      2. Create a new form — it gives you an ID like "xpwzabcd"
-      3. Replace YOUR_FORMSPREE_ID with that ID
-      The form will then email submissions directly to jeff@bildyourlife.com
-    -->
-    <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <input type="hidden" name="access_key" value="6dfc3202-ad7d-4a99-98c2-f668d8154641" />
+      <input type="hidden" name="subject" value="New BILD Contact Form Submission" />
+      <input type="hidden" name="from_name" value="BILD Website" />
 
       <div class="form-row">
         <div class="form-group" id="group-first">
@@ -482,13 +479,15 @@
         headers: { 'Accept': 'application/json' }
       });
 
-      if (res.ok) {
+      const json = await res.json();
+
+      if (json.success) {
         form.style.display = 'none';
         successDiv.style.display = 'block';
       } else {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send My Message';
-        alert('Something went wrong. Please try again or email jeff@bildyourlife.com directly.');
+        alert('Something went wrong. Please try again or email bildindustries@gmail.com directly.');
       }
     } catch (err) {
       submitBtn.disabled = false;
