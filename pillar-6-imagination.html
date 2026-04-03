@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pillar 6 — Imagination | BILD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root { --pillar-color: var(--steel-blue); --next-color: var(--coral); }
+    .pillar-hero {
+      --hero-grad:
+        radial-gradient(ellipse 70% 55% at 15% 85%, rgba(91,127,166,0.16) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 35% at 82% 20%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    }
+
+    /* ── SCRIPTURE BLOCK ── */
+    .scripture {
+      background: var(--dark);
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2.5rem;
+      margin: 3rem 0;
+    }
+    .scripture p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--cream);
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+    .scripture cite {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ── FALSE CEILING TABLE ── */
+    .ceiling-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      margin: 2.5rem 0;
+      background: #e5dfd4;
+    }
+    .ceiling-cell {
+      background: white;
+      padding: 1.75rem;
+    }
+    .ceiling-cell.dark {
+      background: var(--dark2);
+    }
+    .ceiling-cell-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .ceiling-cell-label.shrunk { color: var(--coral); }
+    .ceiling-cell-label.expanded { color: var(--steel-blue); }
+    .ceiling-cell ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .ceiling-cell ul li {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.6;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .ceiling-cell ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+    }
+    .ceiling-cell ul li { color: #666; }
+    .ceiling-cell.dark ul li { color: rgba(245,240,232,0.55); }
+    .ceiling-cell.dark ul li::before { color: var(--steel-blue); }
+    .ceiling-cell ul li::before { color: var(--coral); }
+
+    /* ── THREE ARENAS ── */
+    .arena-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin: 2.5rem 0;
+    }
+    .arena-card {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      background: white;
+      border: 1px solid #e5dfd4;
+      border-bottom: none;
+      overflow: hidden;
+    }
+    .arena-card:last-child { border-bottom: 1px solid #e5dfd4; }
+    .arena-num {
+      background: var(--steel-blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+    .arena-body { padding: 1.5rem 1.75rem; }
+    .arena-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .arena-body p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #777;
+    }
+
+    /* ── PRACTICE STEPS ── */
+    .practice-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin: 2.5rem 0;
+    }
+    .practice-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      background: white;
+      border: 1px solid #e5dfd4;
+      border-bottom: none;
+    }
+    .practice-step:last-child { border-bottom: 1px solid #e5dfd4; }
+    .ps-num {
+      background: var(--steel-blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+    .ps-body { padding: 1.25rem 1.5rem; }
+    .ps-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .ps-body p {
+      font-size: 0.87rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: #777;
+    }
+
+    /* ── VISION BUILDER ── */
+    .vision-builder {
+      margin: 2.5rem 0;
+    }
+    .vb-arena {
+      background: white;
+      border: 1px solid #e5dfd4;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+    .vb-arena-header {
+      background: var(--steel-blue);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .vb-arena-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.35);
+      line-height: 1;
+    }
+    .vb-arena-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: white;
+    }
+    .vb-arena-body { padding: 1.5rem; }
+    .vb-field {
+      margin-bottom: 1rem;
+    }
+    .vb-field:last-child { margin-bottom: 0; }
+    .vb-field label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #bbb;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .vb-field textarea {
+      width: 100%;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--off-white);
+      border: 1px solid #ddd;
+      padding: 0.75rem 1rem;
+      outline: none;
+      resize: vertical;
+      min-height: 75px;
+      line-height: 1.65;
+      transition: border-color 0.2s;
+    }
+    .vb-field textarea:focus { border-color: var(--steel-blue); }
+    .vb-field textarea::placeholder { color: #ccc; }
+
+    .vision-commit {
+      background: var(--dark);
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+    .vision-commit h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .vision-commit p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.55);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .vision-commit-input {
+      width: 100%;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--cream);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.9rem 1.2rem;
+      outline: none;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .vision-commit-input:focus { border-color: var(--gold); }
+    .vision-commit-btn {
+      background: var(--steel-blue);
+      color: white;
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .vision-commit-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+    .vision-commit-confirm {
+      display: none;
+      margin-top: 1.25rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 680px) {
+      .ceiling-grid { grid-template-columns: 1fr; }
+      .arena-card { grid-template-columns: 1fr; }
+      .arena-num { min-height: 44px; }
+      .practice-step { grid-template-columns: 1fr; }
+      .ps-num { min-height: 44px; }
+      .vision-commit { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="why-bild.html">Why BILD</a></li>
+      <li><a href="index.html#pillars">The Pillars</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="contact.html">Work With Jeff</a>
+  </div>
+</nav>
+
+<section class="pillar-hero">
+  <div class="hero-inner">
+    <div class="pillar-badge">Pillar 06 of 06</div>
+    <h1>Imagination</h1>
+    <p class="pillar-tagline">"Now faith is the substance of things hoped for, the evidence of things not seen." — Hebrews 11:1</p>
+  </div>
+</section>
+
+<div class="tab-nav" role="tablist">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="ceiling">The False Ceiling</button>
+  <button class="tab-btn" data-tab="practice">The Practice</button>
+  <button class="tab-btn" data-tab="arenas">Three Arenas</button>
+  <button class="tab-btn" data-tab="builder">Vision Builder</button>
+</div>
+
+<!-- ── OVERVIEW ── -->
+<div class="content-area visible" id="tab-overview">
+  <span class="section-label">Pillar Six</span>
+  <h2 class="content-title">The ceiling is gone.<br>Now — what do you see?</h2>
+
+  <p class="lead">The five pillars before this one did something real. You named what was keeping you stuck. You built a private foundation. You learned to co-create with God instead of forcing things alone. You excavated your purpose. You set down weight you'd been carrying for years.</p>
+
+  <p class="lead">And now you're standing in a room with the ceiling removed. The question is: <strong>what do you build toward?</strong></p>
+
+  <p class="lead">Most men at this point do something surprising. They stop imagining. Not because they can't — but because life has taught them that imagining things and not getting them hurts. So they trade vision for management. They manage their marriage instead of dreaming about it. They manage their business instead of seeing what it could become. They manage their faith instead of pursuing what God might actually be inviting them into.</p>
+
+  <div class="callout" style="border-left-color: var(--steel-blue);">
+    <p>Imagination is not wishful thinking. It is a faculty — like a muscle — that atrophies when life gets hard and anxiety gets loud. The man who reclaims it doesn't become a dreamer. He becomes a builder who can see what he's building before it exists.</p>
+  </div>
+
+  <p class="lead">When Jeff was 35 years old, he went through a powerful exercise and envisioned exactly what he wanted by the time he turned 40: a home with land, palm trees, space around him, in the hills of Temecula. He wrote it down. He saw it clearly. Then life got busy, and he told himself the home he had was enough.</p>
+
+  <p class="lead">A few months after he turned 40, he was visiting a customer to discuss a pool design. The man had land. It was beautiful. And something struck Jeff — <em>I want that. Now.</em> He told his wife that evening. <strong>Within three weeks they found their current home.</strong> The vision he had set five years earlier had been quietly working the whole time — he just hadn't been paying attention.</p>
+
+  <p class="lead">That is the power of a clear, specific, embodied vision. It doesn't disappear when you stop thinking about it. It keeps orienting you — below the surface — until the moment arrives.</p>
+
+  <div class="scripture">
+    <p>"Now faith is the substance of things hoped for, the evidence of things not seen."</p>
+    <cite>Hebrews 11:1</cite>
+  </div>
+
+  <p class="lead">Faith and imagination are the same act viewed from different angles. Faith is what you believe before you can see it. Imagination is how you practice seeing it before it arrives. A man without imagination cannot fully exercise faith — because he has no picture of what he's believing toward.</p>
+
+  <p class="lead"><strong>This pillar is about reclaiming that picture.</strong> Not as an escape from reality — but as the discipline of building it before it exists.</p>
+</div>
+
+<!-- ── THE FALSE CEILING ── -->
+<div class="content-area" id="tab-ceiling">
+  <span class="section-label">Why Imagination Shrinks</span>
+  <h2 class="content-title">Anxiety is the enemy<br>of vision.</h2>
+
+  <p class="lead">There is a reason high-achieving men struggle with imagination more than most people expect. It is not laziness. It is not lack of faith. It is the specific weight that comes from carrying a business, a family, a reputation — and watching the gap between what you hoped for and what is actually happening widen in real time.</p>
+
+  <p class="lead">Anxiety shrinks the imagination. It pulls a man's attention from the future into the present problem — and keeps it there. The more sophisticated the man, the more convincing the case his mind makes for why imagining something better is naive. He calls it realism. He calls it responsibility. What it actually is, is fear wearing a suit.</p>
+
+  <div class="callout" style="border-left-color: var(--coral);">
+    <p>The book Psycho-Cybernetics describes the mind as a servo-mechanism — a goal-seeking system that moves toward whatever target it is given. When anxiety fills that system with worst-case scenarios, the mechanism moves toward them with the same precision it would move toward a clear vision. You are always imagining something. The only question is whether you are choosing what it is.</p>
+  </div>
+
+  <div class="ceiling-grid">
+    <div class="ceiling-cell">
+      <div class="ceiling-cell-label shrunk">When Imagination Shrinks</div>
+      <ul>
+        <li>Worry about what could go wrong dominates mental space</li>
+        <li>Plans replace vision — managing replaces dreaming</li>
+        <li>The future feels like a threat to be managed</li>
+        <li>Small thinking feels like wisdom</li>
+        <li>Faith becomes doctrine instead of living expectation</li>
+        <li>Relationships feel like obligations, not opportunities</li>
+      </ul>
+    </div>
+    <div class="ceiling-cell dark">
+      <div class="ceiling-cell-label expanded">When Imagination is Reclaimed</div>
+      <ul>
+        <li>A clear picture of the future pulls daily decisions into alignment</li>
+        <li>Vision replaces management — building replaces maintaining</li>
+        <li>The future feels like something being constructed</li>
+        <li>Bold thinking feels like obedience</li>
+        <li>Faith becomes a living expectation of specific things</li>
+        <li>Relationships become arenas for transformation</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="lead">The man who wrote himself a $500,000 check and put it on his desk wasn't being naive. He was giving his mind a target. He was practicing what the book of Hebrews calls faith — the substance of things hoped for. He was using imagination the way it was designed to be used: as a preview of coming attractions, not a fantasy about things that will never happen.</p>
+
+  <p class="lead"><strong>You have used imagination powerfully before.</strong> The question this pillar asks is: why did you stop? And what would change if you started again — with everything you now know?</p>
+</div>
+
+<!-- ── THE PRACTICE ── -->
+<div class="content-area" id="tab-practice">
+  <span class="section-label">Daily Discipline</span>
+  <h2 class="content-title">Imagination is a practice,<br>not an event.</h2>
+
+  <p class="lead">The vision board on the wall is not the practice. The $500,000 check on the desk is not the practice. Those are anchors — reminders of what the practice is pointing toward. The practice itself is daily, specific, embodied scene-building. It is using your mind, with intention, to rehearse the future you are building toward.</p>
+
+  <p class="lead">Psycho-Cybernetics calls this theater of the mind — rehearsing specific scenes in vivid detail before they happen. Athletes use it before competition. Surgeons use it before procedures. And the men who build remarkable lives use it before the day begins — quietly, privately, without anyone watching.</p>
+
+  <div class="callout" style="border-left-color: var(--steel-blue);">
+    <p>Imagine daily. Imagine in detail. Imagine what you want to feel — not just what you want to have. See yourself in specific scenes: the conversation, the moment, the expression on your wife's face, the way your kids look at you. The more specific the scene, the more powerfully the mind orients toward it.</p>
+  </div>
+
+  <div class="practice-steps">
+    <div class="practice-step">
+      <div class="ps-num">1</div>
+      <div class="ps-body">
+        <div class="ps-title">Choose a time and protect it</div>
+        <p>Morning is most powerful — before the day gets loud and the problems arrive. Even five minutes of intentional imagination before you pick up your phone will change the orientation of your entire day.</p>
+      </div>
+    </div>
+    <div class="practice-step">
+      <div class="ps-num">2</div>
+      <div class="ps-body">
+        <div class="ps-title">Pick one specific scene</div>
+        <p>Not a general desire — a specific scene. Not "I want a better marriage" but "I see myself sitting across from my wife at dinner, fully present, watching her laugh." The specificity is what activates the mechanism.</p>
+      </div>
+    </div>
+    <div class="practice-step">
+      <div class="ps-num">3</div>
+      <div class="ps-body">
+        <div class="ps-title">Engage all five senses</div>
+        <p>What do you see? What do you hear? What does it feel like in your body? The richer the scene, the more real it becomes to your nervous system — and the more powerfully it orients your behavior toward it.</p>
+      </div>
+    </div>
+    <div class="practice-step">
+      <div class="ps-num">4</div>
+      <div class="ps-body">
+        <div class="ps-title">Include other people succeeding</div>
+        <p>The most powerful visions are not self-centered. See your wife thriving. See your kids loving their life. See the men you lead growing into who they were made to be. Imagination for others amplifies imagination for yourself.</p>
+      </div>
+    </div>
+    <div class="practice-step">
+      <div class="ps-num">5</div>
+      <div class="ps-body">
+        <div class="ps-title">Present it to God honestly</div>
+        <p>This is not a vision board exercise disconnected from faith. Bring your vision to God the way you bring your plans — honestly, specifically, with open hands. Ask Him to shape it. Ask Him what He sees. Then be still enough to notice what comes back.</p>
+      </div>
+    </div>
+    <div class="practice-step">
+      <div class="ps-num">6</div>
+      <div class="ps-body">
+        <div class="ps-title">Act as if it is already in motion</div>
+        <p>Imagination without corresponding action is fantasy. But action without imagination is grinding. The combination — a clear vision and daily steps toward it — is what moves mountains. After you imagine, ask: what is one thing I can do today that the man in that scene would do?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── THREE ARENAS ── -->
+<div class="content-area" id="tab-arenas">
+  <span class="section-label">Where to Apply It</span>
+  <h2 class="content-title">Three arenas.<br>One practice.</h2>
+
+  <p class="lead">A vision that only covers one area of life will eventually pull the others out of alignment. The man who only imagines business success gets there and finds his marriage is a stranger. The man who only imagines family harmony sometimes loses the drive that provides for them. A true BILD vision covers all three arenas simultaneously — and holds them together.</p>
+
+  <div class="arena-cards">
+    <div class="arena-card">
+      <div class="arena-num">1</div>
+      <div class="arena-body">
+        <div class="arena-title">Family</div>
+        <p>See your marriage at its best — not managed, but alive. See specific moments with your kids: the conversation, the laugh, the look on their face when they know you are fully there. See yourself as the man your family is proud of — not because of what you built, but because of who you became. What does your home feel like when you are fully present in it?</p>
+      </div>
+    </div>
+    <div class="arena-card">
+      <div class="arena-num">2</div>
+      <div class="arena-body">
+        <div class="arena-title">Faith & Purpose</div>
+        <p>See yourself walking in the purpose you excavated in Pillar 4 — not someday, but now. What does it look like to be fully aligned between who you are privately and who you are publicly? See the men you are called to impact. See them transformed. See the ripple of that transformation into their families, their children, their communities. What does your legacy look like when it is fully alive?</p>
+      </div>
+    </div>
+    <div class="arena-card">
+      <div class="arena-num">3</div>
+      <div class="arena-body">
+        <div class="arena-title">Business & Calling</div>
+        <p>See your work thriving — not just in revenue, but in impact. See the people you lead growing. See customers whose lives are genuinely better because of what your business gave them. See yourself going to work because you want to, not because you're running from something. What does it feel like to lead from a place of vision instead of anxiety?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <p>The goal is not three separate visions. It is one integrated life where all three arenas are moving in the same direction — toward the man you were made to be, the family you were given to lead, and the work you were called to do.</p>
+  </div>
+</div>
+
+<!-- ── VISION BUILDER ── -->
+<div class="content-area" id="tab-builder">
+  <span class="section-label">Personal Work</span>
+  <h2 class="content-title">Write what you see.</h2>
+
+  <p class="lead">Don't edit this. Don't be practical. Don't ask whether it's realistic. Just write what you actually see when you let yourself imagine — specifically, in detail, in the present tense as if it is already happening. The man in the scene is you. Write him fully alive.</p>
+
+  <div class="vision-builder">
+
+    <!-- Arena 1: Family -->
+    <div class="vb-arena">
+      <div class="vb-arena-header">
+        <div class="vb-arena-num">01</div>
+        <div class="vb-arena-title">Family</div>
+      </div>
+      <div class="vb-arena-body">
+        <div class="vb-field">
+          <label>What does your marriage look like at its best? Describe a specific scene.</label>
+          <textarea placeholder="I see myself and my wife…"></textarea>
+        </div>
+        <div class="vb-field">
+          <label>What do your kids experience with you that they will carry their whole lives?</label>
+          <textarea placeholder="My kids know that I…"></textarea>
+        </div>
+        <div class="vb-field">
+          <label>What does your home feel like when you are fully present in it?</label>
+          <textarea placeholder="When I walk in the door, the feeling is…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arena 2: Faith & Purpose -->
+    <div class="vb-arena">
+      <div class="vb-arena-header">
+        <div class="vb-arena-num">02</div>
+        <div class="vb-arena-title">Faith & Purpose</div>
+      </div>
+      <div class="vb-arena-body">
+        <div class="vb-field">
+          <label>What does your relationship with God look like when it is fully alive?</label>
+          <textarea placeholder="I walk with God in a way that…"></textarea>
+        </div>
+        <div class="vb-field">
+          <label>Who are you impacting and what does that look like specifically?</label>
+          <textarea placeholder="I see the men I am called to serve…"></textarea>
+        </div>
+        <div class="vb-field">
+          <label>What does your legacy look like when it is fully realized?</label>
+          <textarea placeholder="The mark I leave looks like…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arena 3: Business & Calling -->
+    <div class="vb-arena">
+      <div class="vb-arena-header">
+        <div class="vb-arena-num">03</div>
+        <div class="vb-arena-title">Business & Calling</div>
+      </div>
+      <div class="vb-arena-body">
+        <div class="vb-field">
+          <label>What does your work look like when it is thriving and aligned with purpose?</label>
+          <textarea placeholder="My work feels like…"></textarea>
+        </div>
+        <div class="vb-field">
+          <label>Who are the people around you and how are they growing?</label>
+          <textarea placeholder="The people I lead are…"></textarea>
+        </div>
+        <div class="vb-field">
+          <label>What does it feel like to go to work when you are leading from vision, not anxiety?</label>
+          <textarea placeholder="I show up to my work and I feel…"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="vision-commit">
+    <h3>Your Daily Imagination Commitment</h3>
+    <p>One specific scene. One specific time of day. Written as a commitment to yourself — not a wish, but a practice. The man who imagines daily becomes the man he imagines. Start with one scene and one time. That is enough.</p>
+    <input class="vision-commit-input" type="text" id="visionCommit" placeholder="Every morning I will spend ___ minutes imagining…" />
+    <br>
+    <button class="vision-commit-btn" id="visionBtn" onclick="submitCommitment('visionCommit','visionBtn','visionConfirm')">Commit to the Practice</button>
+    <div class="commit-confirm" id="visionConfirm"></div>
+  </div>
+</div>
+
+<div class="pillar-nav">
+  <a class="pnav-back" href="pillar-5-forgiveness.html">← Pillar 5: Forgiveness</a>
+  <a class="pnav-next" href="contact.html" style="--next-color: var(--gold);">
+    <div class="next-label">Ready to go deeper? →</div>
+    <div class="next-name">Work With Jeff</div>
+  </a>
+</div>
+
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="index.html#pillars">The Pillars</a>
+    <a href="assessment.html">Assessment</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
