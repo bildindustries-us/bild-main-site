@@ -15,10 +15,193 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) {
         target.classList.add('visible');
         // nudge scroll so sticky tab bar stays in view
-        document.querySelector('.tab-nav')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.querySelector('.tab-nav')?.scrollIntoView({ behavior: 'smooth', block: 'nearest'   // ── Mobile hamburger menu ──
+  const nav = document.querySelector('nav');
+  if (nav) {
+    // Build hamburger button
+    const burger = document.createElement('button');
+    burger.className = 'nav-hamburger';
+    burger.setAttribute('aria-label', 'Open menu');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+
+    // Build mobile menu
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    mobileMenu.innerHTML = `
+      <a href="index.html">Home</a>
+      <a href="why-bild.html">Why BILD</a>
+      <a href="index.html#pillars">The Pillars</a>
+      <a href="the-rare-ones.html">The Rare Ones</a>
+      <a href="retreat-los-barriles.html">Retreats</a>
+      <a href="assessment.html">Assessment</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="mobile-cta">Apply Now</a>
+    `;
+
+    // Add to page
+    nav.appendChild(burger);
+    document.body.appendChild(mobileMenu);
+
+    // Toggle open/close
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      burger.classList.toggle('open');
+      if (isOpen) {
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-12px)';
+        setTimeout(() => {
+          mobileMenu.classList.remove('open');
+          mobileMenu.style.opacity = '';
+          mobileMenu.style.transform = '';
+        }, 300);
+      } else {
+        mobileMenu.classList.add('open');
       }
     });
-  });
+
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+  }
+
+});
+      }
+      // ── Mobile hamburger menu ──
+  const nav = document.querySelector('nav');
+  if (nav) {
+    // Build hamburger button
+    const burger = document.createElement('button');
+    burger.className = 'nav-hamburger';
+    burger.setAttribute('aria-label', 'Open menu');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+
+    // Build mobile menu
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    mobileMenu.innerHTML = `
+      <a href="index.html">Home</a>
+      <a href="why-bild.html">Why BILD</a>
+      <a href="index.html#pillars">The Pillars</a>
+      <a href="the-rare-ones.html">The Rare Ones</a>
+      <a href="retreat-los-barriles.html">Retreats</a>
+      <a href="assessment.html">Assessment</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="mobile-cta">Apply Now</a>
+    `;
+
+    // Add to page
+    nav.appendChild(burger);
+    document.body.appendChild(mobileMenu);
+
+    // Toggle open/close
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      burger.classList.toggle('open');
+      if (isOpen) {
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-12px)';
+        setTimeout(() => {
+          mobileMenu.classList.remove('open');
+          mobileMenu.style.opacity = '';
+          mobileMenu.style.transform = '';
+        }, 300);
+      } else {
+        mobileMenu.classList.add('open');
+      }
+    });
+
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+  }
+
+});
+    // ── Mobile hamburger menu ──
+  const nav = document.querySelector('nav');
+  if (nav) {
+    // Build hamburger button
+    const burger = document.createElement('button');
+    burger.className = 'nav-hamburger';
+    burger.setAttribute('aria-label', 'Open menu');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+
+    // Build mobile menu
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    mobileMenu.innerHTML = `
+      <a href="index.html">Home</a>
+      <a href="why-bild.html">Why BILD</a>
+      <a href="index.html#pillars">The Pillars</a>
+      <a href="the-rare-ones.html">The Rare Ones</a>
+      <a href="retreat-los-barriles.html">Retreats</a>
+      <a href="assessment.html">Assessment</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="mobile-cta">Apply Now</a>
+    `;
+
+    // Add to page
+    nav.appendChild(burger);
+    document.body.appendChild(mobileMenu);
+
+    // Toggle open/close
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      burger.classList.toggle('open');
+      if (isOpen) {
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-12px)';
+        setTimeout(() => {
+          mobileMenu.classList.remove('open');
+          mobileMenu.style.opacity = '';
+          mobileMenu.style.transform = '';
+        }, 300);
+      } else {
+        mobileMenu.classList.add('open');
+      }
+    });
+
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+  }
+
+});
 
   // ── Commitment submit ──
   window.submitCommitment = function(inputId, btnId, confirmId) {
@@ -37,5 +220,66 @@ document.addEventListener('DOMContentLoaded', () => {
     confirm.style.display = 'block';
     confirm.textContent = '"' + text + '" — Named. The work begins now.';
   };
+
+  // ── Mobile hamburger menu ──
+  const nav = document.querySelector('nav');
+  if (nav) {
+    // Build hamburger button
+    const burger = document.createElement('button');
+    burger.className = 'nav-hamburger';
+    burger.setAttribute('aria-label', 'Open menu');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+
+    // Build mobile menu
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    mobileMenu.innerHTML = `
+      <a href="index.html">Home</a>
+      <a href="why-bild.html">Why BILD</a>
+      <a href="index.html#pillars">The Pillars</a>
+      <a href="the-rare-ones.html">The Rare Ones</a>
+      <a href="retreat-los-barriles.html">Retreats</a>
+      <a href="assessment.html">Assessment</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="mobile-cta">Apply Now</a>
+    `;
+
+    // Add to page
+    nav.appendChild(burger);
+    document.body.appendChild(mobileMenu);
+
+    // Toggle open/close
+    burger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      burger.classList.toggle('open');
+      if (isOpen) {
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-12px)';
+        setTimeout(() => {
+          mobileMenu.classList.remove('open');
+          mobileMenu.style.opacity = '';
+          mobileMenu.style.transform = '';
+        }, 300);
+      } else {
+        mobileMenu.classList.add('open');
+      }
+    });
+
+    // Close menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+  }
 
 });
