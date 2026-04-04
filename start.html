@@ -755,6 +755,42 @@
 </section>
 
 <!-- ── FOOTER ── */
+
+<!-- ── EMAIL OPT-IN FALLBACK ── -->
+<section style="background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.06); padding: 4rem 6rem; text-align: center;">
+  <span style="font-family:'Barlow Condensed',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:0.32em; text-transform:uppercase; color:var(--coral); display:block; margin-bottom:1rem;">Not ready to take the assessment yet?</span>
+  <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.5rem,2.5vw,2rem); font-weight:700; color:var(--cream); line-height:1.25; margin-bottom:0.75rem;">Get the free <em style='font-style:italic;color:var(--gold);'>7-day BILD course.</em></h2>
+  <p style="font-size:0.95rem; font-weight:300; color:rgba(245,240,232,0.52); max-width:420px; margin:0 auto 2rem; line-height:1.8;">Six pillars. One email per day. The same teaching Jeff uses with the men he coaches — delivered free, directly to your inbox.</p>
+  <form id="optinForm" style="display:flex; gap:0; max-width:420px; margin:0 auto;" onsubmit="submitOptin(event)">
+    <input type="email" id="optin-email" placeholder="Your email address" required
+      style="flex:1; font-family:'Barlow',sans-serif; font-size:0.9rem; font-weight:300; color:#333; background:white; border:none; padding:0.9rem 1.1rem; outline:none;" />
+    <button type="submit"
+      style="background:var(--coral); color:white; border:none; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; padding:0.9rem 1.5rem; cursor:pointer; white-space:nowrap; transition:background 0.2s;"
+      onmouseover="this.style.background='#bf5040'" onmouseout="this.style.background='var(--coral)'">
+      Send It →
+    </button>
+  </form>
+  <div id="optin-confirm" style="display:none; margin-top:1rem; font-family:'Playfair Display',serif; font-style:italic; color:var(--gold); font-size:0.95rem;">
+    Check your inbox — Day 1 is on its way.
+  </div>
+  <p style="margin-top:0.75rem; font-size:0.68rem; font-weight:300; color:rgba(245,240,232,0.22);">No spam. Unsubscribe anytime.</p>
+</section>
+
+<script>
+function submitOptin(e) {
+  e.preventDefault();
+  var email = document.getElementById('optin-email').value.trim();
+  if (!email) return;
+  fetch('https://services.leadconnectorhq.com/hooks/cVzxbnlqCvF3ZNpsRw04/webhook-trigger/8aad5324-fe31-4463-910b-156122d1ffc1', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, source: 'BILD Start Page Opt-In', result_type: 'Start Here' })
+  }).catch(function(){});
+  document.getElementById('optinForm').style.display = 'none';
+  document.getElementById('optin-confirm').style.display = 'block';
+}
+</script>
+
 <footer>
   <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
   <div class="footer-links">

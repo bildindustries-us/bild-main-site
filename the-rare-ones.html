@@ -566,7 +566,7 @@
       <li><a href="assessment.html">Assessment</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="contact.html">Work With Jeff</a>
+    <a class="nav-cta" href="apply.html">Apply Now</a>
   </div>
 </nav>
 
@@ -817,6 +817,44 @@
     <a href="https://calendly.com/jeffreyboyer/30min" target="_blank" class="discovery-link">Schedule a Free Discovery Call →</a>
   </div>
 </section>
+
+
+<!-- ── INLINE EMAIL CAPTURE ── -->
+<section style="background:var(--off-white); border-top:1px solid #e5dfd4; padding:4rem 2rem; text-align:center;">
+  <div style="max-width:560px; margin:0 auto;">
+    <span style="font-family:'Barlow Condensed',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:0.32em; text-transform:uppercase; color:var(--coral); display:block; margin-bottom:1rem;">Not ready to apply yet?</span>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,1.9rem); font-weight:700; color:var(--dark); line-height:1.25; margin-bottom:0.75rem;">Start with the free <em style='font-style:italic;color:var(--gold);'>7-day course.</em></h2>
+    <p style="font-size:0.93rem; font-weight:300; color:#777; max-width:420px; margin:0 auto 1.75rem; line-height:1.8;">Six pillars delivered daily to your inbox. When you're ready to go further, The Rare Ones will be here.</p>
+    <form id="rareOptinForm" style="display:flex; gap:0; max-width:420px; margin:0 auto;" onsubmit="submitRareOptin(event)">
+      <input type="email" id="rare-optin-email" placeholder="Your email address" required
+        style="flex:1; font-family:'Barlow',sans-serif; font-size:0.9rem; font-weight:300; color:#333; background:white; border:1px solid #ddd; border-right:none; padding:0.9rem 1.1rem; outline:none;" />
+      <button type="submit"
+        style="background:var(--coral); color:white; border:none; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; padding:0.9rem 1.5rem; cursor:pointer; white-space:nowrap; transition:background 0.2s;"
+        onmouseover="this.style.background='#bf5040'" onmouseout="this.style.background='var(--coral)'">
+        Send It →
+      </button>
+    </form>
+    <div id="rare-optin-confirm" style="display:none; margin-top:1rem; font-family:'Playfair Display',serif; font-style:italic; color:var(--gold); font-size:0.95rem;">
+      Day 1 is on its way. See you in the inbox.
+    </div>
+    <p style="margin-top:0.75rem; font-size:0.68rem; font-weight:300; color:#bbb;">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<script>
+function submitRareOptin(e) {
+  e.preventDefault();
+  var email = document.getElementById('rare-optin-email').value.trim();
+  if (!email) return;
+  fetch('https://services.leadconnectorhq.com/hooks/cVzxbnlqCvF3ZNpsRw04/webhook-trigger/8aad5324-fe31-4463-910b-156122d1ffc1', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, source: 'The Rare Ones Page Opt-In', result_type: 'Start Here' })
+  }).catch(function(){});
+  document.getElementById('rareOptinForm').style.display = 'none';
+  document.getElementById('rare-optin-confirm').style.display = 'block';
+}
+</script>
 
 <footer class="site-footer">
   <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
