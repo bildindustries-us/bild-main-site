@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Rare Ones — BILD Men's Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ── HERO ── */
+    .ro-hero {
+      background: var(--dark);
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 9rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .ro-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 0% 100%, rgba(201,168,76,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 0%, rgba(212,97,74,0.07) 0%, transparent 60%);
+    }
+    .ro-hero .hero-inner { position: relative; max-width: 860px; }
+    .ro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .ro-badge::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .ro-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 0.93;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .ro-hero h1 em { font-style: italic; color: var(--gold); }
+    .ro-hero .hero-deck {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      font-weight: 300;
+      color: rgba(245,240,232,0.6);
+      max-width: 580px;
+      line-height: 1.82;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.2rem;
+    }
+
+    /* ── MANIFESTO BAND ── */
+    .manifesto-band {
+      background: var(--gold);
+      padding: 1.4rem 3rem;
+    }
+    .manifesto-band p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.8rem, 1.8vw, 1rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-align: center;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .ro-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── MANIFESTO SECTION ── */
+    .manifesto-section {
+      padding: 6rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .manifesto-section .section-label { color: var(--gold); }
+    .manifesto-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+    .manifesto-section h2 em { font-style: italic; color: var(--gold); }
+    .manifesto-section .lead { font-size: 1.05rem; font-weight: 300; line-height: 1.95; color: #585858; margin-bottom: 1.5rem; }
+    .manifesto-section .lead strong { color: var(--charcoal); font-weight: 600; }
+
+    /* ── SCRIPTURE ── */
+    .scripture {
+      background: var(--dark);
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2.5rem;
+      margin: 3rem 0;
+    }
+    .scripture p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--cream);
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+    .scripture cite {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ── THE CALL ── */
+    .the-call {
+      background: var(--dark);
+      padding: 5rem 2rem;
+    }
+    .the-call-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .the-call .section-label { color: var(--gold); }
+    .the-call h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+    .the-call h2 em { font-style: italic; color: var(--gold); }
+    .the-call .lead { font-size: 1.05rem; font-weight: 300; line-height: 1.95; color: rgba(245,240,232,0.62); margin-bottom: 1.5rem; }
+    .the-call .lead strong { color: var(--cream); font-weight: 600; }
+
+    .call-pull {
+      border-left: 3px solid var(--coral);
+      padding: 1.75rem 2rem;
+      margin: 3rem 0;
+      background: rgba(212,97,74,0.08);
+    }
+    .call-pull p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    /* ── WHAT MAKES IT RARE ── */
+    .rare-section {
+      padding: 6rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .rare-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 3rem;
+    }
+    .rare-section h2 em { font-style: italic; color: var(--gold); }
+
+    .rare-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-bottom: 3rem;
+    }
+    .rare-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      background: white;
+      border: 1px solid #e5dfd4;
+      border-bottom: none;
+      overflow: hidden;
+    }
+    .rare-item:last-child { border-bottom: 1px solid #e5dfd4; }
+    .ri-icon {
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .ri-body { padding: 1.5rem 1.75rem; }
+    .ri-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .ri-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: #666;
+    }
+    .ri-desc strong { color: var(--charcoal); font-weight: 600; }
+
+    /* ── THE WEEKLY RHYTHM ── */
+    .rhythm-section {
+      background: var(--dark);
+      padding: 5rem 2rem;
+    }
+    .rhythm-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .rhythm-section .section-label { color: var(--gold); }
+    .rhythm-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 3rem;
+    }
+    .rhythm-section h2 em { font-style: italic; color: var(--gold); }
+
+    .rhythm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 3rem;
+    }
+    .rhythm-cell {
+      background: var(--dark2);
+      padding: 2rem;
+    }
+    .rc-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .rc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .rc-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.52);
+      line-height: 1.75;
+    }
+
+    /* ── BUDDY QUESTIONS ── */
+    .buddy-section {
+      padding: 6rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .buddy-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .buddy-section h2 em { font-style: italic; color: var(--gold); }
+    .buddy-section > .lead {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+
+    .buddy-questions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .bq-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.25rem 1.5rem;
+      background: white;
+      border: 1px solid #e5dfd4;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .bq-item:hover { border-color: var(--gold); transform: translateX(4px); }
+    .bq-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .bq-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.58;
+    }
+
+    .scripture-small {
+      background: var(--off-white);
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+    }
+    .scripture-small p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+    .scripture-small cite {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    /* ── NOT FOR YOU ── */
+    .not-for-you {
+      background: var(--dark);
+      padding: 5rem 2rem;
+    }
+    .nfy-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: rgba(255,255,255,0.06);
+    }
+    .nfy-col {
+      background: var(--dark2);
+      padding: 2.5rem 2rem;
+    }
+    .nfy-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .nfy-label.no { color: var(--coral); }
+    .nfy-label.yes { color: var(--teal); }
+    .nfy-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .nfy-list li {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(245,240,232,0.55);
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .nfy-list li::before {
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .nfy-col.no .nfy-list li::before { content: '✗'; color: var(--coral); }
+    .nfy-col.yes .nfy-list li::before { content: '✓'; color: var(--teal); }
+
+    /* ── PRICE & JOIN ── */
+    .join-section {
+      padding: 6rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .price-card {
+      border: 1px solid #e5dfd4;
+      background: white;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+    .price-header {
+      background: var(--dark);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .price-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .price-name em { font-style: italic; color: var(--gold); }
+    .price-amount {
+      text-align: right;
+    }
+    .price-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .price-per {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.38);
+    }
+    .price-body {
+      padding: 2rem 2.5rem;
+    }
+    .price-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .price-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.6;
+    }
+    .price-includes li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.55rem;
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+    .price-includes li strong { color: var(--charcoal); font-weight: 600; }
+
+    .join-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--coral);
+      color: white;
+      padding: 1.1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .join-btn:hover { background: #bf5040; transform: translateY(-2px); }
+
+    .join-note {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: #aaa;
+      text-align: center;
+      margin-top: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .discovery-block {
+      background: var(--dark);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .discovery-block p {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.55);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .discovery-block p strong { color: var(--cream); font-weight: 600; }
+    .discovery-link {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border: 1px solid rgba(245,240,232,0.2);
+      color: rgba(245,240,232,0.7);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .discovery-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    @media (max-width: 680px) {
+      .ro-hero { padding: 8rem 1.5rem 4rem; }
+      .manifesto-band { padding: 1.2rem 1.5rem; }
+      .manifesto-section, .rare-section, .buddy-section, .join-section { padding: 4rem 1.25rem; }
+      .rhythm-grid { grid-template-columns: 1fr; }
+      .nfy-inner { grid-template-columns: 1fr; }
+      .rare-item { grid-template-columns: 1fr; }
+      .ri-icon { min-height: 44px; }
+      .price-header { flex-direction: column; align-items: flex-start; }
+      .price-body { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="why-bild.html">Why BILD</a></li>
+      <li><a href="index.html#pillars">The Pillars</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="contact.html">Work With Jeff</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ro-hero">
+  <div class="hero-inner">
+    <div class="ro-badge">BILD Men's Group</div>
+    <h1>The<br><em>Rare Ones.</em></h1>
+    <p class="hero-deck">A brotherhood of men who have stopped performing and started building — their faith, their marriages, their legacy — one honest week at a time.</p>
+  </div>
+</section>
+
+<div class="manifesto-band">
+  <p>The world needs rare men. This is where they find each other.</p>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto-section">
+  <span class="section-label">Why This Exists</span>
+  <h2>The world has never seen<br>such darkness. And men have<br>never been more <em>needed.</em></h2>
+
+  <p class="lead">We are living in a moment that demands something rare. The confusion is real. The adversity is real. The pull toward distraction, isolation, and the numbing of everything that matters — it is more powerful than it has ever been.</p>
+
+  <p class="lead">And in the middle of all of it, too many men are hiding. Not because they are weak — but because no one ever showed them what it looks like to step into the spiritual side of life, where true purpose gets revealed. Where the Holy Spirit guides a man toward meaningful, purposeful living. Where the gap between who he is and who he was made to be finally begins to close.</p>
+
+  <div class="scripture">
+    <p>"The spirit itself beareth witness with our spirit, that we are the children of God: And if children, then heirs; heirs of God, and joint-heirs with Christ."</p>
+    <cite>Romans 8:16–17</cite>
+  </div>
+
+  <p class="lead">A man who finds his spirit — who is guided by the Holy Spirit toward his actual purpose — does not just change his own life. <strong>He changes his marriage. He changes his children. He changes the people around him.</strong> The ripple of one man becoming who he was made to be touches generations.</p>
+
+  <p class="lead">The Rare Ones exists because the world needs that man. And that man needs a room full of others who are walking the same path — honestly, daily, without pretending they have it figured out.</p>
+</section>
+
+<!-- THE CALL -->
+<section class="the-call">
+  <div class="the-call-inner">
+    <span class="section-label">The Call</span>
+    <h2>The Rare Ones must<br>step up <em>now.</em></h2>
+
+    <p class="lead">Most men are not living from their spirit. They are living from their wounds, their fears, their false power moves, and the accumulated weight of a life built trying to prove they were enough. They go to church. They provide. They show up. And they are desperate on the inside — running patterns that were set in place decades ago, wondering why nothing feels like enough.</p>
+
+    <p class="lead">The Rare Ones are different. Not because they have arrived — but because they have decided to stop hiding. They have decided that the spiritual side of life is not a Sunday morning event but a daily pursuit. That being guided by God is not a feeling they wait for but a practice they build.</p>
+
+    <div class="call-pull">
+      <p>"We want men to find their spirits and be guided by the Holy Spirit toward meaningful, purposeful living. This is the way — and we must be a beacon of light where there is so much darkness."</p>
+    </div>
+
+    <p class="lead">The Rare Ones must lead themselves first. Then their marriages. Then their children. Then their communities. This is not ambition — it is calling. And the men who answer it become the kind of fathers, husbands, and leaders that the world is desperately waiting for.</p>
+
+    <p class="lead"><strong>The room you are about to enter is not for every man. It is for the ones who are ready to step up.</strong></p>
+  </div>
+</section>
+
+<!-- WHAT MAKES IT RARE -->
+<section class="rare-section">
+  <span class="section-label">The Experience</span>
+  <h2>What makes this room<br><em>different.</em></h2>
+
+  <div class="rare-items">
+    <div class="rare-item">
+      <div class="ri-icon">🔥</div>
+      <div class="ri-body">
+        <div class="ri-title">No Hiding Allowed</div>
+        <p class="ri-desc">This is not a place to observe. It is a place to open up and be real. The men who get the most out of this group are the ones who bring their actual lives — not the polished version, but what is really happening. <strong>The room holds what you bring to it.</strong></p>
+      </div>
+    </div>
+    <div class="rare-item">
+      <div class="ri-icon">📖</div>
+      <div class="ri-body">
+        <div class="ri-title">Biweekly Zoom Calls with Jeff</div>
+        <p class="ri-desc">Every two weeks, the group meets live — 60 to 90 minutes. Jeff brings a specific teaching from inside the Six Pillars — not a surface overview, but a deep dive into what matters most in that pillar right now. Then the room opens. Men share what has shifted. Men share what they are still carrying. The energy in these calls is unlike anything most men have experienced.</p>
+      </div>
+    </div>
+    <div class="rare-item">
+      <div class="ri-icon">✉️</div>
+      <div class="ri-body">
+        <div class="ri-title">Pre-Call Email — "Has Something Shifted?"</div>
+        <p class="ri-desc">Before every Zoom, members receive an email with one question: <em>Has something shifted since we last met?</em> This primes the room. Men come prepared to share something real — a win, a struggle, a moment of clarity. The call becomes a place to celebrate movement and speak honestly about what is still stuck.</p>
+      </div>
+    </div>
+    <div class="rare-item">
+      <div class="ri-icon">🤝</div>
+      <div class="ri-body">
+        <div class="ri-title">The Buddy System</div>
+        <p class="ri-desc">Every man is paired with another man whose journey resonates with his. Buddies check in weekly — not with pressure, but with the five questions that reveal whether you are actually doing the work. <strong>This is the accountability that makes the difference between a man who talks about change and a man who actually changes.</strong></p>
+      </div>
+    </div>
+    <div class="rare-item">
+      <div class="ri-icon">📋</div>
+      <div class="ri-body">
+        <div class="ri-title">Weekly Assignments</div>
+        <p class="ri-desc">Each week, members receive a specific action tied to the current pillar focus — something to practice in their marriage, with their kids, in their faith, or in their work. Not theory. Something to actually do. Small, consistent, specific. The kind of thing that, done daily for 90 days, makes a man unrecognizable to himself.</p>
+      </div>
+    </div>
+    <div class="rare-item">
+      <div class="ri-icon">⚡</div>
+      <div class="ri-body">
+        <div class="ri-title">The Energy of the Room</div>
+        <p class="ri-desc">You become who you are around. When you are in a room with men who are doing the work — honestly, daily, without pretending — something shifts in what you believe is possible for your own life. <strong>The men in this group will leverage your life to places you never imagined simply by showing you what is real.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY RHYTHM -->
+<section class="rhythm-section">
+  <div class="rhythm-inner">
+    <span class="section-label">The Weekly Rhythm</span>
+    <h2>Small and simple things.<br><em>Great things brought to pass.</em></h2>
+
+    <div class="rhythm-grid">
+      <div class="rhythm-cell">
+        <span class="rc-label">Every Week</span>
+        <div class="rc-title">Weekly Assignment</div>
+        <p class="rc-desc">A specific action in one of five arenas: your marriage, your kids, your faith, your work, or your inner healing. Not a reading. Something to do. Something to practice. Something to bring back to the group.</p>
+      </div>
+      <div class="rhythm-cell">
+        <span class="rc-label">Every Week</span>
+        <div class="rc-title">Buddy Check-In</div>
+        <p class="rc-desc">Your buddy receives your five weekly answers. He reads them. He asks about them. He holds you to what you said you would do. Not with judgment — with the kind of honest care that only comes from a man who is doing the same work himself.</p>
+      </div>
+      <div class="rhythm-cell">
+        <span class="rc-label">Every Two Weeks</span>
+        <div class="rc-title">Pre-Call Email</div>
+        <p class="rc-desc">"Has something shifted?" One question. Your honest answer becomes the foundation for what you bring to the Zoom call. The men who come prepared to share something real get the most out of the room.</p>
+      </div>
+      <div class="rhythm-cell">
+        <span class="rc-label">Every Two Weeks</span>
+        <div class="rc-title">Live Zoom with Jeff</div>
+        <p class="rc-desc">60–90 minutes. Deep teaching on a specific aspect of the Six Pillars. Then the room opens — men share what has moved, what is still stuck, what they are still carrying. Jeff facilitates. The group holds the space. No hiding.</p>
+      </div>
+    </div>
+
+    <div class="scripture" style="margin-top: 0;">
+      <p>"By small and simple things are great things brought to pass."</p>
+      <cite>Alma 37:6</cite>
+    </div>
+  </div>
+</section>
+
+<!-- BUDDY QUESTIONS -->
+<section class="buddy-section">
+  <span class="section-label">The Buddy System</span>
+  <h2>Five questions.<br>One honest <em>answer each.</em></h2>
+
+  <p class="lead">Every week you send your buddy five answers. He sends you his. This is not journaling. This is accountability — the kind that requires another man to see where you actually are, not where you wish you were. These five questions cover every arena that matters.</p>
+
+  <div class="buddy-questions">
+    <div class="bq-item">
+      <div class="bq-num">1</div>
+      <p class="bq-text">"Am I doing the work — daily, privately, without anyone watching?"</p>
+    </div>
+    <div class="bq-item">
+      <div class="bq-num">2</div>
+      <p class="bq-text">"How am I intentionally growing closer to my wife this week — and what specifically did I do?"</p>
+    </div>
+    <div class="bq-item">
+      <div class="bq-num">3</div>
+      <p class="bq-text">"How am I showing up for my kids — am I present with them, or just near them?"</p>
+    </div>
+    <div class="bq-item">
+      <div class="bq-num">4</div>
+      <p class="bq-text">"How am I seeing my work differently — am I building with purpose or grinding from fear?"</p>
+    </div>
+    <div class="bq-item">
+      <div class="bq-num">5</div>
+      <p class="bq-text">"Am I healing — am I seeing my future as bright and full of possibilities, or am I still letting the past run me?"</p>
+    </div>
+  </div>
+
+  <div class="scripture-small">
+    <p>"By small and simple things are great things brought to pass — and small means can confound the wise."</p>
+    <cite>Alma 37:6</cite>
+  </div>
+
+  <p class="lead">The man who answers these five questions honestly every week — and has another man reading his answers — becomes a different man. Not because of grand gestures. Because of <strong>small, consistent faithfulness, repeated week after week, until the compound interest of daily work becomes a transformed life.</strong></p>
+</section>
+
+<!-- NOT FOR YOU -->
+<section class="not-for-you" style="padding: 5rem 2rem;">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <span class="section-label" style="color: var(--gold); display: block; margin-bottom: 1rem;">Be Honest With Yourself</span>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 2.5rem;">This is not for every man.<br><em>It might be for you.</em></h2>
+
+    <div class="nfy-inner">
+      <div class="nfy-col no">
+        <span class="nfy-label no">This is NOT for you if…</span>
+        <ul class="nfy-list">
+          <li>You are looking for a place to observe without participating</li>
+          <li>You want to feel good about yourself without doing the work</li>
+          <li>You are not willing to be honest with another man about where you actually are</li>
+          <li>You think you've already arrived and have little left to learn</li>
+          <li>You want to coast — showing up occasionally, doing the minimum</li>
+          <li>You are not willing to let God into the process</li>
+        </ul>
+      </div>
+      <div class="nfy-col yes">
+        <span class="nfy-label yes">This IS for you if…</span>
+        <ul class="nfy-list">
+          <li>You are done performing and ready to actually do the work</li>
+          <li>You want to be around men who will challenge you to become more</li>
+          <li>You are willing to be honest — about your marriage, your kids, your faith, your failures</li>
+          <li>You believe small daily faithfulness compounds into real transformation</li>
+          <li>You want your life to mean something — not just to you but to the people who need you most</li>
+          <li>You are ready to step up and be the rare man the world is waiting for</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="call-pull" style="margin-top: 2.5rem;">
+      <p>"If you aren't willing to work, we don't need you here. It's a waste of your time and ours. We want the energy to flow — and we want this group gaining traction, not dragging weight."</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join-section">
+  <span class="section-label">Join the Brotherhood</span>
+  <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--dark); line-height: 1.2; margin-bottom: 2.5rem;">What's included — and<br>what it <em>costs.</em></h2>
+
+  <div class="price-card">
+    <div class="price-header">
+      <div class="price-name">The <em>Rare Ones</em><br>Men's Group</div>
+      <div class="price-amount">
+        <div class="price-num">$197</div>
+        <div class="price-per">per month</div>
+      </div>
+    </div>
+    <div class="price-body">
+      <ul class="price-includes">
+        <li><strong>Biweekly live Zoom calls with Jeff</strong> — 60 to 90 minutes of deep teaching and honest conversation</li>
+        <li><strong>Pre-call email</strong> — "Has something shifted?" to prepare you for the room</li>
+        <li><strong>Weekly assignments</strong> — specific actions in your marriage, your kids, your faith, your work, and your healing</li>
+        <li><strong>Buddy system</strong> — paired with another man who reads your five weekly answers and holds you to them</li>
+        <li><strong>Access to the full BILD Six Pillar curriculum</strong> — taught progressively inside the group</li>
+        <li><strong>A room of rare men</strong> — selected, serious, doing the work</li>
+        <li><strong>Priority access</strong> to BILD retreats and events as they become available</li>
+      </ul>
+      <a href="contact.html" class="join-btn">Apply to Join The Rare Ones →</a>
+      <p class="join-note">Membership is selective. Not every application is accepted. We will reach out within 2 business days.</p>
+    </div>
+  </div>
+
+  <div class="discovery-block">
+    <p><strong>Not sure if this is the right fit?</strong> Start with a free 30-minute discovery call. No pitch, no pressure — just an honest conversation about where you are and whether The Rare Ones is the right next step.</p>
+    <a href="https://calendly.com/jeffreyboyer/30min" target="_blank" class="discovery-link">Schedule a Free Discovery Call →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="https://jeff-boyer.com" target="_blank">jeff-boyer.com</a>
+    <a href="index.html#pillars">The Pillars</a>
+    <a href="assessment.html">Assessment</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
