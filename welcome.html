@@ -273,9 +273,42 @@
     <a href="the-rare-ones.html">The Rare Ones</a>
     <a href="contact.html">Contact</a>
   </div>
+  <div class="footer-links" style="margin-top:0.5rem;"><a href="members.html" style="color:rgba(245,240,232,0.18); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(245,240,232,0.18)'">Member Login</a></div>
   <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
 </footer>
 
 <script src="script.js"></script>
+<script>
+// ── FIRE GHL WEBHOOK ON WELCOME PAGE LOAD ──
+// This fires when someone lands here after paying via Stripe
+// It creates them as a contact in GHL and starts the onboarding sequence
+(function() {
+  // Only fire once per session so refreshing doesn't duplicate
+  if (sessionStorage.getItem('ro_welcome_fired')) return;
+  sessionStorage.setItem('ro_welcome_fired', '1');
+
+  // Get name/email from URL params if Stripe passes them
+  // OR fire with source tag so Jeff knows they paid
+  var params = new URLSearchParams(window.location.search);
+  var email = params.get('email') || '';
+  var first = params.get('first_name') || '';
+  var last  = params.get('last_name') || '';
+
+  var payload = {
+    email:       email,
+    first_name:  first,
+    last_name:   last,
+    source:      'Rare Ones Payment - Welcome Page',
+    result_type: 'Rare Ones Member',
+    tag:         'rare-ones-member'
+  };
+
+  fetch('https://services.leadconnectorhq.com/hooks/cVzxbnlqCvF3ZNpsRw04/webhook-trigger/d265a401-c76c-46b1-98e7-e676470eec2e', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(function() {});
+})();
+</script>
 </body>
 </html>
