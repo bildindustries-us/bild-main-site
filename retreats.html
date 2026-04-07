@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BILD Day Retreats — Temecula & Dallas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ── HERO ── */
+    .dr-hero {
+      background: var(--dark);
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 9rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .dr-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 0% 100%, rgba(212,97,74,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 40% at 100% 10%, rgba(201,168,76,0.07) 0%, transparent 60%);
+    }
+    .dr-hero-inner { position: relative; max-width: 800px; }
+    .dr-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .dr-hero h1 em { font-style: italic; color: var(--gold); }
+    .dr-hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      font-weight: 300;
+      color: rgba(245,240,232,0.55);
+      max-width: 560px;
+      line-height: 1.82;
+      border-left: 2px solid var(--coral);
+      padding-left: 1.25rem;
+    }
+
+    /* ── INTRO ── */
+    .dr-intro {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .dr-intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    .dr-intro h2 em { font-style: italic; color: var(--gold); }
+    .dr-intro p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.95;
+      color: #5a5a5a;
+      margin-bottom: 1.25rem;
+      max-width: 680px;
+    }
+    .dr-intro p strong { color: var(--charcoal); font-weight: 600; }
+
+    /* ── RETREAT CARDS ── */
+    .retreats-wrap {
+      background: var(--dark);
+      padding: 5rem 2rem;
+    }
+    .retreats-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: rgba(255,255,255,0.04);
+    }
+    .retreat-card {
+      background: #1e1e1e;
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .retreat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .retreat-card.temecula::before { background: var(--coral); }
+    .retreat-card.dallas::before { background: var(--teal); }
+    .retreat-card.coming-soon { opacity: 0.65; }
+
+    .rc-location {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .temecula .rc-location { color: var(--coral); }
+    .dallas .rc-location { color: var(--teal); }
+
+    .rc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .rc-title em { font-style: italic; color: var(--gold); }
+    .rc-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.3);
+      margin-bottom: 2rem;
+    }
+
+    .rc-dates {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .rc-date-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .rc-date-badge {
+      background: rgba(255,255,255,0.06);
+      padding: 0.35rem 0.85rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+    .rc-date-badge.active { background: var(--coral); }
+    .dallas .rc-date-badge.active { background: var(--teal); }
+    .rc-date-note {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.35);
+    }
+
+    .rc-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.48);
+      line-height: 1.78;
+      margin-bottom: 2rem;
+    }
+
+    .rc-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .rc-detail {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.45);
+      line-height: 1.5;
+    }
+    .rc-detail::before {
+      content: '✦';
+      font-size: 0.45rem;
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+    .temecula .rc-detail::before { color: var(--coral); }
+    .dallas .rc-detail::before { color: var(--teal); }
+    .rc-detail strong { color: rgba(245,240,232,0.72); font-weight: 500; }
+
+    .rc-btn {
+      display: block;
+      text-align: center;
+      padding: 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .rc-btn.apply { background: var(--coral); color: white; }
+    .rc-btn.apply:hover { background: #bf5040; transform: translateY(-2px); }
+    .rc-btn.notify {
+      background: transparent;
+      color: rgba(245,240,232,0.45);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .rc-btn.notify:hover { border-color: var(--teal); color: var(--teal); }
+
+    .coming-soon-tag {
+      display: inline-block;
+      background: rgba(74,143,140,0.15);
+      color: var(--teal);
+      border: 1px solid rgba(74,143,140,0.3);
+      padding: 0.25rem 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    /* ── WHAT TO EXPECT ── */
+    .expect-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .expect-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .expect-section h2 em { font-style: italic; color: var(--gold); }
+    .expect-section > p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.9;
+      max-width: 640px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── AGENDA ── */
+    .agenda-days {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5px;
+    }
+    .agenda-day {
+      background: white;
+      border: 1px solid #e5dfd4;
+      border-bottom: none;
+      overflow: hidden;
+    }
+    .agenda-day:last-child { border-bottom: 1px solid #e5dfd4; }
+    .ad-header {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .ad-header:hover { background: #faf8f4; }
+    .ad-day-num {
+      background: var(--dark);
+      color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem 0.5rem;
+      min-height: 72px;
+    }
+    .ad-info { padding: 1.25rem 1.75rem; }
+    .ad-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.2rem;
+    }
+    .ad-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .ad-title em { font-style: italic; color: var(--gold); }
+    .ad-body {
+      border-top: 1px solid #ede7dc;
+      padding: 1.5rem 1.75rem 1.5rem 80px;
+    }
+    .ad-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .ad-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .ad-time {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #bbb;
+      text-align: right;
+    }
+    .ad-event {
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.55;
+    }
+    .ad-event strong {
+      color: var(--charcoal);
+      font-weight: 600;
+    }
+    .ad-event .highlight {
+      color: var(--coral);
+      font-weight: 600;
+    }
+
+    /* ── WHAT'S INCLUDED ── */
+    .included-section {
+      background: var(--dark);
+      padding: 5rem 2rem;
+    }
+    .included-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .included-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 2.5rem;
+    }
+    .included-inner h2 em { font-style: italic; color: var(--gold); }
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.05);
+      margin-bottom: 3rem;
+    }
+    .inc-cell {
+      background: #222;
+      padding: 1.75rem;
+    }
+    .inc-icon { font-size: 1.25rem; margin-bottom: 0.6rem; display: block; }
+    .inc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+    .inc-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.4);
+      line-height: 1.65;
+    }
+
+    .not-included {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.35);
+      line-height: 1.7;
+    }
+    .not-included strong { color: rgba(245,240,232,0.55); font-weight: 500; }
+
+    /* ── INVESTMENT REVEAL ── */
+    .investment-reveal {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      text-align: center;
+      border-top: 1px solid #e5dfd4;
+    }
+    .investment-reveal h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .investment-reveal h2 em { font-style: italic; color: var(--gold); }
+    .investment-reveal p {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: #777;
+      line-height: 1.88;
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+    .investment-reveal p strong { color: var(--charcoal); font-weight: 600; }
+
+    .apply-block {
+      background: var(--dark);
+      padding: 3rem;
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .ab-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .ab-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+    .ab-heading em { font-style: italic; color: var(--gold); }
+    .ab-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.45);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .ab-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--coral);
+      color: white;
+      padding: 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      margin-bottom: 0.75rem;
+    }
+    .ab-btn:hover { background: #bf5040; transform: translateY(-2px); }
+    .ab-note {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(245,240,232,0.28);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ── LOS BARRILES CTA ── */
+    .lb-cta {
+      background: var(--off-white);
+      border-top: 1px solid #e5dfd4;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .lb-cta p {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: #777;
+      line-height: 1.88;
+      max-width: 560px;
+      margin: 0 auto 1.5rem;
+    }
+    .lb-cta p strong { color: var(--charcoal); font-weight: 600; }
+    .lb-link {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .lb-link:hover { background: var(--charcoal); }
+
+    @media (max-width: 760px) {
+      .dr-hero { padding: 8rem 1.5rem 4rem; }
+      .dr-intro { padding: 4rem 1.5rem; }
+      .retreats-inner { grid-template-columns: 1fr; }
+      .expect-section { padding: 4rem 1.5rem; }
+      .ad-body { padding-left: 1.75rem; }
+      .ad-item { grid-template-columns: 70px 1fr; }
+      .included-section { padding: 4rem 1.5rem; }
+      .included-grid { grid-template-columns: 1fr; }
+      .investment-reveal { padding: 4rem 1.5rem; }
+      .apply-block { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="why-bild.html">Why BILD</a></li>
+      <li><a href="index.html#pillars">The Pillars</a></li>
+      <li><a href="the-rare-ones.html">The Rare Ones</a></li>
+      <li><a href="retreat-los-barriles.html">Retreats</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="apply.html">Apply Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="dr-hero">
+  <div class="dr-hero-inner">
+    <span class="section-label">BILD Day Retreats</span>
+    <h1>Two days.<br>The work that<br><em>changes things.</em></h1>
+    <p class="dr-hero-sub">A smaller, more accessible version of the BILD retreat experience — without the flight to Mexico. Intensive. Intimate. Built for the man who is ready to do real work with other serious men.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="dr-intro">
+  <span class="section-label">What This Is</span>
+  <h2>The Los Barriles experience —<br><em>closer to home.</em></h2>
+  <p>The BILD Day Retreats were designed for the man who knows he needs this work but can't commit to four days in Mexico right now. Same depth. Same honesty. Same brotherhood. Compressed into a Thursday-Saturday format that busy men can actually protect on their calendars.</p>
+  <p>These are not conferences. There are no speakers presenting from a stage. There is Jeff Boyer, a small group of serious men, the Six Pillar curriculum, and two full days to go further than most men go in a year of self-improvement content.</p>
+  <p><strong>Two locations. Two different groups. The same standard.</strong></p>
+</section>
+
+<!-- RETREAT CARDS -->
+<section class="retreats-wrap">
+  <div class="retreats-inner">
+
+    <!-- TEMECULA -->
+    <div class="retreat-card temecula">
+      <span class="rc-location">Temecula, California</span>
+      <div class="rc-title">Wine Country.<br><em>Real work.</em></div>
+      <div class="rc-subtitle">Temecula Valley · Southern California</div>
+
+      <div class="rc-dates">
+        <div class="rc-date-row">
+          <span class="rc-date-badge active">June 26–28, 2026</span>
+          <span class="rc-date-note">First retreat — limited to 20 men</span>
+        </div>
+      </div>
+
+      <p class="rc-desc">Temecula is Jeff's home. The rolling hills, the quiet, the space to breathe — it sets the stage for the kind of honest work most men never make room for. This is the first BILD Day Retreat. It will be small, intentional, and unlike anything most men have experienced.</p>
+
+      <div class="rc-details">
+        <div class="rc-detail"><strong>Limited to 20 men</strong> — selected, serious, ready</div>
+        <div class="rc-detail"><strong>Thursday evening through Saturday afternoon</strong></div>
+        <div class="rc-detail"><strong>All sessions, meals, and group activity included</strong></div>
+        <div class="rc-detail"><strong>Hotel not included</strong> — Temecula has excellent options nearby</div>
+        <div class="rc-detail"><strong>BILD care package</strong> shipped to you before arrival</div>
+      </div>
+
+      <a href="apply.html" class="rc-btn apply">Apply for Temecula →</a>
+    </div>
+
+    <!-- DALLAS -->
+    <div class="retreat-card dallas coming-soon">
+      <span class="coming-soon-tag">Coming Soon</span>
+      <span class="rc-location">Dallas, Texas</span>
+      <div class="rc-title">Big state.<br><em>Bigger work.</em></div>
+      <div class="rc-subtitle">Dallas–Fort Worth · Texas</div>
+
+      <div class="rc-dates">
+        <div class="rc-date-row">
+          <span class="rc-date-badge">Date TBD — Fall 2026</span>
+          <span class="rc-date-note">Get on the waitlist</span>
+        </div>
+      </div>
+
+      <p class="rc-desc">The Dallas retreat is in development. Same format, same depth, same standard — built for the men in Texas and the surrounding region who are ready to do this work without a cross-country flight. Date and details coming soon.</p>
+
+      <div class="rc-details">
+        <div class="rc-detail"><strong>Limited to 20 men</strong> — selected, serious, ready</div>
+        <div class="rc-detail"><strong>Thursday evening through Saturday afternoon</strong></div>
+        <div class="rc-detail"><strong>All sessions, meals, and group activity included</strong></div>
+        <div class="rc-detail"><strong>Hotel not included</strong></div>
+        <div class="rc-detail"><strong>BILD care package</strong> shipped before arrival</div>
+      </div>
+
+      <a href="apply.html" class="rc-btn notify">Join the Dallas Waitlist →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="expect-section">
+  <span class="section-label">The Schedule</span>
+  <h2>What the three days<br><em>actually look like.</em></h2>
+  <p>Every hour is intentional. There is deep work and there is space. There is group intensity and private reflection. The format is designed so that men who can only give 2.5 days still walk away with real shifts — not just inspiration.</p>
+
+  <div class="agenda-days">
+
+    <div class="agenda-day">
+      <div class="ad-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ad-day-num">THU<br>Jun 26</div>
+        <div class="ad-info">
+          <div class="ad-date">Day One — Thursday</div>
+          <div class="ad-title">Arrive. <em>Set everything down.</em></div>
+        </div>
+      </div>
+      <div class="ad-body" style="display:block;">
+        <div class="ad-items">
+          <div class="ad-item">
+            <div class="ad-time">3:00 PM</div>
+            <div class="ad-event">Arrive and check in to hotel. Get settled. No agenda yet.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">6:30 PM</div>
+            <div class="ad-event"><strong>Welcome Dinner</strong> — the first meal together. Men introduce themselves with one honest answer to one honest question. The tone is set here.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">8:00 PM</div>
+            <div class="ad-event"><strong class="highlight">Opening Session — 90 minutes</strong> — Jeff opens the retreat. Why you're here. What the next two days will ask of you. The one rule: no hiding.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">9:30 PM</div>
+            <div class="ad-event">End of the evening. Time to process. Get to bed — tomorrow starts early.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agenda-day">
+      <div class="ad-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ad-day-num">FRI<br>Jun 27</div>
+        <div class="ad-info">
+          <div class="ad-date">Day Two — Friday</div>
+          <div class="ad-title">Go deep. <em>Face yourself.</em></div>
+        </div>
+      </div>
+      <div class="ad-body" style="display:block;">
+        <div class="ad-items">
+          <div class="ad-item">
+            <div class="ad-time">6:30 AM</div>
+            <div class="ad-event"><strong>Sunrise + Breathwork + Envisioning</strong> — optional but powerful. Five minutes of specific imagination before the day begins. The men who show up for this leave different.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">8:00 AM</div>
+            <div class="ad-event">Breakfast together</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">9:00 AM</div>
+            <div class="ad-event"><strong class="highlight">Session 1 — Powerlessness + Accountability</strong> — The False Power Move Cycle. Naming what you actually reach for. The private vs. public gap and what it costs everyone around you.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">11:00 AM</div>
+            <div class="ad-event">Breakout groups + journaling — small groups of 3 men working through the morning teaching together</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">12:30 PM</div>
+            <div class="ad-event">Lunch</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">2:00 PM</div>
+            <div class="ad-event"><strong class="highlight">Session 2 — Purpose + Forgiveness</strong> — The funeral question. The weight you've been carrying. The ceiling above every other area of your life you don't know is there.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">4:00 PM</div>
+            <div class="ad-event"><strong class="highlight">Group Challenge</strong> — something physical and collaborative in the Temecula hills. Gets men out of their heads. Brotherhood builds fastest here.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">7:00 PM</div>
+            <div class="ad-event"><strong>Dinner + open conversation</strong> — no agenda. The best conversations happen here.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">9:00 PM</div>
+            <div class="ad-event">Bonfire / stargazing — men sit together under the sky. No phones. No performance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agenda-day">
+      <div class="ad-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="ad-day-num">SAT<br>Jun 28</div>
+        <div class="ad-info">
+          <div class="ad-date">Day Three — Saturday</div>
+          <div class="ad-title">Go home. <em>As a different man.</em></div>
+        </div>
+      </div>
+      <div class="ad-body" style="display:block;">
+        <div class="ad-items">
+          <div class="ad-item">
+            <div class="ad-time">7:00 AM</div>
+            <div class="ad-event">Optional morning walk or quiet reflection time</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">8:00 AM</div>
+            <div class="ad-event">Breakfast — last meal together</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">9:00 AM</div>
+            <div class="ad-event"><strong class="highlight">Closing Session — Create With Him + Imagination</strong> — The vision you're building toward. What you now see that you couldn't see 48 hours ago. The commitment you make before you leave.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">11:00 AM</div>
+            <div class="ad-event"><strong>Brotherhood Send-Off</strong> — every man speaks one sentence. What shifted. The room holds it.</div>
+          </div>
+          <div class="ad-item">
+            <div class="ad-time">12:00 PM</div>
+            <div class="ad-event">Lunch and checkout. Fly or drive home.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="included-section">
+  <div class="included-inner">
+    <span class="sec-label" style="color:var(--gold);">What's Included</span>
+    <h2 class="sec-title" style="color:var(--cream);">Everything that matters<br><em>is covered.</em></h2>
+
+    <div class="included-grid">
+      <div class="inc-cell">
+        <span class="inc-icon">🔥</span>
+        <div class="inc-title">All Sessions</div>
+        <p class="inc-desc">Every workshop and group session with Jeff — Powerlessness, Accountability, Purpose, Forgiveness, Create With Him, and Imagination.</p>
+      </div>
+      <div class="inc-cell">
+        <span class="inc-icon">🍽</span>
+        <div class="inc-title">All Meals</div>
+        <p class="inc-desc">Thursday welcome dinner, Friday breakfast through dinner, Saturday breakfast and lunch. The table is where brotherhood builds.</p>
+      </div>
+      <div class="inc-cell">
+        <span class="inc-icon">⚡</span>
+        <div class="inc-title">Group Challenge</div>
+        <p class="inc-desc">The Friday afternoon physical and collaborative challenge — designed to get men out of their heads and into their bodies together.</p>
+      </div>
+      <div class="inc-cell">
+        <span class="inc-icon">📦</span>
+        <div class="inc-title">BILD Care Package</div>
+        <p class="inc-desc">Shipped to your door before the event — BILD hoodie, journal, and materials to prepare you for the work before you arrive.</p>
+      </div>
+      <div class="inc-cell">
+        <span class="inc-icon">🤝</span>
+        <div class="inc-title">Brotherhood</div>
+        <p class="inc-desc">The men you meet at this retreat stay with you. Priority access to The Rare Ones men's group after the event.</p>
+      </div>
+      <div class="inc-cell">
+        <span class="inc-icon">📞</span>
+        <div class="inc-title">Post-Retreat Follow-Up</div>
+        <p class="inc-desc">Jeff personally follows up with every attendee 30 days after. The work that surfaces at the retreat needs time to land.</p>
+      </div>
+    </div>
+
+    <div class="not-included">
+      <strong>Not included:</strong> Hotel accommodations — you book your own. Temecula has excellent hotels and resorts within 10–15 minutes of the venue, typically $150–$250/night. Two nights. You handle it, we handle everything else.
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT REVEAL -->
+<section class="investment-reveal">
+  <span class="section-label">Investment</span>
+  <h2>The investment is discussed<br>after your <em>application.</em></h2>
+  <p>This retreat is built for a specific kind of man. Before we talk numbers, we want to make sure this is the right next step for you — not just any step. Fill out the short application and Jeff will reach out personally to discuss fit and investment details.</p>
+  <p><strong>If you're a member of The Rare Ones</strong>, your membership credit applies toward the retreat investment. Ask Jeff about this when you connect.</p>
+
+  <div class="apply-block">
+    <span class="ab-title">Apply for the Temecula Retreat</span>
+    <div class="ab-heading">June 26–28, 2026<br><em>Limited to 20 men.</em></div>
+    <p class="ab-desc">Fill out the short application. Jeff reads every one personally. If it's the right fit, he'll reach out with everything you need to know — including investment details and how to secure your spot.</p>
+    <a href="apply.html" class="ab-btn">Submit Your Application →</a>
+    <p class="ab-note">Not every application results in an invitation. This retreat is for the man who is ready — not the man who is curious.</p>
+  </div>
+</section>
+
+<!-- LOS BARRILES CTA -->
+<section class="lb-cta">
+  <span class="section-label" style="color:var(--coral);">Ready to go deeper?</span>
+  <p><strong>The BILD Day Retreats are the entry point.</strong> The men who come to Temecula or Dallas and experience what this work can do often find themselves asking about Los Barriles — the full 4-day experience in Baja California, Mexico. If that's on your heart, it's worth knowing about.</p>
+  <a href="retreat-los-barriles.html" class="lb-link">Learn About Los Barriles →</a>
+</section>
+
+<footer class="site-footer">
+  <a class="footer-logo" href="index.html">B<span>I</span>LD</a>
+  <div class="footer-links">
+    <a href="why-bild.html">Why BILD</a>
+    <a href="index.html#pillars">The Pillars</a>
+    <a href="the-rare-ones.html">The Rare Ones</a>
+    <a href="retreat-los-barriles.html">Los Barriles</a>
+    <a href="assessment.html">Assessment</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-links" style="margin-top:0.5rem;">
+    <a href="members.html" style="color:rgba(245,240,232,0.18); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(245,240,232,0.18)'">Member Login</a>
+  </div>
+  <div class="footer-copy">© Jeff Boyer · bildyourlife.com</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
