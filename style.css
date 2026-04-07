@@ -38,6 +38,85 @@ nav {
 .nav-cta { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; background: var(--coral); color: white; padding: 0.6rem 1.25rem; text-decoration: none; transition: background 0.2s; }
 .nav-cta:hover { background: #bf5040; }
 
+/* ── NAV DROPDOWN ── */
+.nav-dropdown {
+  position: relative;
+}
+.nav-dropdown > a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.nav-dropdown > a::after {
+  content: '▾';
+  font-size: 0.55rem;
+  opacity: 0.5;
+  transition: transform 0.2s;
+}
+.nav-dropdown:hover > a::after,
+.nav-dropdown.open > a::after {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26,26,26,0.98);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-top: 2px solid var(--gold);
+  min-width: 260px;
+  z-index: 300;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.nav-dropdown:hover > .dropdown-menu {
+  display: block;
+  animation: dropIn 0.2s ease;
+}
+.nav-dropdown.open > .dropdown-menu {
+  display: block;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.dropdown-item {
+  display: block;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.15s;
+}
+.dropdown-item:last-child { border-bottom: none; }
+.dropdown-item:hover { background: rgba(255,255,255,0.05); }
+.di-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.di-label.gold { color: var(--gold); }
+.di-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.di-desc {
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(245,240,232,0.38);
+  line-height: 1.45;
+}
+
 /* ── HAMBURGER ── */
 .nav-hamburger {
   display: none;
