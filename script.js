@@ -36,6 +36,33 @@ document.addEventListener('DOMContentLoaded', () => {
     confirm.textContent = '"' + text + '" — Named. The work begins now.';
   };
 
+  // ── Dropdown nav — mobile tap support ──
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    dropdown.addEventListener('click', function(e) {
+      // On mobile, toggle open class on tap of the parent link
+      if (window.innerWidth <= 680) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+      }
+    });
+    // Close dropdown when clicking a child link
+    dropdown.querySelectorAll('.dropdown-item').forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdown.classList.remove('open');
+      });
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+        d.classList.remove('open');
+      });
+    }
+  });
+
   // ── Mobile hamburger menu ──
   const nav = document.querySelector('nav');
   if (nav && !nav.querySelector('.nav-hamburger')) {
@@ -47,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mobileMenu = document.createElement('div');
     mobileMenu.className = 'mobile-menu';
-    mobileMenu.innerHTML = '<a href="index.html">Home</a><a href="why-bild.html">Why BILD</a><a href="index.html#pillars">The Pillars</a><a href="the-rare-ones.html">The Rare Ones</a><a href="retreat-los-barriles.html">Retreats</a><a href="assessment.html">Assessment</a><a href="contact.html">Contact</a><a href="apply.html" class="mobile-cta">Apply Now</a>';
+    mobileMenu.innerHTML = '<a href="index.html">Home</a><a href="why-bild.html">Why BILD</a><a href="index.html#pillars">The Pillars</a><a href="the-rare-ones.html">The Rare Ones</a><a href="retreats.html">Day Retreats</a><a href="retreat-los-barriles.html">Los Barriles Retreat</a><a href="assessment.html">Assessment</a><a href="contact.html">Contact</a><a href="apply.html" class="mobile-cta">Apply Now</a>';
 
     nav.appendChild(burger);
     document.body.appendChild(mobileMenu);
