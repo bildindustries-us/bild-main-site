@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mobileMenu = document.createElement('div');
     mobileMenu.className = 'mobile-menu';
-    mobileMenu.innerHTML = '<a href="index.html">Home</a><a href="why-bild.html">Why BILD</a><a href="index.html#pillars">The Pillars</a><a href="the-rare-ones.html">The Rare Ones</a><a href="retreats.html">Day Retreats</a><a href="retreat-los-barriles.html">Los Barriles Retreat</a><a href="assessment.html">Assessment</a><a href="contact.html">Contact</a><a href="apply.html" class="mobile-cta">Apply Now</a>';
+    mobileMenu.innerHTML = '<a href="index.html">Home</a><a href="why-bild.html">Why BILD</a><a href="index.html#pillars">The Pillars</a><a href="the-rare-ones.html">The Rare Ones</a><a href="retreats.html">Day Retreats</a><a href="retreat-los-barriles.html">Los Barriles Retreat</a><a href="6pillars-guide.html">Free Guide</a><a href="assessment.html">Assessment</a><a href="contact.html">Contact</a><a href="apply.html" class="mobile-cta">Apply Now</a>';
 
     nav.appendChild(burger);
     document.body.appendChild(mobileMenu);
