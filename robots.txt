@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /members
+Disallow: /welcome
+Disallow: /start
+
+Sitemap: https://bildyourlife.com/sitemap.xml
