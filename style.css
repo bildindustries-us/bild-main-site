@@ -74,6 +74,15 @@ nav {
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
   margin-top: 1rem;
 }
+/* Invisible bridge over the gap between "Work With Jeff" and the menu,
+   so the menu stays open while the mouse travels down to it */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 100%;
+  height: 2.75rem;
+}
 .nav-dropdown:hover > .dropdown-menu {
   display: block;
   animation: dropIn 0.2s ease;
